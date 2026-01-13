@@ -3,6 +3,8 @@
 - test theo quy trình các bước thực hiện và các kịch bản test theo bdd (happy path -> risk/edge case)
 - yêu cầu đầu vào truyền từ ecom đối với time là dạng utc. để không cần phải convert (để test local cần get/set/reset cli: ```tzutil /g```/```tzutil /s "UTC"```/```tzutil /s "SE Asia Standard Time"```). **trên skycloud không có cài đặt timezone => timezone là ăn theo server nếu lưu trữ cần convert UTC+7 => UTC**
 # 12-01-2026
+- **lộ trình xử lý job queue** refagent [lo-trinh-xu-ly-job-queue-refagent.md]
+- tài liệu đặc tả api refagnet request từ api => tới payload cho job queue handler [refagent-api-specification-ban-dung-chung.md]
 - quản lý tài liệu md dcorp các dự án theo timeline với git [quan-ly-tai-lieu-md-theo-timeline-voi-git.md]
 - thực hiện luồng viết tay sketch skytransfer => refagent [luong-tu-duy-cua-handler-discount-sketch-logic.md]
 

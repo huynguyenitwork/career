@@ -1,5 +1,7 @@
 # 12-01-2026
-- quản lý tài liệu md dcorp các dự án theo timeline với git []
+- **lộ trình xử lý job queue** refagent [lo-trinh-xu-ly-job-queue-refagent.md]
+- tài liệu đặc tả api refagnet request từ api => tới payload cho job queue handler [refagent-api-specification-ban-dung-chung.md]
+- quản lý tài liệu md dcorp các dự án theo timeline với git [quan-ly-tai-lieu-md-theo-timeline-voi-git.md]
 - thực hiện luồng viết tay sketch skytransfer => refagent [luong-tu-duy-cua-handler-discount-sketch-logic.md]
 # 10-01-2026
 - hiểu sơ lược về cách nhân bản handler và các bước xử lý của handler (handler xử lý thay worker như thế nào) [luong-tu-duy-cua-handler-discount-sketch-logic.md]

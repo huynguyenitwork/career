@@ -78,7 +78,14 @@ case 15: xóa mềm discount group, chuyển trạng thái discount và mở l�
 start
 -> skytransfer call http api refagent
 	refagent queue request api & payload
--> refagent emit 
+-> refagent emit callback api
+end
+#### context
+- queueworker: mở kho, lấy đơn
+- queuemessagehandler: đọc nhãn đơn
+- setrefdataprocessor: phân luồng công việc
+- baseactnamehandler: áp quy trình chung
+- savemenuitemhandler: thợ làm việc thật
 
 ### sketch system context (flow 1)
 start
