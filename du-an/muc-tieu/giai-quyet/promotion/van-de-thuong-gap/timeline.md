@@ -1,3 +1,8 @@
+# 13-01-2026
+- vẽ sequence dạng plantuml bằng vscode+extension plantuml diagram as code nhàn hơn nhiều không xa đà sơ đố quá 10s
+- skytranfer gọi callback dữ liệu từ refagent thế nào? [skytranfer-goi-callback-du-lieu-tu-refagent.md]
+- test phần chuyển đổi dữ liệu TPayload từ api agent lỗi do converter sai json thiếu convert nếu json nest 2 cấp trở lên dự án [JsonProofTest]
+- báo cáo kết quả công việc sau 2 tháng làm việc [bao-cao-ket-qua-cong-viec-sau-2-thang.md]
 # 12-01-2026
 - **lộ trình xử lý job queue** refagent [lo-trinh-xu-ly-job-queue-refagent.md]
 - tài liệu đặc tả api refagnet request từ api => tới payload cho job queue handler [refagent-api-specification-ban-dung-chung.md]

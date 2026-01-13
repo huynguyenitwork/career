@@ -2,12 +2,16 @@
 - tắt cache để test dev
 - test theo quy trình các bước thực hiện và các kịch bản test theo bdd (happy path -> risk/edge case)
 - yêu cầu đầu vào truyền từ ecom đối với time là dạng utc. để không cần phải convert (để test local cần get/set/reset cli: ```tzutil /g```/```tzutil /s "UTC"```/```tzutil /s "SE Asia Standard Time"```). **trên skycloud không có cài đặt timezone => timezone là ăn theo server nếu lưu trữ cần convert UTC+7 => UTC**
+# 13-01-2026
+- vẽ sequence dạng plantuml bằng vscode+extension plantuml diagram as code nhàn hơn nhiều không xa đà sơ đố quá 10s
+- skytranfer gọi callback dữ liệu từ refagent thế nào? [skytranfer-goi-callback-du-lieu-tu-refagent.md]
+- test phần chuyển đổi dữ liệu TPayload từ api agent lỗi do converter sai json thiếu convert nếu json nest 2 cấp trở lên dự án [JsonProofTest]
+- báo cáo kết quả công việc sau 2 tháng làm việc [bao-cao-ket-qua-cong-viec-sau-2-thang.md]
 # 12-01-2026
 - **lộ trình xử lý job queue** refagent [lo-trinh-xu-ly-job-queue-refagent.md]
 - tài liệu đặc tả api refagnet request từ api => tới payload cho job queue handler [refagent-api-specification-ban-dung-chung.md]
 - quản lý tài liệu md dcorp các dự án theo timeline với git [quan-ly-tai-lieu-md-theo-timeline-voi-git.md]
 - thực hiện luồng viết tay sketch skytransfer => refagent [luong-tu-duy-cua-handler-discount-sketch-logic.md]
-
 # 10-01-2026
 - hiểu sơ lược về cách nhân bản handler và các bước xử lý của handler (handler xử lý thay worker như thế nào) [luong-tu-duy-cua-handler-discount-sketch-logic.md]
 - bổ sung cập nhật trạng thái cho promotion ecom (-1/1 = reject/done)
