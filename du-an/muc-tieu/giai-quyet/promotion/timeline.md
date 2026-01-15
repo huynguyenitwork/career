@@ -2,13 +2,29 @@
 - tắt cache để test dev
 - test theo quy trình các bước thực hiện và các kịch bản test theo bdd (happy path -> risk/edge case)
 - yêu cầu đầu vào truyền từ ecom đối với time là dạng utc. để không cần phải convert (để test local cần get/set/reset cli: ```tzutil /g```/```tzutil /s "UTC"```/```tzutil /s "SE Asia Standard Time"```). **trên skycloud không có cài đặt timezone => timezone là ăn theo server nếu lưu trữ cần convert UTC+7 => UTC**
+
+# task pending
+- ~~cập nhật thêm các trường mở rộng tại refagent~~ => rk7 (không cần vì anh Đầy bảo, validate từ cloud/midserver không phải từ RK7)
+- sửa lại sql skytransfer
+- tạo danh sách testcase
+- tạo checklist cấu hình từng bước thực hiện hoạt động vận hành (dev/prod)
+- thiết kế callback nhận dữ liệu trên skytool (nhận từ refagent)
+- thiết kế log để quan sát hành vi/hoạt động delivery dữ liệu (thay vì ecomlog - chỉ coi hoạt động api)
+- wbs cần có để có thời gian dự kiến demo đúng
+–--
+# 14-01-2026
+- **lộ trình xử lý job queue** refagent [lo-trinh-xu-ly-job-queue-refagent.md]
+- phân tích thiết kế log & trạng thái async callback skytool ↔ refagent [phan-tich-thiet-ke-log-trang-thai-async-callback-skytool-refagent.md]
+- thiết kế mẫu payload callback skytool => refagent [mau-thiet-ke-payload-callback-skytool-refagent.md]
+- thiết kế hướng xử lý callback từ skytool => refagent (2 cách, truyền callback ngay khi gọi từ skytool|thiết kế cấu hình appsetting cho refagent) [so-sanh-thiet-ke-callback-skytoo-refagent.md]
 # 13-01-2026
 - vẽ sequence dạng plantuml bằng vscode+extension plantuml diagram as code nhàn hơn nhiều không xa đà sơ đố quá 10s
 - skytranfer gọi callback dữ liệu từ refagent thế nào? [skytranfer-goi-callback-du-lieu-tu-refagent.md]
+- ~~**lộ trình xử lý job queue** refagent [lo-trinh-xu-ly-job-queue-refagent.md]~~
 - test phần chuyển đổi dữ liệu TPayload từ api agent lỗi do converter sai json thiếu convert nếu json nest 2 cấp trở lên dự án [JsonProofTest]
 - báo cáo kết quả công việc sau 2 tháng làm việc [bao-cao-ket-qua-cong-viec-sau-2-thang.md]
 # 12-01-2026
-- **lộ trình xử lý job queue** refagent [lo-trinh-xu-ly-job-queue-refagent.md]
+- ~~**lộ trình xử lý job queue** refagent [lo-trinh-xu-ly-job-queue-refagent.md]~~
 - tài liệu đặc tả api refagnet request từ api => tới payload cho job queue handler [refagent-api-specification-ban-dung-chung.md]
 - quản lý tài liệu md dcorp các dự án theo timeline với git [quan-ly-tai-lieu-md-theo-timeline-voi-git.md]
 - thực hiện luồng viết tay sketch skytransfer => refagent [luong-tu-duy-cua-handler-discount-sketch-logic.md]
@@ -40,11 +56,14 @@
 - tạo sketch và lưu tại vscode vì có local history [sketch.md]
 # 05-01-2026
 - yêu cầu bổ sung từ anh trưởng [demo-cases-create-discount-(happy-path-first).md]
-- các trường hợp người dùng gặp phải khi tạo discount và demo [demo-cases-create-discount-(happy-path-first).md]
+- ~~các trường hợp người dùng gặp phải khi tạo discount và demo [demo-cases-create-discount-(happy-path-first).md]~~
 - không cần thiết lập discount group id vì trong discount đã có rồi [script-them-cau-hinh-skycrm-vao-bang-parameters.md]
 - lỗi async bên trong List.ForEach = chạy ngầm không được chờ → scope bị hủy → dbcontext bị dispose → lỗi runtime (không dùng List.ForEach cho async-await) 
 - cập nhật trạng thái processstatus của ecompromotion là hoàn thành
 - lỗi addscoped httpclient chỉ gọi api 1 lần trong backgroudservice
+
+–--
+
 # 31-12-2025
 - thử nghiệm cập nhật trạng thái discount group từ xóa => nháp (dto chỉ gồm id, status)
 - di chuyển request trong hoppscotch là không thấy chỉ cần thêm mới thư mục và nhân bản từ collection khác qua

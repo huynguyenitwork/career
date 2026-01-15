@@ -3,7 +3,9 @@
 mục tiêu:
 - đọc 1 phút là hiểu
 - giải thích cho người không đọc code vẫn nắm được
-- xuất phát từ quy trình 5 bước có sẵn: 1.QueueWorker[ExecuteAsync-ProcessQueueAsync] => 2.IQueueMessageHandler[ProcessMessageAsync] => 3.ISetRefDataProcessor[ProcessAsync] => 4.BaseActNameHandler[ExecuteAsync] => 5.SaveDiscountHandler[ExecuteCoreAsync]
+- xuất phát từ quy trình 5 bước có sẵn: 1.QueueWorker[ExecuteAsync-ProcessQueueAsync] => 2.IQueueMessageHandler[ProcessMessageAsync] 
+=> 3.1.ISetRefDataProcessor[ProcessAsync] => 4.BaseActNameHandler[ExecuteAsync] => 5.SaveDiscountHandler[ExecuteCoreAsync]
+=> 3.2.IQueueMessageHandler[CallbackAsync]
 ---
 ## timeline
 - 13-01-2026: bổ sung thêm callback api url từ gateway sau xử lý job

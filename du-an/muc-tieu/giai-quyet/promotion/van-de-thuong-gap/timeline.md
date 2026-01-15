@@ -1,3 +1,7 @@
+# 14-01-2026
+- phân tích thiết kế log & trạng thái async callback skytool ↔ refagent [phan-tich-thiet-ke-log-trang-thai-async-callback-skytool-refagent.md]
+- thiết kế mẫu payload callback skytool => refagent [mau-thiet-ke-payload-callback-skytool-refagent.md]
+- thiết kế hướng xử lý callback từ skytool => refagent đưa quyết định phù hợp (2 cách, truyền callback ngay khi gọi từ skytool | ~~thiết kế cấu hình appsetting cho refagent~~) [so-sanh-thiet-ke-callback-skytoo-refagent.md]
 # 13-01-2026
 - vẽ sequence dạng plantuml bằng vscode+extension plantuml diagram as code nhàn hơn nhiều không xa đà sơ đố quá 10s
 - skytranfer gọi callback dữ liệu từ refagent thế nào? [skytranfer-goi-callback-du-lieu-tu-refagent.md]
@@ -28,10 +32,13 @@
 - tạo sketch và lưu tại vscode vì có local history [sketch.md]
 # 05-01-2026
 - yêu cầu bổ sung từ anh trưởng [demo-cases-create-discount-(happy-path-first).md]
-- các trường hợp người dùng gặp phải khi tạo discount và demo [demo-cases-create-discount-(happy-path-first).md]
+- ~~các trường hợp người dùng gặp phải khi tạo discount và demo [demo-cases-create-discount-(happy-path-first).md]~~
 - không cần thiết lập discount group id vì trong discount đã có rồi [script-them-cau-hinh-skycrm-vao-bang-parameters.md]
 - lỗi async bên trong List.ForEach = chạy ngầm không được chờ → scope bị hủy → dbcontext bị dispose → lỗi runtime (không dùng List.ForEach cho async-await)
 - lỗi AddScoped HttpClient chỉ gọi api 1 lần trong backgroudservice
+
+–--
+
 # 31-12-2025
 - di chuyển request trong hoppscotch là không thấy chỉ cần thêm mới thư mục và nhân bản từ collection khác qua
 # 30-12-2025
