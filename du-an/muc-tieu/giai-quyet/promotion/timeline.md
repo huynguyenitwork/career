@@ -12,10 +12,13 @@
 - thiết kế log để quan sát hành vi/hoạt động delivery dữ liệu (thay vì ecomlog - chỉ coi hoạt động api)
 - wbs cần có để có thời gian dự kiến demo đúng
 –--
-
-# 15-01-2026
+# 16-01-2026
 - chỉnh sửa lại script [script-them-cau-hinh-skycrm-vao-bang-parameters.md]
-- thiết kế wbs cho task promotion dựa trên sơ đồ component và task được giao [wbs-subtask-va-worklist-dong-bo-promotion-ecom-rk7.md]
+- tạo api mới cho luồng skytransfer => skycrm (vì logic bản chất mới, dài hạn) không dùng controller chỉ dùng service cũ dễ bảo trì
+- sửa lại luồng hoạt động thiết kế wbs cho task promotion dựa trên sơ đồ component và task được giao[wbs-subtask-va-worklist-dong-bo-promotion-ecom-rk7.md]
+# 15-01-2026
+- ~~chỉnh sửa lại script [script-them-cau-hinh-skycrm-vao-bang-parameters.md]~~
+- ~~thiết kế wbs cho task promotion dựa trên sơ đồ component và task được giao [wbs-subtask-va-worklist-dong-bo-promotion-ecom-rk7.md]~~
 - xây dựng bảng tổng hợp các ticket hiểu task promotion cần làm [tong-hop-cac-ticket.md]
 - prompt vạn năng tạo wbs rõ kết quả [prompt-van-nang-tao-wbs-ro-ket-qua.md]
 - thiết kế sơ đồ tương tác giữa các service req/res ecom => rk7 (dùng component diagram) [diagram-lr.md]

@@ -5,6 +5,11 @@ dựa trên tài liệu sơ đồ, task cho dev [tong-hop-cac-ticket.md] và pro
 - **bên dưới là worklist rất cụ thể, đầu ra nhìn thấy được**
 - **viết để pm copy dán thẳng vào clickup**
 - **ngắn, sắc, không triết lý**
+
+## timeline
+- 16-01-2026: điều chỉnh lại flow giai đoạn từ skytransfer có 2 hướng => skycloud/refagent thành skytransfer=>skycloud=>refagent
+- 15-01-2026: flow giai đoạn từ skytransfer có 2 hướng => skycloud/refagent
+
 ## các trạng thái công việc
 [done]: đã hoàn thành
 [inprogress]: đang xử lý hoặc xử lý 1 phần
@@ -15,52 +20,68 @@ dựa trên tài liệu sơ đồ, task cho dev [tong-hop-cac-ticket.md] và pro
 
 ## [1] ecom ⇄ skytransfer - webhook nhận promotion
 
-- api endpoint nhận promotion giá mở từ ecom
-- swagger / postman collection cho webhook
-- validate payload + generate requestid
-- lưu raw promotion + callbackurl vào db
-- log trạng thái "received"
-- dev test: call webhook bằng postman, verify db record + log theo requestid
+* expose api webhook nhận promotion từ ecom (method, auth rõ ràng)
+* define schema payload + validate mandatory fields
+* generate requestid xuyên suốt cho toàn flow
+* persist raw payload + callbackurl vào db (trace-first)
+* ghi log trạng thái "received" kèm requestid
+* dev test: postman gọi webhook, check db + log theo requestid
+
 ---
 
-## [2] skytransfer ⇄ skycloud - lưu promotion vào skycrm
+## [2] skytransfer ⇄ skycrm - lưu promotion vào skycrm
 
-- mapping promotion giá mở sang model crm
-- api save promotion vào skycloud
-- db record promotion trên skycrm
-- response trả về promotionid
-- log trạng thái "saved_to_crm"
-- dev test: trigger flow từ [1], verify promotion xuất hiện trên crm + log
+* map promotion giá mở sang crm model chuẩn
+* implement api create/update promotion trên skycrm
+* persist promotion record trên db crm
+* trả response chứa promotionid + requestid
+* ghi log trạng thái "saved_to_crm"
+* dev test: trigger từ [1], verify crm record + log đúng promotionid
+
 ---
 
-## [3] skytransfer ⇄ refagent - enqueue job xử lý promotion
+## [3.1] skycrm ⇄ refagent - enqueue job xử lý promotion
 
-- build payload job từ promotion crm
-- api enqueue job sang refagent
-- lưu jobid + requestid mapping
-- log trạng thái "queued"
-- response xác nhận enqueue thành công
-- dev test: kiểm tra queue có job mới + mapping jobid đúng requestid
+* build job payload từ promotion crm (id, params, requestid,...)
+* call api enqueue job sang refagent
+* lưu mapping promotionid ↔ jobid ↔ requestid
+* ghi log trạng thái "queued"
+* gọi callback api về skytransfer để thông báo enqueue success / fail
+* dev test: check queue có job mới + mapping đúng requestid
+
 ---
 
-## [4] refagent ⇄ rk7 - đồng bộ promotion xuống rk7
+## [3.2] skycrm ⇄ rk7 - đồng bộ promotion xuống rk7 (direct)
 
-- consume job từ queue
-- mapping promotion giá mở sang rk7 schema
-- call rk7 xml api insert/update promotion
-- parse response trả về params cho refagent
-- [pending]log trạng thái ("synced_to_rk7" hoặc "failed",...)
-- dev test: verify promotion tồn tại trên rk7 hoặc log lỗi đúng case
+* map promotion crm sang rk7 schema
+* call rk7 xml api insert/update promotion
+* parse response rk7 (success / error code)
+* gọi callback api về skytransfer với kết quả sync
+* [pending] ghi log trạng thái "synced_to_rk7" hoặc "failed"
+* dev test: verify promotion trên rk7 hoặc log lỗi đúng case
+
 ---
 
-## [5] refagent ⇄ skytransfer - callback kết quả xử lý
+## [4.1] refagent ⇄ rk7 - đồng bộ promotion xuống rk7 (async)
 
-- build callback payload (success / fail)
-- gọi callbackurl từ skytransfer
-- retry callback theo policy nếu lỗi (refagent)
-- cập nhật trạng thái cuối cùng trong db (skytransfer)
-- log trạng thái "completed"
-- dev test: giả lập success và fail, verify callback được nhận + trạng thái cuối
+* consume job promotion từ queue
+* map payload job sang rk7 schema
+* call rk7 xml api insert/update promotion
+* parse response rk7 và normalize result
+* [pending] ghi log trạng thái "synced_to_rk7" hoặc "failed"
+* dev test: check rk7 data hoặc error log theo jobid
+
+---
+
+## [5.1] refagent ⇄ skytransfer - callback kết quả xử lý
+
+* build callback payload theo chuẩn (success / fail)
+* gọi callbackurl về skytransfer
+* retry callback theo policy khi lỗi mạng / timeout
+* update trạng thái cuối promotion trong db skytransfer
+* ghi log trạng thái "completed"
+* dev test: mock success & fail, verify callback + final status
+
 ---
 
 ## ghi chú dùng cho pm

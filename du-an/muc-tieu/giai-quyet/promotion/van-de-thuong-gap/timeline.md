@@ -1,3 +1,6 @@
+# 16-01-2026
+- sửa lại luồng hoạt động thiết kế wbs cho task promotion dựa trên sơ đồ component và task được giao[wbs-subtask-va-worklist-dong-bo-promotion-ecom-rk7.md]
+- chỉnh sửa lại script [script-them-cau-hinh-skycrm-vao-bang-parameters.md]
 # 15-01-2026
 - thiết kế wbs cho task promotion dựa trên sơ đồ component và task được giao [wbs-subtask-va-worklist-dong-bo-promotion-ecom-rk7.md]
 - xây dựng bảng tổng hợp các ticket hiểu task promotion cần làm [tong-hop-cac-ticket.md]

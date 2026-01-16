@@ -12,13 +12,12 @@
 left to right direction
 
 skinparam componentStyle rectangle
-skinparam shadowing true
-
+skinparam shadowing false
 skinparam linetype polyline
-
-skinparam defaultTextAlignment center
 skinparam ArrowFontSize 10
 skinparam ArrowLabelPosition center
+skinparam defaultTextAlignment center
+
 
 component "ecom" as E
 component "skytransfer" as ST
@@ -26,11 +25,21 @@ component "skycrm" as SC
 component "refagent" as RA
 component "rk7" as RK
 
-E <--> ST : [1] json api\n(req/res)
-ST <--> SC : [2] json save\n(req/res)
-SC --> RA : [3] job queue
-RA <--> RK : [4] xml api\n(req/res)
-RA --> ST : [5]callback (job done)
+E <--> ST : [1] promotion webhook\njson api
+ST <--> SC : [2] save promotion\njson api
+SC --> RA : [3a] enqueue job\n(primary)
+RA <--> RK : [4] sync promotion\nxml api
+SC ..> RK : [3b] direct sync\n(fallback)
+RA --> ST : [5] callback result
+
+note right of SC
+routing rule:
+- try refagent first
+- if check health api fall enqueue fail / timeout
+- fallback to rk7 direct
+- persist sync_path
+end note
+
 @enduml
 
 
@@ -40,13 +49,11 @@ RA --> ST : [5]callback (job done)
 left to right direction
 
 skinparam componentStyle rectangle
-
 skinparam shadowing false
 skinparam linetype ortho
 skinparam ArrowFontSize 10
 skinparam ArrowLabelPosition center
 skinparam defaultTextAlignment center
-
 skinparam nodesep 40
 skinparam ranksep 120
 
@@ -56,11 +63,22 @@ component "skycrm" as SC
 component "refagent" as RA
 component "rk7" as RK
 
-E <--> ST : [1] json api\n(req/res)
-ST <--> SC : [2] json save\n(req/res)
-SC --> RA : [3] job queue
-RA <--> RK : [4] xml api\n(req/res)
-RA --> ST : [5]callback (job done)
+E <--> ST : [1] promotion webhook\njson api
+ST <--> SC : [2] save promotion\njson api
+SC --> RA : [3a] enqueue job\n(primary)
+RA <--> RK : [4] sync promotion\nxml api
+SC ..> RK : [3b] direct sync\n(fallback)
+RA --> ST : [5] callback result
+
+note left of SC
+routing rule:
+- try refagent first
+- if enqueue fail / timeout
+- fallback to rk7 direct
+- persist sync_path
+end note
+
 @enduml
+
 
 

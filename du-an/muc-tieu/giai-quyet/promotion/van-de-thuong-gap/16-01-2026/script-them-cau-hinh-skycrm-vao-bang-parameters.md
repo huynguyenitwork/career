@@ -1,4 +1,5 @@
 # timeline
+- 16-01-2026: bổ sung thêm thông tin kết nối với masterdata
 - 15-01-2026: sửa skycloud=>skycrm bổ sung thêm port skycrm vào parameter
 - 05-01-2026: xóa tham số discount group id, không cần thiết lập discount group id vì trong discount đã có rồi 
 - 31-12-2025: thêm các thông tin về key Organization Id/DiscountGroups Id thay vì dùng theo key name khó kiểm tra
@@ -20,19 +21,22 @@ không thêm các key auth khác vì **hiện không dùng**.
 ## key dùng trong code
 
 ```csharp
-#region SkyCRM
+#region MasterData Api
+public const string MasterDataApiServer = "MasterDataApiServer";
+public const string MasterDataApiPort = "MasterDataApiPort";
+public const string MasterDataApiSuffixApiName = "MasterDataApiSuffixApiName";	
+public const string MasterDataOrganizationId = "MasterDataOrganizationId";			
+#endregion
+						
+#region SkyCRM Api
 //longterm
-public const string SkyCRMServer = "SkyCRMServer";
-public const string SkyCRMPort = "SkyCRMPort";
-//api suffix
-public const string SkyCRMApiSuffixCRM = "SkyCRMApiSuffixCRM";
-public const string SkyCRMApiSuffixMasterData = "SkyCRMApiSuffixMasterData";
+public const string SkyCRMApiServer = "SkyCRMApiServer";
+public const string SkyCRMApiPort = "SkyCRMApiPort";
+public const string SkyCRMApiSuffixApiName = "SkyCRMApiSuffixApiName";
 
-//shortterm
-public const string SkyCRMOrganizationId = "SkyCRMOrganizationId";
 //tạo mới discount group
-public const string SkyCRMDiscountGroupCode = "SkyCRMDiscountGroupCode";
-public const string SkyCRMDiscountGroupName = "SkyCRMDiscountGroupName";
+public const string SkyCRMApiDiscountGroupCode = "SkyCRMApiDiscountGroupCode";
+public const string SkyCRMApiDiscountGroupName = "SkyCRMApiDiscountGroupName";
 #endregion
 ```
 
@@ -43,20 +47,19 @@ public const string SkyCRMDiscountGroupName = "SkyCRMDiscountGroupName";
 ```sql
 INSERT INTO Parameters (name, status, parentId, description, paramName, intVal, strVal)
 VALUES
--- core
-(N'Sky CRM Server', 4, 0, NULL, 'SkyCRMServer', 0, 'https://api-dev.dcorp.com.vn'),
-(N'Sky CRM Port', 4, 0, NULL, 'SkyCRMPort', NULL, NULL),
-
--- organization
-(N'Sky CRM Organization Id', 4, 0, NULL, 'SkyCRMOrganizationId', 8582, NULL),
-
--- api suffix
-(N'Sky CRM Api Suffix CRM', 4, 0, NULL, 'SkyCRMApiSuffixCRM', 0, 'crm/'),
-(N'Sky CRM Api Suffix MasterData', 4, 0, NULL, 'SkyCRMApiSuffixMasterData', 0, 'masterdata/'),
-
+-- core sky crm
+(N'Sky CRM Api Server', 4, 0, NULL, 'SkyCRMApiServer', 0, 'http://127.0.0.1'),
+(N'Sky CRM Api Port', 4, 0, NULL, 'SkyCRMApiPort', 5001, NULL),
+(N'Sky CRM Api Suffix Api Name', 4, 0, NULL, 'SkyCRMApiSuffixApiName', NULL, ''),
 -- discount group runtime
-(N'Sky CRM Discount Group Name', 4, 0, NULL, 'SkyCRMDiscountGroupName', 0, '[dev] open discount'),
-(N'Sky CRM Discount Group Code', 4, 0, NULL, 'SkyCRMDiscountGroupCode', 0, 'devop')
+(N'Sky CRM Api Discount Group Name', 4, 0, NULL, 'SkyCRMApiDiscountGroupName', 0, '[dev] open discount'),
+(N'Sky CRM Api Discount Group Code', 4, 0, NULL, 'SkyCRMApiDiscountGroupCode', 0, 'devop'),
+-- core masterdata
+(N'Master Data Api Server', 4, 0, NULL, 'MasterDataApiServer', 0, 'http://127.0.0.1'),
+(N'Master Data Api Port', 4, 0, NULL, 'MasterDataApiPort', 5003, NULL),
+(N'Master Data Api Suffix Api Name', 4, 0, NULL, 'MasterDataApiSuffixApiName', NULL, ''),
+-- organization
+(N'Master Data Organization Id', 4, 0, NULL, 'MasterDataOrganizationId', 8582, NULL);
 ```
 
 ---

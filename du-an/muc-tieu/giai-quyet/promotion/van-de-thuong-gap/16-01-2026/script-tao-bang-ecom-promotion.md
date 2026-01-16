@@ -65,9 +65,7 @@ CREATE TABLE EcomPromotion (
     EventType NVARCHAR(MAX),
 	Created datetime NULL,
 	Updated datetime NULL,
-	ProcessStatus int NULL,
-    CONSTRAINT UQ_EcomPromotion_Code UNIQUE (Code),
-    CONSTRAINT UQ_EcomPromotion_Name UNIQUE (Name)
+	ProcessStatus int NULL
 );
 
 # EcomPromotionApplicableTime 
