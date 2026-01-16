@@ -4,6 +4,34 @@
 - tham khảo tài liệu xử lý sync định nghĩa lại nhiệm vụ/cơ chế hoạt động cốt lõi của sync [logic-thuc-te-toan-bo-he-thong-sync.md]
 - hàm **create** không trả về bản ghi đã tạo chỉ trả trạng thái (thành công/thất bại)
 
+# sơ đồ plantuml
+@startuml
+left to right direction
+
+skinparam componentStyle rectangle
+
+skinparam shadowing false
+skinparam linetype ortho
+skinparam ArrowFontSize 10
+skinparam ArrowLabelPosition center
+skinparam defaultTextAlignment center
+
+skinparam nodesep 40
+skinparam ranksep 120
+
+component "ecom" as E
+component "skytransfer" as ST
+component "skycloud" as SC
+component "refagent" as RA
+component "rk7" as RK
+
+E <--> ST : [1] json api\n(req/res)
+ST <--> SC : [2] json\nsave skycrm\n(req/res)
+ST --> RA : [3] job queue
+RA <--> RK : [4] xml api\n(req/res)
+RA --> ST : [5]callback\n(job done)
+@enduml
+
 ## điều kiện cần (theo thứ tự trên - xuống)
 - luồng nghiệp vụ là command-driven
 - cập nhật bảng **ecompromotion** [script-tao-bang-ecom-promotion.md]
@@ -254,121 +282,52 @@ updated    | no               | create (upsert)
 deleted    | yes              | soft delete
 deleted    | no               | skip
 
-## switch
+# tasklist
+## [1] ecom ⇄ skytransfer - webhook nhận promotion
 
-switch(eventype)
-  created:
-     if !exist -> create
-  updated:
-     if exist -> update
-     else     -> create
-  deleted:
-     if exist -> soft delete
-	 
-	 
-## mã nguồn c# mẫu
-### gốc
-``` c#
-private async Task ImportDiscount(List<EcomPromotion> ecomPromotions)
-{
-    if (ecomPromotions == null || ecomPromotions.Count == 0)
-        return;
+- api endpoint nhận promotion giá mở từ ecom
+- swagger / postman collection cho webhook
+- validate payload + generate requestid
+- lưu raw promotion + callbackurl vào db
+- log trạng thái "received"
+- dev test: call webhook bằng postman, verify db record + log theo requestid
+---
 
-    Organization org = await GetOrganizationByName(Constants.Parameter.SkyCloudOrganization);
-    if (org is null)
-    {
-        LogError("organization not found. stop import.");
-        return;
-    }
+## [2] skytransfer ⇄ skycloud - lưu promotion vào skycrm
 
-    var orgId = org.Id;
+- mapping promotion giá mở sang model crm
+- api save promotion vào skycloud
+- db record promotion trên skycrm
+- response trả về promotionid
+- log trạng thái "saved_to_crm"
+- dev test: trigger flow từ [1], verify promotion xuất hiện trên crm + log
+---
 
-    foreach (var ecomPromotion in ecomPromotions)
-    {
-        Discount discount = await GetDiscountByName(ecomPromotion.Name, orgId);
+## [3] skytransfer ⇄ refagent - enqueue job xử lý promotion
 
-        switch (ecomPromotion.EventType)
-        {
-            case EventType.Created:
-                if (discount == null)
-                {
-                    var discountGroupId = await EnsureDiscountGroup(ecomPromotion, orgId);
-                    await CreateDiscount(ecomPromotion, orgId, discountGroupId);
-                }
-                else
-                {
-                    LogInfo($"skip create discount: {ecomPromotion.Name}");
-                }
-                break;
+- build payload job từ promotion crm
+- api enqueue job sang refagent
+- lưu jobid + requestid mapping
+- log trạng thái "queued"
+- response xác nhận enqueue thành công
+- dev test: kiểm tra queue có job mới + mapping jobid đúng requestid
+---
 
-            case EventType.Updated:
-                if (discount != null)
-                {
-                    var discountGroupId = await EnsureDiscountGroup(ecomPromotion, orgId);
-                    await UpdateDiscount(discount, ecomPromotion, discountGroupId);
-                }
-                else
-                {
-                    // upsert
-                    var discountGroupId = await EnsureDiscountGroup(ecomPromotion, orgId);
-                    await CreateDiscount(ecomPromotion, orgId, discountGroupId);
-                }
-                break;
+## [4] refagent ⇄ rk7 - đồng bộ promotion xuống rk7
 
-            case EventType.Deleted:
-                if (discount != null && discount.Status != DeletedStatus)
-                {
-                    await SoftDeleteDiscount(discount);
-                    await CallDeleteApi(discount);
-                }
-                else
-                {
-                    LogInfo($"skip delete discount: {ecomPromotion.Name}");
-                }
-                break;
+- consume job từ queue
+- mapping promotion giá mở sang rk7 schema
+- call rk7 xml api insert/update promotion
+- parse response trả về params cho refagent
+- [pending]log trạng thái ("synced_to_rk7" hoặc "failed",...)
+- dev test: verify promotion tồn tại trên rk7 hoặc log lỗi đúng case
+---
 
-            default:
-                LogWarning($"unsupported event type: {ecomPromotion.EventType}");
-                break;
-        }
-    }
-}
-``` 
-### tham khảo thêm
-``` c#
-private async Task<Guid> EnsureDiscountGroup(EcomPromotion ecomPromotion, Guid organizationId)
-{
-    // 1. xác định khóa định danh group (rất quan trọng)
-    var groupKey = BuildDiscountGroupKey(ecomPromotion);
+## [5] refagent ⇄ skytransfer - callback kết quả xử lý
 
-    // 2. thử lấy discount group hiện có
-    var discountGroup = await GetDiscountGroupByKey(groupKey, organizationId);
-
-    if (discountGroup != null)
-    {
-        return discountGroup.Id;
-    }
-
-    // 3. chưa có -> tạo mới
-    var newGroup = new DiscountGroup
-    {
-        Id = Guid.NewGuid(),
-        OrganizationId = organizationId,
-        GroupKey = groupKey,
-        Name = BuildDiscountGroupName(ecomPromotion),
-        CreatedAt = DateTime.UtcNow,
-        Status = ActiveStatus
-    };
-
-    await CreateDiscountGroup(newGroup);
-
-    return newGroup.Id;
-}
-
-private string BuildDiscountGroupKey(EcomPromotion promotion)
-{
-    // ví dụ đơn giản, nhưng phải deterministic
-    return $"PROMO_GROUP_{promotion.Type}_{promotion.Channel}";
-}
-
-``` 
+- build callback payload (success / fail)
+- gọi callbackurl từ skytransfer
+- retry callback theo policy nếu lỗi (refagent)
+- cập nhật trạng thái cuối cùng trong db (skytransfer)
+- log trạng thái "completed"
+- dev test: giả lập success và fail, verify callback được nhận + trạng thái cuối

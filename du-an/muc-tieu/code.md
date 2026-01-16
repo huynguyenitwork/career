@@ -32,6 +32,7 @@ dữ liệu test = data thật từ ecom
 lấy file input đúng hệ thống → map và process
 
 # luồng xử lý
+
 ## có sẵn
 
 	- payload
@@ -39,6 +40,7 @@ lấy file input đúng hệ thống → map và process
 	- kịch bản
 	- controller của price-sync
 ## cách thực hiện
+
 ### 1. xử lý với scheme đầu tiên
 
 - gọi api thực hiện web-hook
@@ -70,11 +72,13 @@ price-sync
 addscope service có tác dụng gì?
 
 # code
+
 ## subfix
 -Selection,Type: string
 -Combos,Products,Variants,Ids ...: list
 -Count: int
 ## mapping
+
 ## request
 -liststring=>string
 -listitem=>item

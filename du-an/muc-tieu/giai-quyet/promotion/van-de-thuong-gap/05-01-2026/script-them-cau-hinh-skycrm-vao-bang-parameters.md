@@ -1,4 +1,5 @@
 # timeline
+- 15-01-2026: sửa skycloud=>skycrm bổ sung thêm port skycrm vào parameter
 - 05-01-2026: xóa tham số discount group id, không cần thiết lập discount group id vì trong discount đã có rồi 
 - 31-12-2025: thêm các thông tin về key Organization Id/DiscountGroups Id thay vì dùng theo key name khó kiểm tra
 - 29-12-2025: thêm các thông tin về server/Organization Name/ApiSuffixCRM/ApiSuffixMasterData
@@ -19,44 +20,43 @@ không thêm các key auth khác vì **hiện không dùng**.
 ## key dùng trong code
 
 ```csharp
-//long-term
-// skycloud core
-public const string SkyCloudServer = "SkyCloudServer";
+#region SkyCRM
+//longterm
+public const string SkyCRMServer = "SkyCRMServer";
+public const string SkyCRMPort = "SkyCRMPort";
+//api suffix
+public const string SkyCRMApiSuffixCRM = "SkyCRMApiSuffixCRM";
+public const string SkyCRMApiSuffixMasterData = "SkyCRMApiSuffixMasterData";
 
-// organization
-public const string SkyCloudOrganizationId = "SkyCloudOrganizationId";
-
-// api suffix
-public const string SkyCloudApiSuffixCRM = "SkyCloudApiSuffixCRM";
-public const string SkyCloudApiSuffixMasterData = "SkyCloudApiSuffixMasterData";
-
-//short-term
-
-// create discount group payload
-public const string SkyCloudDiscountGroupCode = "SkyCloudDiscountGroupCode";
-public const string SkyCloudDiscountGroupName = "SkyCloudDiscountGroupName";
+//shortterm
+public const string SkyCRMOrganizationId = "SkyCRMOrganizationId";
+//tạo mới discount group
+public const string SkyCRMDiscountGroupCode = "SkyCRMDiscountGroupCode";
+public const string SkyCRMDiscountGroupName = "SkyCRMDiscountGroupName";
+#endregion
 ```
 
 ---
 
 ## script insert
-- cần tùy chỉnh SkyCloudOrganizationId và SkyCloudDiscountGroupId phù hợp với môi trường
+- cần tùy chỉnh SkyCRMOrganizationId và SkyCRMDiscountGroupId phù hợp với môi trường
 ```sql
 INSERT INTO Parameters (name, status, parentId, description, paramName, intVal, strVal)
 VALUES
 -- core
-(N'Sky Cloud Server', 4, 0, NULL, 'SkyCloudServer', 0, 'https://api-dev.dcorp.com.vn/'),
+(N'Sky CRM Server', 4, 0, NULL, 'SkyCRMServer', 0, 'https://api-dev.dcorp.com.vn'),
+(N'Sky CRM Port', 4, 0, NULL, 'SkyCRMPort', NULL, NULL),
 
 -- organization
-(N'Sky Cloud Organization Id', 4, 0, NULL, 'SkyCloudOrganizationId', 8582, NULL),
+(N'Sky CRM Organization Id', 4, 0, NULL, 'SkyCRMOrganizationId', 8582, NULL),
 
 -- api suffix
-(N'Sky Cloud Api Suffix CRM', 4, 0, NULL, 'SkyCloudApiSuffixCRM', 0, 'crm/'),
-(N'Sky Cloud Api Suffix MasterData', 4, 0, NULL, 'SkyCloudApiSuffixMasterData', 0, 'masterdata/'),
+(N'Sky CRM Api Suffix CRM', 4, 0, NULL, 'SkyCRMApiSuffixCRM', 0, 'crm/'),
+(N'Sky CRM Api Suffix MasterData', 4, 0, NULL, 'SkyCRMApiSuffixMasterData', 0, 'masterdata/'),
 
 -- discount group runtime
-(N'Sky Cloud Discount Group Name', 4, 0, NULL, 'SkyCloudDiscountGroupName', 0, '[dev] open discount'),
-(N'Sky Cloud Discount Group Code', 4, 0, NULL, 'SkyCloudDiscountGroupCode', 0, 'devop');
+(N'Sky CRM Discount Group Name', 4, 0, NULL, 'SkyCRMDiscountGroupName', 0, '[dev] open discount'),
+(N'Sky CRM Discount Group Code', 4, 0, NULL, 'SkyCRMDiscountGroupCode', 0, 'devop')
 ```
 
 ---

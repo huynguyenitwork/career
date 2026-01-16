@@ -1,3 +1,8 @@
+# 15-01-2026
+- thiết kế wbs cho task promotion dựa trên sơ đồ component và task được giao [wbs-subtask-va-worklist-dong-bo-promotion-ecom-rk7.md]
+- xây dựng bảng tổng hợp các ticket hiểu task promotion cần làm [tong-hop-cac-ticket.md]
+- prompt vạn năng tạo wbs rõ kết quả [prompt-van-nang-tao-wbs-ro-ket-qua.md]
+- thiết kế sơ đồ tương tác giữa các service req/res ecom => rk7 (dùng component diagram) [diagram-lr.md]
 # 14-01-2026
 - phân tích thiết kế log & trạng thái async callback skytool ↔ refagent [phan-tich-thiet-ke-log-trang-thai-async-callback-skytool-refagent.md]
 - thiết kế mẫu payload callback skytool => refagent [mau-thiet-ke-payload-callback-skytool-refagent.md]
