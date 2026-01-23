@@ -61,17 +61,17 @@ reasons:
 | v     | 2    | create     | active                            | active        | reject duplicate                  | reject              | test     | pass          |              |
 | v     | 3    | create     | active                            | soft-delete   | reject create                     | reject              | test     | pass          |              |
 | v     | 4    | create     | active                            | không tồn tại | create child                      | tạo thành công      | test     | pass          |              |
-| v     | 5    | create     | soft-delete / inactive            | không tồn tại | reject create child               | reject              | test     | pass          |              |
+| v     | 5    | create     | soft-delete                       | không tồn tại | reject create child               | reject              | test     | pass          |              |
 | v     | 6    | update     | active                            | không tồn tại | reject update                     | reject              | test     | pass          |              |
 | v     | 7    | update     | active                            | active        | update child                      | update success      | test     | pass          |              |
 | v     | 8    | update     | active                            | soft-delete   | reject update                     | reject              | test     | pass          |              |
-| v     | 9    | update     | soft-delete / inactive            | active        | reject update                     | reject              | test     | pass          |              |
+| v     | 9    | update     | soft-delete                       | active        | reject update                     | reject              | test     | pass          |              |
 | v     | 6    | update     | không tồn tại                     | bất kỳ        | reject update                     | reject              | test     | pass          |              |
 | v     | 11   | delete     | active                            | không tồn tại | noop hoặc reject                  | noop/reject         | test     | pass          |              |
 | v     | 12   | delete     | không tồn tại                     | bất kỳ        | noop hoặc reject (policy)         | noop/reject         | test     | pass          |              |
 | v     | 13   | delete     | active                            | active        | soft-delete child                 | soft+delete success | test     | pass          |              |
 | v     | 14   | delete     | active                            | soft-delete   | noop                              | noop                | test     | pass          |              |
-| v     | 15   | delete     | soft-delete / inactive            | active        | noop                              | noop                | test     | pass          |              |
+| v     | 15   | delete     | soft-delete                       | active        | noop                              | noop                | test     | pass          |              |
 
 v success
 x fail
@@ -283,51 +283,63 @@ deleted    | yes              | soft delete
 deleted    | no               | skip
 
 # tasklist
+
 ## [1] ecom ⇄ skytransfer - webhook nhận promotion
 
-- api endpoint nhận promotion giá mở từ ecom
-- swagger / postman collection cho webhook
-- validate payload + generate requestid
-- lưu raw promotion + callbackurl vào db
-- log trạng thái "received"
-- dev test: call webhook bằng postman, verify db record + log theo requestid
+- expose webhook api cho ecom gửi promotion (swagger + postman để tích hợp)
+- validate payload, generate callbackurl (skytransfer hoặc skyagent), lưu raw promotion + callbackurl vào db
+- backgroundservice gọi api skycloud xử lý promotion (thêm/sửa/xóa)
+- expose api callback inbound để skycloud hoặc refagent gọi trả kết quả theo callbackurl
+- log trạng thái ("received" → "processing" → "sent")
+- dev test: call webhook bằng postman, verify db record + job chạy + log theo requestid
 ---
 
 ## [2] skytransfer ⇄ skycloud - lưu promotion vào skycrm
-
-- mapping promotion giá mở sang model crm
-- api save promotion vào skycloud
-- db record promotion trên skycrm
-- response trả về promotionid
-- log trạng thái "saved_to_crm"
-- dev test: trigger flow từ [1], verify promotion xuất hiện trên crm + log
+- expose api nhận promotion inbound từ skytransfer
+- validate org, discount group, discount để quyết định create / update / delete hoặc trả lỗi
+- enqueue job xử lý cud promotion vào skycrm + gọi api rk7 qua refagent (fallback gọi trực tiếp rk7)
+- callback api theo callbackurl cho skytransfer (fallback gọi trực tiếp rk7)
+- log trạng thái xử lý promotion gởi skytransfer (theo từng giai đoạn)
+- dev test: trigger flow từ [1], verify promotion trên crm + trạng thái log
 ---
 
-## [3] skytransfer ⇄ refagent - enqueue job xử lý promotion
+## [3.1] skycrm ⇄ refagent - enqueue job xử lý promotion
 
-- build payload job từ promotion crm
-- api enqueue job sang refagent
-- lưu jobid + requestid mapping
-- log trạng thái "queued"
-- response xác nhận enqueue thành công
-- dev test: kiểm tra queue có job mới + mapping jobid đúng requestid
+- build job payload từ promotion crm (promotionid, params, requestid, action:cud)
+- call api enqueue do refagent expose action cud
+- nhận requestid trả về từ refagent để thông báo enqueue success/fail
+- lưu mapping promotionid ↔ jobid ↔ requestid tại skycrm
+- ghi log trạng thái "queued" tại skycrm
+- dev test: verify refagent nhận request + queue có job + mapping đúng requestid
+
 ---
 
-## [4] refagent ⇄ rk7 - đồng bộ promotion xuống rk7
+## [3.2] skycrm ⇄ rk7 - đồng bộ promotion xuống rk7 (direct)
 
-- consume job từ queue
-- mapping promotion giá mở sang rk7 schema
-- call rk7 xml api insert/update promotion
-- parse response trả về params cho refagent
-- [pending]log trạng thái ("synced_to_rk7" hoặc "failed",...)
-- dev test: verify promotion tồn tại trên rk7 hoặc log lỗi đúng case
+- map promotion crm sang rk7 schema
+- call rk7 xml api insert/update/delete promotion
+- parse response rk7 (success / error code)
+- gọi callback api về skytransfer với kết quả sync
+- log trạng thái ("synced_to_rk7" hoặc "failed",...)
+- dev test: verify promotion trên rk7 hoặc log lỗi đúng case
+
 ---
 
-## [5] refagent ⇄ skytransfer - callback kết quả xử lý
+## [4.1] refagent ⇄ rk7 - đồng bộ promotion xuống rk7 (async)
 
-- build callback payload (success / fail)
-- gọi callbackurl từ skytransfer
-- retry callback theo policy nếu lỗi (refagent)
-- cập nhật trạng thái cuối cùng trong db (skytransfer)
-- log trạng thái "completed"
-- dev test: giả lập success và fail, verify callback được nhận + trạng thái cuối
+- map payload job sang rk7 schema
+- call rk7 xml api insert/update/delete promotion
+- parse response rk7 và normalize result
+- gọi callback api về skytransfer với kết quả sync [5.1]
+- log trạng thái ("synced_to_rk7" hoặc "failed",...)
+- dev test: verify rk7 data hoặc error log theo jobid
+
+---
+
+## [5.1] refagent ⇄ skytransfer - callback kết quả xử lý
+
+- gọi callbackurl về skytransfer (từ [1])
+- retry callback theo policy khi lỗi mạng / timeout (nếu có)
+- update trạng thái xử lý cuối cùng của promotion trong skytransfer
+- log trạng thái ("completed",...)
+- dev test: mock success & fail, verify callback + final status

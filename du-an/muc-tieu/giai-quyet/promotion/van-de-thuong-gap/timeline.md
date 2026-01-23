@@ -1,6 +1,26 @@
+# w4
+
+## 22-01-2026
+- viết mô hình branch từ dcorp dành cho dev [m1-timeline.md]
+- cập nhật file db trên skycrm đường dẫn: skycrm-api\Libraries\Data\Migrations\Installation
+## 21-01-2026
+- chỉnh sửa lại script và bỏ cấu hình liên quan masterdata không dùng nữa (liên quan đến server) [script-them-cau-hinh-skycrm-vao-bang-parameters.md]
+- bổ sung thêm case sửa/xóa skytransfer=>skycrm
+## 20-01-2026
+- lỗi outbound->inbound api dùng jsonelement nhưng không cùng hệ quy chiếu 1 bên dùng system.text.json 1 bên dùng newtonsoft không thống nhất => lỗi 
+- skycrm=>refagent hay skycrm=>rk7 cấu hình kết nối đặt tại service sở hữu chiều kết nối, không đặt ở **skytransfer**
+
+## 19-01-2026
+- skycrm mô hình api trả ngay + background xử lý + callback (no retry) cho skytransfer theo mô hình fire-and-forget + callback[skycrm-mo-hinh-api-tra-ngay-background-xu-ly-callback-no-retry.md]
+- ~~chỉnh sửa lại script và bổ sung cột genSAPCODE trong bảng discount skycrm [script-them-cau-hinh-skycrm-vao-bang-parameters.md]~~
+- heidi sql server ngăn cản điều chỉnh cột vì sql server "prevent saving changes that require the table to be re-created" => dùng ssms
+- bổ sung thêm trường CallbackUrl trong ecompromotion gọi sau gởi skytransfer xuống skycloud[script-tao-bang-ecom-promotion.md]
+
+---
+
 # 16-01-2026
 - sửa lại luồng hoạt động thiết kế wbs cho task promotion dựa trên sơ đồ component và task được giao[wbs-subtask-va-worklist-dong-bo-promotion-ecom-rk7.md]
-- chỉnh sửa lại script [script-them-cau-hinh-skycrm-vao-bang-parameters.md]
+- ~~chỉnh sửa lại script [script-them-cau-hinh-skycrm-vao-bang-parameters.md]~~
 # 15-01-2026
 - thiết kế wbs cho task promotion dựa trên sơ đồ component và task được giao [wbs-subtask-va-worklist-dong-bo-promotion-ecom-rk7.md]
 - xây dựng bảng tổng hợp các ticket hiểu task promotion cần làm [tong-hop-cac-ticket.md]
