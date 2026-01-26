@@ -1,10 +1,21 @@
+
+# w5
+
+## 26-01-2026
+- thêm thuộc tính synctaskid trong bảng ecompromotion skytransfer và thêm khóa ngoại [script-them-cau-hinh-skycrm-vao-bang-parameters.md]
+- tắt log tracking chỉ để dùng với happy case môi trường staging để anh Trưởng thấy kết quả
+
+
 # w4
+
+## 23-01-2026
+- base repo dùng sync, mở rộng với base khác kết hợp base repo gốc + repo async: viết lại toàn bộ get / add / update / delete (skytransfer)
 
 ## 22-01-2026
 - viết mô hình branch từ dcorp dành cho dev [m1-timeline.md]
 - cập nhật file db trên skycrm đường dẫn: skycrm-api\Libraries\Data\Migrations\Installation
 ## 21-01-2026
-- chỉnh sửa lại script và bỏ cấu hình liên quan masterdata không dùng nữa (liên quan đến server) [script-them-cau-hinh-skycrm-vao-bang-parameters.md]
+- ~~chỉnh sửa lại script và bỏ cấu hình liên quan masterdata không dùng nữa (liên quan đến server) [script-them-cau-hinh-skycrm-vao-bang-parameters.md]~~
 - bổ sung thêm case sửa/xóa skytransfer=>skycrm
 ## 20-01-2026
 - lỗi outbound->inbound api dùng jsonelement nhưng không cùng hệ quy chiếu 1 bên dùng system.text.json 1 bên dùng newtonsoft không thống nhất => lỗi 
