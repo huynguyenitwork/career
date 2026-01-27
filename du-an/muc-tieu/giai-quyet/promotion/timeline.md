@@ -14,6 +14,11 @@
 –--
 # w5
 
+## 27-01-2026
+- hướng dẫn quản lý vòng đời windows service bằng file .bat [inbox\27-01-2026.md]
+- tạo prompt wbs cho setup môi trường demo [inbox\27-01-2026.md]
+- refactor: điều chỉnh kết nối refagent (dùng từ proj masterdata) và tạo MR
+
 ## 26-01-2026
 - thêm thuộc tính synctaskid trong bảng ecompromotion skytransfer và thêm khóa ngoại [script-them-cau-hinh-skycrm-vao-bang-parameters.md]
 - tắt log tracking chỉ để dùng với happy case môi trường staging để anh Trưởng thấy kết quả
