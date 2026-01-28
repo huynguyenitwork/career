@@ -1,8 +1,71 @@
 # timeline
+- [28-01-2026] phân bổ + migrate toàn bộ cây → khung dcorp
 - [27-01-2026] ví dụ file cho từng folder
 - [27-01-2026] dcorp hệ thống kiến ​​thức và quyết định
 - [26-01-2026] bổ sung metadata cho decision
 - [25-01-2026] khóa hệ thống audit ghi chép cá nhân
+
+---
+
+# tóm tắt đúng nội dung: phân bổ + migrate toàn bộ cây → khung dcorp
+
+## mục tiêu
+- dồn toàn bộ cây hiện tại vào dcorp
+- giảm nhiễu khi migrate
+- mở ra là biết: đang làm gì / vì sao / bỏ qua gì
+
+## root
+- chỉ giữ dcorp/
+- toàn bộ root cũ (du-an, nen-tang, …) = nguồn di trú, xóa sau migrate
+
+## dcorp/decisions = "đã chọn"
+- strategy: mục tiêu, hướng đi, timeline đã chốt
+  - từ: `du-an/**/tong-ket/*`, file tóm tắt kết quả
+- project: scope, trade-off từng dự án
+  - từ: `du-an/**/muc-tieu/**/wbs`, timeline có mốc chốt
+- tech: chọn / loại công nghệ, kiến trúc
+  - từ: nen-tang/nguyen-tac/chon-*, quyet-dinh-nhanh
+- people: ownership, phân công, ranh giới vai trò
+  - từ: du-an/**/hdsd/phoi-hop, tuong-tac
+- process: flow làm việc đã chốt
+  - từ: kiem-thu/readme, flow-diagram chỉ file final
+
+## dcorp/reference = "để hiểu"
+- company: thông tin công ty, vai trò, liên hệ
+- domain: logic nghiệp vụ (pos, f&b, sale, promotion)
+- tech: kiến thức, pattern, tool, hướng dẫn
+- project: bối cảnh, onboard, lịch sử trao đổi, vấn đề mô tả
+- nguồn: nen-tang/** (trừ phần đã chuyển sang decisions), du-an/**/nguon
+
+## dcorp/journal
+- cảm nhận cá nhân, áp lực, học được gì
+- tuyệt đối không để kỹ thuật
+
+## dcorp/inbox
+- mọi file chưa rõ là decision hay reference
+- trong migrate: nhét toàn bộ phần lộn xộn vào đây trước
+
+## dcorp/archive
+- code mẫu, demo, simulator, repo test
+- thư mục có bin/, obj/
+
+## quy tắc migrate
+- không nghĩ sâu khi di chuyển
+- thấy "đã chọn" → decisions
+- thấy "để hiểu" → reference
+- phân vân > 30s → inbox
+- code chạy thử → archive
+
+## quy tắc khóa sau migrate
+- không tạo folder mới
+- dự án không bao giờ là root
+- file mới chỉ được rơi vào 5 nhánh trên
+
+## dấu hiệu làm đúng
+- decisions = hành động
+- reference = lý do
+- inbox giảm dần
+- cây không phình theo thời gian
 
 ---
 
@@ -124,23 +187,22 @@
 
 ```
 /dcorp
-/inbox
-/decisions
-	/strategy   # ưu tiên, hướng đi
-	/project    # scope, trade-off dự án
-	/tech       # chọn giải pháp kỹ thuật
-	/people     # phân công, ownership
-	/process    # cách làm, flow
-/reference
-	/company    # luật chơi, policy
-	/domain     # business logic
-	/tech       # kiến thức kỹ thuật
-	/project    # bối cảnh dự án
-/journal
-/archive
-	/decisions
-	/reference
-
+  /inbox
+  /decisions
+    /strategy   # ưu tiên, hướng đi
+    /project    # scope, trade-off dự án
+    /tech       # chọn giải pháp kỹ thuật
+    /people     # phân công, ownership
+    /process    # cách làm, flow
+  /reference
+    /company    # luật chơi, policy
+    /domain     # business logic
+    /tech       # kiến thức kỹ thuật
+    /project    # bối cảnh dự án
+  /journal
+  /archive
+    /decisions
+    /reference
 ```
 
 ## quy tắc quyết định
