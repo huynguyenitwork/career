@@ -1,1 +1,0 @@
-path: "E:\20251025\my-drive\ung-dung\dev-tools\moi-truong-phat-trien\qsr\rk7.chm"
