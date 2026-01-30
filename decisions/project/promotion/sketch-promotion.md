@@ -1,4 +1,3 @@
-```md
 # sketch promotion – chuẩn hệ thống, tối giản
 
 ## mục tiêu
@@ -158,4 +157,131 @@ start
 - rule đứng riêng, flow không rẽ nhánh
 - chỉ bung nhánh khi sang code
 - đủ rõ để vẽ mermaid, đủ gọn để sửa nhanh
-```
+
+## nhánh core
+ 
+| order | service     | direction | actname (status) | status     | eventcode           | dùng để làm gì          | loại nếu                  |
+| ----- | ----------- | --------- | ---------------- | ---------- | ------------------- | ----------------------- | ------------------------- |
+| 1     | ecom        | up        | ecom_webhook     | pending    | EC_WEBHOOK_RECEIVED | phát sinh luồng         | không có synctaskid       |
+| 2     | skytransfer | up        | st_ingest        | processing | ST_RECEIVED_ECOM    | nhận yêu cầu            | duplicate                 |
+| 3     | skytransfer | down      | st_forward_crm   | processing | ST_FORWARD_CRM      | đẩy sang skycrm         | retry nội bộ              |
+| 4     | skycrm      | down      | crm_persist      | processing | CRM_SAVED           | lưu promotion           | fail rollback             |
+| 5     | skycrm      | down      | crm_dispatch     | processing | CRM_ENQUEUE_RA      | chọn refagent           | không async               |
+| 6     | refagent    | down      | ra_process       | processing | RA_JOB_RECEIVED     | nhận job                | thiếu requestid           |
+| 7     | refagent    | down      | ra_sync          | processing | RA_SYNC_RK7         | sync rk7                | partial                   |
+| 8     | refagent    | up        | ra_callback      | processing | RA_CALLBACK_ST      | trả kết quả             | callback >1               |
+| 9     | skytransfer | up        | st_finalize      | success    | ST_FINALIZED        | chốt task               | thiếu completedat         |
+| 10    | ecom        | up        | ecom_done        | success    | EC_COMPLETED        | kết thúc luồng          | ecom không cần            |
+| 11    | skytransfer | up        | st_finalize      | failed     | ST_FAILED           | đóng task lỗi           | thiếu lasterror           |
+| 12    | skytransfer | up        | st_finalize      | timeout    | ST_TIMEOUT          | đóng task quá hạn       | chưa hết sla              |
+| 13    | skytransfer | up        | st_finalize      | canceled   | ST_CANCELED         | dừng chủ động           | không có action hủy       |
+
+---
+
+## nhánh fallback (ghi cùng bảng, khác eventcode)
+
+| order | service     | direction | actname (status) | status     | eventcode          | dùng để làm gì         | loại nếu            |
+|-------|-------------|-----------|------------------|------------|--------------------|------------------------|---------------------|
+| 5f    | skycrm      | down      | crm_dispatch     | processing | CRM_DIRECT_RK7     | bypass refagent        | không phải fallback |
+| 6f    | skycrm      | up        | crm_callback     | processing | CRM_CALLBACK_ST    | callback trực tiếp     | thiếu finalstatus   |
+| 7f    | skytransfer | up        | st_finalize      | failed     | ST_FAILED_FALLBACK | đóng task lỗi fallback | thiếu lasterror     |
+
+
+| order | service                      | direction | actname                          | status                     | eventcode                            | message                                           |
+| ----: | ---------------------------- | --------- | -------------------------------- | -------------------------- | ------------------------------------ | ------------------------------------------------- |
+|     1 | Delivery.Service.Ecom        | up        | Delivery.ActionName.EcomWebhook  | Delivery.Status.Pending    | Delivery.EventCode.EcWebhookReceived | Delivery.DeliveryEventMessage.EcWebhookReceived   |
+|     2 | Delivery.Service.Skytransfer | up        | Delivery.ActionName.StIngest     | Delivery.Status.Processing | Delivery.EventCode.StReceivedEcom    | Delivery.DeliveryEventMessage.StReceivedEcom      |
+|     3 | Delivery.Service.Skytransfer | down      | Delivery.ActionName.StForwardCrm | Delivery.Status.Processing | Delivery.EventCode.StForwardCrm      | Delivery.DeliveryEventMessage.StForwardCrm        |
+|     4 | Delivery.Service.SkyCRM      | down      | Delivery.ActionName.CrmPersist   | Delivery.Status.Processing | Delivery.EventCode.CrmSaved          | Delivery.DeliveryEventMessage.CrmSaved            |
+|     5 | Delivery.Service.SkyCRM      | down      | Delivery.ActionName.CrmDispatch  | Delivery.Status.Processing | Delivery.EventCode.CrmEnqueueRa      | Delivery.DeliveryEventMessage.CrmEnqueueRa        |
+|     6 | Delivery.Service.RefAgent    | down      | Delivery.ActionName.RaProcess    | Delivery.Status.Processing | Delivery.EventCode.RaJobReceived     | Delivery.DeliveryEventMessage.RaJobReceived       |
+|     7 | Delivery.Service.RefAgent    | down      | Delivery.ActionName.RaSync       | Delivery.Status.Processing | Delivery.EventCode.RaSyncRk7         | Delivery.DeliveryEventMessage.RaSyncRk7           |
+|     8 | Delivery.Service.RefAgent    | up        | Delivery.ActionName.RaCallback   | Delivery.Status.Processing | Delivery.EventCode.RaCallbackSt      | Delivery.DeliveryEventMessage.RaCallbackSt        |
+|    10 | Delivery.Service.Ecom        | up        | Delivery.ActionName.EcomDone     | Delivery.Status.Success    | Delivery.EventCode.EcCompleted       | Delivery.DeliveryEventMessage.EcCompleted         |
+|    11 | Delivery.Service.Skytransfer | up        | Delivery.ActionName.StFinalize   | Delivery.Status.Failed     | Delivery.EventCode.StFailed          | Delivery.DeliveryEventMessage.StFinalizedFailed   |
+|    12 | Delivery.Service.Skytransfer | up        | Delivery.ActionName.StFinalize   | Delivery.Status.Timeout    | Delivery.EventCode.StTimeout         | Delivery.DeliveryEventMessage.StFinalizedTimeout  |
+|    13 | Delivery.Service.Skytransfer | up        | Delivery.ActionName.StFinalize   | Delivery.Status.Canceled   | Delivery.EventCode.StCanceled        | Delivery.DeliveryEventMessage.StFinalizedCanceled |
+|    5f | Delivery.Service.SkyCRM      | down      | Delivery.ActionName.CrmDispatch  | Delivery.Status.Processing | Delivery.EventCode.CrmDirectRk7      | Delivery.DeliveryEventMessage.CrmDirectRk7        |
+|    6f | Delivery.Service.SkyCRM      | up        | Delivery.ActionName.CrmCallback  | Delivery.Status.Processing | Delivery.EventCode.CrmCallbackSt     | Delivery.DeliveryEventMessage.CrmCallbackSt       |
+|    7f | Delivery.Service.Skytransfer | up        | Delivery.ActionName.StFinalize   | Delivery.Status.Failed     | Delivery.EventCode.StFailedFallback  | Delivery.DeliveryEventMessage.StFailedFallback    |
+
+## code
+
+``` csharp
+public class Delivery
+{
+
+	public static class Status
+	{
+		public const string Pending = "pending";
+		public const string Processing = "processing";
+		public const string Success = "success";
+		public const string Failed = "failed";	
+		public const string Timeout = "timeout";
+		public const string Canceled = "canceled";
+	}
+
+	public static class EventCode
+	{
+		public const string EcWebhookReceived = "EC_WEBHOOK_RECEIVED";
+		public const string StReceivedEcom = "ST_RECEIVED_ECOM";
+		public const string StForwardCrm = "ST_FORWARD_CRM";
+		public const string CrmSaved = "CRM_SAVED";
+		public const string CrmEnqueueRa = "CRM_ENQUEUE_RA";
+		public const string RaJobReceived = "RA_JOB_RECEIVED";
+		public const string RaSyncRk7 = "RA_SYNC_RK7";
+		public const string RaCallbackSt = "RA_CALLBACK_ST";
+		public const string StFinalized = "ST_FINALIZED";
+		public const string EcCompleted = "EC_COMPLETED";
+		public const string StFailed = "ST_FAILED";
+		public const string StTimeout = "ST_TIMEOUT";
+		public const string StCanceled = "ST_CANCELED";
+		public const string CrmDirectRk7 = "CRM_DIRECT_RK7";
+		public const string CrmCallbackSt = "CRM_CALLBACK_ST";
+		public const string StFailedFallback = "ST_FAILED_FALLBACK";
+	}
+	public static class Service
+	{
+		public const string Ecom = "ecom";
+		public const string Skytransfer = "skytransfer";
+		public const string SkyCRM = "skycrm";
+		public const string RefAgent = "refagent";
+	}
+
+	public static class ActionName
+	{
+		public const string EcomWebhook = "ecom_webhook";
+		public const string StIngest = "st_ingest";
+		public const string StForwardCrm = "st_forward_crm";
+		public const string CrmPersist = "crm_persist";
+		public const string CrmDispatch = "crm_dispatch";
+		public const string RaProcess = "ra_process";
+		public const string RaSync = "ra_sync";
+		public const string RaCallback = "ra_callback";
+		public const string StFinalize = "st_finalize";
+		public const string EcomDone = "ecom_done";
+		public const string CrmCallback = "crm_callback";
+	}
+	public static class DeliveryEventMessage
+	{
+		public const string EcWebhookReceived = "ecom phát sinh webhook, khởi tạo luồng xử lý mới cho promotion.";
+		public const string StReceivedEcom = "skytransfer đã nhận yêu cầu từ ecom và bắt đầu xử lý.";
+		public const string StForwardCrm = "skytransfer chuyển promotion sang hệ skycrm để tiếp tục xử lý.";
+		public const string CrmSaved = "skycrm đã lưu promotion vào hệ thống thành công.";
+		public const string CrmEnqueueRa = "skycrm đã chọn refagent phù hợp và đẩy job sang refagent.";
+		public const string RaJobReceived = "refagent đã nhận job xử lý từ skycrm.";
+		public const string RaSyncRk7 = "refagent đang đồng bộ promotion sang hệ rk7.";
+		public const string RaCallbackSt = "refagent trả kết quả xử lý về cho skytransfer.";
+		public const string StFinalizedSuccess = "skytransfer chốt task thành công.";
+		public const string EcCompleted = "ecom xác nhận luồng xử lý promotion đã hoàn tất.";
+		public const string StFinalizedFailed = "skytransfer chốt task ở trạng thái lỗi.";
+		public const string StFinalizedTimeout = "skytransfer chốt task do quá thời gian xử lý.";
+		public const string StFinalizedCanceled = "skytransfer chủ động dừng và hủy task.";
+		// fallback branch
+
+		public const string CrmDirectRk7 = "skycrm bỏ qua refagent và đồng bộ trực tiếp sang rk7.";
+		public const string CrmCallbackSt = "skycrm callback trực tiếp kết quả về cho skytransfer.";
+		public const string StFailedFallback = "skytransfer chốt task lỗi theo nhánh fallback.";
+	}
+}
+``` 

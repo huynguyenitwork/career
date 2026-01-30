@@ -19,6 +19,16 @@
 
 # w5
 
+## 29-01-2026
+- sửa lại skytransfer với quy định discountGroupCode
+- bổ sung log tại refagent để theo dõi (lưu dữ liệu skytransfer ổn, nhưng tới refagent lỗi chưa rõ nguyên nhân)
+- skycrm discount group không hiển thị với bản ghi là draft, dùng cloudflared để tao ip public 
+- tái cấu trúc lại tài liệu dự án dcorp
+
+## 28-01-2026
+- hoàn thiện việc cấu hình setup trên server vật lý skytransfer/refagent (kiểm tra port + run service) [decisions\strategy\tao-public-address-tam-thoi-de-test-nhanh.md]
+- sửa code skycrm api và bổ sung log để theo dõi nguyên nhân lỗi
+
 ## 27-01-2026
 - hướng dẫn quản lý vòng đời windows service bằng .bat [inbox\27-01-2026.md]
 - tạo prompt wbs setup môi trường demo [inbox\27-01-2026.md]

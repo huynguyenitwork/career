@@ -2,6 +2,18 @@
 
 - user/pass chung: dev / Dcorp@2025
 
+### domain skytransfer=>rk7
+
+#### org_id
+- dev: 8582
+- stg: 8547
+refagent: http://localhost:5901
+skycrm: http://localhost:5001
+#### run
+skycrm: dev/stg
+skytransfer: localhost
+refagent: cloudflared
+
 ### crm
 - fe-dev: https://dev-skyoffice.dcorp.com.vn
 - fe-stg: https://stg-skyoffice.dcorp.com.vn
