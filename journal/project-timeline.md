@@ -19,6 +19,10 @@
 
 # w5
 
+## 30-01-2026
+- vấn đề không truy cập được vào service mặc dù đặt inbound rule, bind address http trên windows [decisions\tech\bind-address-http-tren-windows.md]
+- xây dựng workflow demo trên server 32, thiết lập và cài đặt [decisions\project\promotion\workflow-test-promotion.md]
+
 ## 29-01-2026
 - sửa lại skytransfer với quy định discountGroupCode
 - bổ sung log tại refagent để theo dõi (lưu dữ liệu skytransfer ổn, nhưng tới refagent lỗi chưa rõ nguyên nhân)
