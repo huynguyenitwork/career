@@ -1,10 +1,52 @@
 # timeline
-- [29-01-2026] test dữ liệu theo case
+- [02-02-2026] test dữ liệu theo case
 - [29-01-2026] test trên server 32
 - [28-01-2026] tạo ip-public với refagent
 - [28-01-2026] sửa org-id
 - [28-01-2026] lưu ý chung
 ---
+
+# test dữ liệu theo case
+
+## pm-dev
+| stt | trường hợp | hành động | trạng thái discount_group | trạng thái discount | skycrm quyết định & lưu | rk7 gói tin    | rk7 mong đợi | mục đích                    |
+|-----|------------|-----------|---------------------------|---------------------|-------------------------|----------------|--------------|-----------------------------|
+| 1   | c1         | create    | not_exist                 | not_exist           | allow_bootstrap         | parent + child | both active  | tạo mới đầy đủ              |
+| 2   | c2         | create    | active                    | active              | reject_duplicate        | none           | unchanged    | chống trùng                 |
+| 3   | c3         | create    | active                    | soft_deleted        | reject                  | none           | unchanged    | không revive                |
+| 4   | c4         | create    | active                    | not_exist           | allow                   | child          | child active | tạo child hợp lệ            |
+| 5   | c5         | create    | soft_deleted              | not_exist           | reject                  | none           | unchanged    | chặn tạo dưới parent đã xóa |
+| 6   | u1         | update    | not_exist                 | any                 | reject                  | none           | unchanged    | chặn update mồ côi          |
+| 7   | u2         | update    | soft_deleted              | active              | reject                  | none           | unchanged    | giữ vòng đời                |
+| 8   | u3         | update    | active                    | active              | allow                   | child_updated  | synced       | sync dữ liệu                |
+| 9   | u4         | update    | active                    | not_exist           | reject                  | none           | unchanged    | chống create trá hình       |
+| 10  | u5         | update    | active                    | soft_deleted        | reject                  | none           | unchanged    | không revive                |
+| 11  | d1         | delete    | not_exist                 | any                 | noop_or_reject          | none           | unchanged    | an toàn                     |
+| 12  | d2         | delete    | soft_deleted              | active              | noop                    | none           | unchanged    | không xóa dây               |
+| 13  | d3         | delete    | active                    | active              | allow_soft_delete       | child_inactive | soft_deleted | xóa mềm chuẩn               |
+| 14  | d4         | delete    | active                    | soft_deleted        | noop                    | none           | unchanged    | chống lặp                   |
+| 15  | d5         | delete    | active                    | not_exist           | noop_or_reject          | none           | unchanged    | tránh log rác               |
+
+## business-ops
+| case | thao tác | trạng thái nhóm giảm giá | trạng thái giảm giá | skycrm xử lý | dữ liệu sang rk7    | kết quả thấy được  | dùng để          |
+|------|----------|--------------------------|---------------------|--------------|---------------------|--------------------|------------------|
+| c1   | tạo      | chưa tồn tại             | chưa tồn tại        | cho phép     | tạo nhóm + giảm giá | hiển thị đầy đủ    | tạo mới chuẩn    |
+| c2   | tạo      | đang dùng                | đang dùng           | từ chối      | không có            | không thay đổi     | tránh trùng      |
+| c3   | tạo      | đang dùng                | đã xóa              | từ chối      | không có            | không khôi phục    | tránh nhầm       |
+| c4   | tạo      | đang dùng                | chưa tồn tại        | cho phép     | tạo giảm giá        | giảm giá xuất hiện | thêm hợp lệ      |
+| c5   | tạo      | đã xóa                   | chưa tồn tại        | từ chối      | không có            | không thay đổi     | giữ dữ liệu sạch |
+| u1   | sửa      | không tồn tại            | bất kỳ              | từ chối      | không có            | không đổi          | tránh sửa sai    |
+| u2   | sửa      | đã xóa                   | đang dùng           | từ chối      | không có            | không đổi          | giữ vòng đời     |
+| u3   | sửa      | đang dùng                | đang dùng           | cho phép     | cập nhật            | thấy thay đổi      | đồng bộ          |
+| u4   | sửa      | đang dùng                | không tồn tại       | từ chối      | không có            | không phát sinh    | tránh tạo nhầm   |
+| u5   | sửa      | đang dùng                | đã xóa              | từ chối      | không có            | không khôi phục    | giữ vòng đời     |
+| d1   | xóa      | không tồn tại            | bất kỳ              | bỏ qua       | không có            | không đổi          | an toàn          |
+| d2   | xóa      | đã xóa                   | đang dùng           | bỏ qua       | không có            | giữ nguyên         | tránh xóa dây    |
+| d3   | xóa      | đang dùng                | đang dùng           | cho phép     | đánh dấu xóa        | không còn hiệu lực | xóa chuẩn        |
+| d4   | xóa      | đang dùng                | đã xóa              | bỏ qua       | không có            | không đổi          | chống lặp        |
+| d5   | xóa      | đang dùng                | không tồn tại       | bỏ qua       | không có            | không phát sinh    | tránh rác        |
+
+--- 
 # test trên server 32
 ## build source
 skytransfer: 

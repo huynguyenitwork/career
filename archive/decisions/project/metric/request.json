@@ -1,0 +1,32 @@
+{
+  "url": "/api/set-discount-rk7-data",
+  "method": "POST",
+  "timeout": "30s",
+  "headers": {
+    "content-type": "application/json",
+    "X-Source-Service": "MD"
+  },
+  "payload": {
+    "ActName": "SaveDiscount",
+    "CallbackUrl": "http://localhost:5000/api/integration/discount/callback",
+    "Payload": {
+      "DiscountCondition": {
+        "Action": 2,
+        "DiscountItem": {
+          "genSAPCODE": "200125PSCL",
+          "MainParentIdent": null,
+          "Name": "Promotion SkyCloud 200125 update",
+          "Status": "1"
+        },
+        "DiscountTypeItem": {
+          "genSAPCODE": "18012025",
+          "MainParentIdent": null,
+          "Name": "[dev] open discount 18012025",
+          "Status": "1"
+        }
+      },
+      "JobId": "616e0253-7d11-4e17-88b1-e08cd3c7145e"
+    },
+    "RequestId": "fb1d7b6d-d63e-48ea-a5c8-a6b9b69ca734"
+  }
+}
