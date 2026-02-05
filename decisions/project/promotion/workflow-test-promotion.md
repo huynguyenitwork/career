@@ -1,9 +1,21 @@
 # timeline
+- [05-02-2026] run source test
 - [02-02-2026] test dữ liệu theo case
 - [29-01-2026] test trên server 32
 - [28-01-2026] tạo ip-public với refagent
 - [28-01-2026] sửa org-id
 - [28-01-2026] lưu ý chung
+---
+
+# run source test
+
+## dev
+- sửa config db skytransfer => localhost
+- start skytransfer, masterdata-api, skycrm-api, refagent => quan sát rk7man
+
+## staging
+- start skytransfer, refagent trên server 32
+
 ---
 
 # test dữ liệu theo case

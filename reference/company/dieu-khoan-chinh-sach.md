@@ -1,3 +1,8 @@
+## vấn đề thường gặp
+
+### rk7man bị ngắt kết nối
+- do ref bị tắt. vào server 32 => run "C:\DAY_QC\QSR\bin\win\refsrv.exe - Shortcut.lnk"
+
 ## 1. truy cập hệ thống sky (dùng cho dev/test)
 
 - user/pass chung: dev / Dcorp@2025

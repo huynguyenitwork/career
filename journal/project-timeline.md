@@ -16,6 +16,12 @@
 - tạo wbs để ước lượng thời gian demo
 
 ---
+# w1
+
+## 02-02-2026
+- tìm kiếm tên cột bảng trong rk7 thông qua link: https://docs.rkeeper.ru/rk7/7.7.0/ru/opisanie-tablits-spravochnikov-69239522.html
+- tạo timeline và wbs
+- daily meeting trao đổi thông tin work demo
 
 # w5
 
