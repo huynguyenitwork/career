@@ -8,12 +8,33 @@
 ---
 
 # run source test
+## nháp
+{
+	"name": "[dev] open discount 2.2026",
+	"code": 202602,
+	"description": null,
+	"organizationId": 8547,
+	"status": 1,
+	"parentId": 0,
+	"displayOrder": 0,
+	"id": 24
+}
+
+{
+  "name": "Promotion SkyCloud 20260206092311",
+  "code": "PSCL20260206092311",
+  "discountGroupId": 83,
+  "description": "Nội dung Promotion SkyCloud 20260206092311",
+  "organizationId": 8547
+}
 
 ## dev
+- orgid: 8582
 - sửa config db skytransfer => localhost
 - start skytransfer, masterdata-api, skycrm-api, refagent => quan sát rk7man
 
 ## staging
+- orgid: 8547
 - start skytransfer, refagent trên server 32
 
 ---
