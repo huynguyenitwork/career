@@ -1,4 +1,5 @@
 # timeline
+- [09-02-2026] refactor code (skycrm-api n-tier)
 - [05-02-2026] run source test
 - [02-02-2026] test dữ liệu theo case
 - [29-01-2026] test trên server 32
@@ -8,6 +9,7 @@
 ---
 
 # run source test
+
 ## nháp
 {
 	"name": "[dev] open discount 2.2026",
