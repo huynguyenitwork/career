@@ -298,11 +298,18 @@ end
 
 ```
 ## url service
+
+### stg
 skytransfer: http://118.69.108.41:2340
 refagent: http://118.69.108.41:2329
-skycrm:
-stg: https://api-stg.dcorp.com.vn/crm
-dev: http://localhost:5001
+skycrm: https://api-stg.dcorp.com.vn/crm
+rk7: https://118.69.108.41:2323
+### dev
+skytransfer: http://localhost:2340
+refagent: http://localhost:2329
+skycrm: http://localhost:5001
+rk7: https://118.69.108.41:2323
+
 
 ## publish truyền file qua server giao thức smb (port 445)
 - bước 1: server → chọn folder → properties → sharing → advanced sharing → bật share
