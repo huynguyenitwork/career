@@ -10,6 +10,15 @@
 
 # run source test
 
+## discount-group
+
+### auto
+- code: 202602-auto
+- name: [dev] open discount 2.2026 (auto)
+### manual
+- code: 202602-manual
+- name: [dev] open discount 2.2026 (manual)
+
 ## nháp
 {
 	"name": "[dev] open discount 2.2026",
