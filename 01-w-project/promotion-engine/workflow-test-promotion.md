@@ -1,4 +1,6 @@
 # timeline
+- [25-02-2026] kiểm tra case hoạt động
+- [25-02-2026] set up env cho develop
 - [09-02-2026] refactor code (skycrm-api n-tier)
 - [05-02-2026] run source test
 - [02-02-2026] test dữ liệu theo case
@@ -6,6 +8,48 @@
 - [28-01-2026] tạo ip-public với refagent
 - [28-01-2026] sửa org-id
 - [28-01-2026] lưu ý chung
+---
+
+
+# kiểm tra
+
+## luồng auto
+
+## skytransfer payload
+{
+  "name": "auto open discount 20260225114332",
+  "code": "PSCL20260225114332",
+  "status": "ACTIVE",
+  "description": "auto open discount 20260225114332",
+  "startTime": "2026-02-12T10:00:00+0700",
+  "endTime": "Tue, 10 Feb 2026 10:00:00 GMT",
+  "promotionType": "OPEN_DISCOUNT",
+  "tenantId": "0192fda4-ba1b-76ef-bb1a-64c043a8e4a4",
+  "eventType": "created",
+  "storesSelection": "STORE_PREREQUISITE",
+  "entitledStores": [
+    "TPC_068_EST_HCM",
+    "TPC_053_SVH_HCM"
+  ]
+}
+
+## luồng manual
+
+
+---
+
+# set up env cho develop
+
+## 1. thiết lập skytransfer
+- tạo db chỉ dành cho môi trường dev trên server 32 (backup restore từ stg)
+- cấu hình parameters skycrm dev (kết nối, orgid, discount group auto/manual ban đầu)
+
+## 2. thiếp lập skycrmui
+- thiết lập kết nối gián tiếp refagent tới rk7/trực tiếp tới rk7
+
+## 3. thiết lập refagent
+- chỉ run
+
 ---
 
 # run source test
@@ -308,16 +352,18 @@ end
 ```
 ## url service
 
-### stg
+### stg/dev
 skytransfer: http://118.69.108.41:2340
 refagent: http://118.69.108.41:2329
-skycrm: https://api-stg.dcorp.com.vn/crm
+skycrm: 
+	https://api-stg.dcorp.com.vn/crm
+	https://api-dev.dcorp.com.vn/crm
 rk7: https://118.69.108.41:2323
-### dev
+### local
 skytransfer: http://localhost:2340
 refagent: http://localhost:2329
-skycrm: http://localhost:5001
-rk7: https://118.69.108.41:2323
+skycrm: http://localhost:6001
+rk7: http://localhost:2323
 
 
 ## publish truyền file qua server giao thức smb (port 445)
