@@ -1,4 +1,5 @@
 # timeline
+- [25-02-2026] chạy service remote với psexec
 - [25-02-2026] kiểm tra case hoạt động
 - [25-02-2026] set up env cho develop
 - [09-02-2026] refactor code (skycrm-api n-tier)
@@ -11,16 +12,48 @@
 ---
 
 
+# chạy service remote với psexec
+
+## bước 1 xác định session server
+
+```
+query session /server:SKYXQASERVER
+```
+
+## bước 2 attach vào session đó
+
+- thấy ở local
+```
+psexec \\SKYXQASERVER cmd
+```
+## bước 3 chạy app
+
+```
+start "" "C:\huynp-dev\shortcut\skytransfer.lnk"
+start "" "C:\huynp-dev\shortcut\refagent.lnk"
+```
+## bước 4 kiểm tra port
+```
+curl http://SKYXQASERVER:2340
+curl http://SKYXQASERVER:2329
+```
+## bước 5 tắt app
+```
+netstat -ano | findstr 2340
+netstat -ano | findstr 2329
+taskkill /f /pid <pid>
+```
+
 # kiểm tra
 
 ## luồng auto
 
 ## skytransfer payload
 {
-  "name": "auto open discount 20260225114332",
-  "code": "PSCL20260225114332",
+  "name": "auto open discount 20260225144317",
+  "code": "op-20260225144317",
   "status": "ACTIVE",
-  "description": "auto open discount 20260225114332",
+  "description": "auto open discount 20260225144317",
   "startTime": "2026-02-12T10:00:00+0700",
   "endTime": "Tue, 10 Feb 2026 10:00:00 GMT",
   "promotionType": "OPEN_DISCOUNT",
@@ -58,9 +91,11 @@
 
 ### auto
 - code: 202602-auto
+- code: 202602-auto-not-exists
 - name: [dev] open discount 2.2026 (auto)
 ### manual
 - code: 202602-manual
+- code: 202602-manual-not-exists
 - name: [dev] open discount 2.2026 (manual)
 
 ## nháp
@@ -363,7 +398,7 @@ rk7: https://118.69.108.41:2323
 skytransfer: http://localhost:2340
 refagent: http://localhost:2329
 skycrm: http://localhost:6001
-rk7: http://localhost:2323
+rk7: https://118.69.108.41:2323
 
 
 ## publish truyền file qua server giao thức smb (port 445)

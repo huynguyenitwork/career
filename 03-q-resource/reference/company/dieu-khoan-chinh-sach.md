@@ -55,7 +55,8 @@ refagent: cloudflared
 - api xml: https://118.69.108.41:2323/rk7api/v0/xmlinterface.xml
 
 ### rk7 pc server
-- server: 192.168.2.32
+- server ip: 192.168.2.32
+- server name: SKYXQASERVER
 - user/pass: administrator / Dcorp@2025
 
 ### r-keeper app
