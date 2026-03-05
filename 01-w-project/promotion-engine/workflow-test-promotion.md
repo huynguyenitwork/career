@@ -1,4 +1,5 @@
 # timeline
+
 - [25-02-2026] chạy service remote với psexec
 - [25-02-2026] kiểm tra case hoạt động
 - [25-02-2026] set up env cho develop
@@ -250,8 +251,6 @@ test-netconnection 118.69.108.41 -port 6000
 -- ecomsynctaskstatus
 create table dbo.EcomSyncTaskStatus (
     SyncTaskId int identity(1,1) not null,
-    RequestId nvarchar(50) null,
-    Status nvarchar(30) null,
     RetryCount int null constraint DF_EcomSyncTaskStatus_RetryCount default 0,
     LastErrorCode nvarchar(50) null,
     LastErrorMessage nvarchar(500) null,
@@ -352,9 +351,8 @@ create table dbo.EcomPromotionExcludedDate (
 create table dbo.EcomSyncTaskTimeline (
     Id int identity(1,1) not null,
     SyncTaskId int not null,
-    RequestId nvarchar(50) null,
     EventCode nvarchar(50) null,
-    EventMessage nvarchar(500) null,
+    EventMessage nvarchar(2000) null,
     CreatedAt datetime null,
     ActName nvarchar(100) null constraint DF_EcomSyncTaskTimeline_ActName default null,
     constraint PK_EcomSyncTaskTimeline primary key clustered (Id),

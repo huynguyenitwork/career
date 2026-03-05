@@ -178,21 +178,23 @@ start
 
 ## nhánh core
 
-| order | service     | direction | actname (status) | status     | eventcode           | dùng để làm gì       | loại nếu            |
-| ----- | ----------- | --------- | ---------------- | ---------- | ------------------- | -------------------- | ------------------- |
-| 1     | ecom        | up        | ecom_webhook     | pending    | EC_WEBHOOK_RECEIVED | phát sinh luồng      | không có synctaskid |
-| 2     | skytransfer | up        | st_ingest        | processing | ST_RECEIVED_ECOM    | nhận yêu cầu         | duplicate           |
-| 3     | skytransfer | down      | st_forward_crm   | processing | ST_FORWARD_CRM      | đẩy sang skycrm      | retry nội bộ        |
-| 4     | skycrm      | down      | crm_persist      | processing | CRM_SAVED           | lưu promotion        | fail rollback       |
-| 5     | skycrm      | down      | crm_dispatch_ra  | processing | CRM_ENQUEUE_RA      | chọn refagent        | không async         |
-| 6     | refagent    | down      | ra_process       | processing | RA_JOB_RECEIVED     | nhận job             | thiếu requestid     |
-| 7     | refagent    | down      | ra_sync          | processing | RA_SYNC_RK7         | sync rk7             | partial             |
-| 8     | refagent    | up        | ra_done          | processing | RA_DONE_ST          | trả kết quả upstream | done >1             |
-| 9     | skytransfer | up        | st_finalize      | success    | ST_FINALIZED        | chốt task            | thiếu completedat   |
-| 10    | ecom        | up        | ecom_done        | success    | EC_COMPLETED        | kết thúc luồng       | ecom không cần      |
-| 11    | skytransfer | up        | st_finalize      | failed     | ST_FAILED           | đóng task lỗi        | thiếu lasterror     |
-| 12    | skytransfer | up        | st_finalize      | timeout    | ST_TIMEOUT          | đóng task quá hạn    | chưa hết sla        |
-| 13    | skytransfer | up        | st_finalize      | canceled   | ST_CANCELED         | dừng chủ động        | không có action hủy |
+| order | service     | direction | actname (status) | status     | eventcode           | dùng để làm gì                  | loại nếu             |
+| ----- | ----------- | --------- | ---------------- | ---------- | ------------------- | ------------------------------- | -------------------- |
+| 1     | ecom        | up        | ecom_webhook     | pending    | EC_WEBHOOK_RECEIVED | phát sinh luồng                 | không có synctaskid  |
+| 1.1   | skytransfer | up        | st_store_payload | processing | ST_PAYLOAD_STORED   | lưu payload gốc từ ecom         | payload rỗng         |
+| 2     | skytransfer | up        | st_ingest        | processing | ST_RECEIVED_ECOM    | nhận yêu cầu                    | duplicate            |
+| 3     | skytransfer | down      | st_forward_crm   | processing | ST_FORWARD_CRM      | đẩy sang skycrm                 | retry nội bộ         |
+| 4     | skycrm      | down      | crm_persist      | processing | CRM_SAVED           | lưu promotion                   | fail rollback        |
+| 5     | skycrm      | down      | crm_dispatch_ra  | processing | CRM_ENQUEUE_RA      | chọn refagent                   | không async          |
+| 6     | refagent    | down      | ra_process       | processing | RA_JOB_RECEIVED     | nhận job                        | thiếu requestid      |
+| 7     | refagent    | down      | ra_sync          | processing | RA_SYNC_RK7         | sync rk7                        | partial              |
+| 8     | refagent    | up        | ra_done          | processing | RA_DONE_ST          | trả kết quả upstream            | done >1              |
+| 8.1   | skytransfer | up        | st_store_result  | processing | ST_RESPONSE_STORED  | lưu response cuối từ downstream | chưa có result/final |
+| 9     | skytransfer | up        | st_finalize      | success    | ST_FINALIZED        | chốt task                       | thiếu completedat    |
+| 10    | ecom        | up        | ecom_done        | success    | EC_COMPLETED        | kết thúc luồng                  | ecom không cần       |
+| 11    | skytransfer | up        | st_finalize      | failed     | ST_FAILED           | đóng task lỗi                   | thiếu lasterror      |
+| 12    | skytransfer | up        | st_finalize      | timeout    | ST_TIMEOUT          | đóng task quá hạn               | chưa hết sla         |
+| 13    | skytransfer | up        | st_finalize      | canceled   | ST_CANCELED         | dừng chủ động                   | không có action hủy  |
 
 ---
 
@@ -209,6 +211,7 @@ start
 | order | service                      | direction | actname                            | status                     | eventcode                            | message                                   |
 | ----- | ---------------------------- | --------- | ---------------------------------- | -------------------------- | ------------------------------------ | ----------------------------------------- |
 | 1     | Delivery.Service.Ecom        | up        | Delivery.ActionName.EcomWebhook    | Delivery.Status.Pending    | Delivery.EventCode.EcWebhookReceived | Delivery.EventMessage.EcWebhookReceived   |
+| 1.1   | Delivery.Service.Skytransfer | up        | Delivery.ActionName.StStorePayload | Delivery.Status.Processing | Delivery.EventCode.StPayloadStored   | Delivery.EventMessage.StPayloadStored     |
 | 2     | Delivery.Service.Skytransfer | up        | Delivery.ActionName.StIngest       | Delivery.Status.Processing | Delivery.EventCode.StReceivedEcom    | Delivery.EventMessage.StReceivedEcom      |
 | 3     | Delivery.Service.Skytransfer | down      | Delivery.ActionName.StForwardCrm   | Delivery.Status.Processing | Delivery.EventCode.StForwardCrm      | Delivery.EventMessage.StForwardCrm        |
 | 4     | Delivery.Service.SkyCRM      | down      | Delivery.ActionName.CrmPersist     | Delivery.Status.Processing | Delivery.EventCode.CrmSaved          | Delivery.EventMessage.CrmSaved            |
@@ -216,6 +219,7 @@ start
 | 6     | Delivery.Service.RefAgent    | down      | Delivery.ActionName.RaProcess      | Delivery.Status.Processing | Delivery.EventCode.RaJobReceived     | Delivery.EventMessage.RaJobReceived       |
 | 7     | Delivery.Service.RefAgent    | down      | Delivery.ActionName.RaSync         | Delivery.Status.Processing | Delivery.EventCode.RaSyncRk7         | Delivery.EventMessage.RaSyncRk7           |
 | 8     | Delivery.Service.RefAgent    | up        | Delivery.ActionName.RaDone         | Delivery.Status.Processing | Delivery.EventCode.RaDoneSt          | Delivery.EventMessage.RaDoneSt            |
+| 8.1   | Delivery.Service.Skytransfer | up        | Delivery.ActionName.StStoreResult  | Delivery.Status.Processing | Delivery.EventCode.StResponseStored  | Delivery.EventMessage.StResponseStored    |
 | 10    | Delivery.Service.Ecom        | up        | Delivery.ActionName.EcomDone       | Delivery.Status.Success    | Delivery.EventCode.EcCompleted       | Delivery.EventMessage.EcCompleted         |
 | 11    | Delivery.Service.Skytransfer | up        | Delivery.ActionName.StFinalize     | Delivery.Status.Failed     | Delivery.EventCode.StFailed          | Delivery.EventMessage.StFinalizedFailed   |
 | 12    | Delivery.Service.Skytransfer | up        | Delivery.ActionName.StFinalize     | Delivery.Status.Timeout    | Delivery.EventCode.StTimeout         | Delivery.EventMessage.StFinalizedTimeout  |
@@ -225,7 +229,7 @@ start
 | 7f    | Delivery.Service.Skytransfer | up        | Delivery.ActionName.StFinalize     | Delivery.Status.Failed     | Delivery.EventCode.StFailedFallback  | Delivery.EventMessage.StFailedFallback    |
 
 ## code
-
+### delivery skytransfer
 ```csharp
 public static class Delivery
 {
@@ -242,6 +246,7 @@ public static class Delivery
 	public static class EventCode
 	{
 		public const string EcWebhookReceived = "EC_WEBHOOK_RECEIVED";
+		public const string StPayloadStored = "ST_PAYLOAD_STORED";
 		public const string StReceivedEcom = "ST_RECEIVED_ECOM";
 		public const string StForwardCrm = "ST_FORWARD_CRM";
 		public const string CrmReceivedSt = "CRM_RECEIVED_ST";
@@ -252,6 +257,7 @@ public static class Delivery
 
 		public const string RaDoneSt = "RA_DONE_ST";
 
+		public const string StPayloadStored = "ST_PAYLOAD_STORED";
 		public const string StFinalized = "ST_FINALIZED";
 		public const string EcCompleted = "EC_COMPLETED";
 		public const string StFailed = "ST_FAILED";
