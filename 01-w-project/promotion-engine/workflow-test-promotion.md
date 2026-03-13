@@ -352,7 +352,7 @@ create table dbo.EcomSyncTaskTimeline (
     Id int identity(1,1) not null,
     SyncTaskId int not null,
     EventCode nvarchar(50) null,
-    EventMessage nvarchar(2000) null,
+    EventMessage nvarchar(4000) null,
     CreatedAt datetime null,
     ActName nvarchar(100) null constraint DF_EcomSyncTaskTimeline_ActName default null,
     constraint PK_EcomSyncTaskTimeline primary key clustered (Id),
@@ -375,11 +375,17 @@ as
 begin
     set NOCOUNT on;
 
-    select *
+	select *
     from EcomPromotion
     where ProcessStatus = 0
-      and PromotionType = 'OPEN_DISCOUNT'
-    order by Id ASC;
+      and PromotionType in (
+        'PRODUCT_DISCOUNT',
+        'ORDER_DISCOUNT',
+        'BUY_X_GET_Y_DISCOUNT',
+        'SHIPMENT_DISCOUNT',
+        'OPEN_DISCOUNT'
+      )
+    order by Id asc;
 end
 
 ```

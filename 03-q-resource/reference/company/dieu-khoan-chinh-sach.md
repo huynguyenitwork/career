@@ -31,10 +31,19 @@ refagent: cloudflared
 - be-dev (swagger): https://api-dev.dcorp.com.vn/masterdata/swagger/index.html
 - be-stg (swagger): https://api-stg.dcorp.com.vn/masterdata/swagger/index.html
 
-### database crm (postgres)
+### database 
+
+#### dev
+crm (postgres)
 - server: 192.168.2.151:5432
-- db: skycrmdb
+- db: SkyCRMDB
 - user/pass: postgres / Dcorp@2025
+
+#### stg
+skytransfer
+- server: 118.69.108.41:2322
+- db: RK7_INT_STG
+- user/pass: rk7 / rk7
 
 ---
 
@@ -61,6 +70,7 @@ refagent: cloudflared
 
 ### r-keeper app
 - user/pass: admin / 1
+- user/pass (phát): RK7 22663 / Phat!@#2003
 
 ---
 
