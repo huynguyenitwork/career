@@ -1,19 +1,29 @@
-# kiến trúc validation cho skytranfer
+# kiến trúc validation cho skytransfer 
+_version 1.0.1_
 
 ## mục tiêu kiến trúc
 
 - payload request dài → cần validation nhiều bước
-- discount type sẽ **tăng dần theo thời gian**
+- discount type sẽ **tăng dần theo thời gian (3–8 type)**
+- rule validation có thể **10–50 rule**
 - controller phải **mỏng**
 - validation **không phình thành file 500–1000 dòng**
 - thêm discount mới **không sửa code cũ**
+- rule có thể **dùng lại cho nhiều discount type**
 
-kiến trúc dùng kết hợp các pattern:
+kiến trúc dùng kết hợp:
 
-- Pipeline Pattern
-- Strategy Pattern
-- Factory Pattern
-- Chain of Responsibility
+- pipeline pattern
+- strategy pattern
+- factory pattern
+- chain of responsibility
+- **generic rule binding (compile-time)**
+
+generic rule binding giúp:
+
+- rule bind trực tiếp vào validator
+- di container resolve đúng rule
+- **không cần filter runtime**
 
 ---
 
@@ -32,13 +42,11 @@ service validation pipeline
     ↓
     campaign validation step
     ↓
-    common discount validation step
-    ↓
     discount type validation step
         ↓
         discount validator (strategy)
             ↓
-            rule chain
+            rule chain (generic rules)
 ↓
 business logic
 ```
@@ -51,7 +59,7 @@ business logic
 
 mục tiêu
 
-- bảo vệ API contract
+- bảo vệ api contract
 - kiểm tra **shape dữ liệu**
 
 ví dụ rule
@@ -83,14 +91,13 @@ ví dụ
 
 # 3. validation pipeline
 
-validation dài → chia thành step
+validation dài → chia step
 
 pipeline
 
 ```
 validation pipeline
    ├─ campaign validation step
-   ├─ common discount validation step
    └─ discount type validation step
 ```
 
@@ -99,6 +106,8 @@ mỗi step
 ```
 1 domain rule group
 ```
+
+step cuối sẽ gọi validator theo discount type.
 
 ---
 
@@ -111,36 +120,63 @@ ví dụ
 ```
 percentage discount validator
 fixed amount validator
+tiered discount validator
 buy-x-get-y validator
+shipping discount validator
+```
+
+validator chỉ chứa
+
+```
+rule chain của type đó
 ```
 
 ---
 
-# 5. rule chain
+# 5. rule chain (generic rule)
 
-validator nhiều rule → chia nhỏ
+rule bind trực tiếp vào validator bằng generic
+
+```
+IDiscountRule<TValidator>
+```
+
+ví dụ
 
 ```
 percentage validator
-   ↓
-   percentage range rule
-   ↓
-   campaign limit rule
-   ↓
-   user eligibility rule
+    ↓
+    percentage range rule
+    ↓
+    expire date rule (shared)
+```
+
+điểm quan trọng
+
+```
+rule được inject đúng validator từ DI
+```
+
+không cần
+
+```
+AppliesTo()
+switch(discountType)
+runtime filtering
 ```
 
 ---
 
 # 6. ví dụ code (1 file)
 
-ví dụ minh họa toàn bộ flow trong **1 file**
+code minh họa toàn bộ flow **pipeline + strategy + generic rule + DI**
 
 ```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DiscountValidationExample
 {
@@ -185,17 +221,13 @@ namespace DiscountValidationExample
     }
 
     // -----------------------------
-    // pipeline step interface
+    // pipeline step
     // -----------------------------
 
     public interface IValidationStep
     {
         Task ExecuteAsync(DiscountContext context);
     }
-
-    // -----------------------------
-    // pipeline runner
-    // -----------------------------
 
     public class ValidationPipeline
     {
@@ -209,21 +241,18 @@ namespace DiscountValidationExample
         public async Task ExecuteAsync(DiscountContext context)
         {
             foreach (var step in _steps)
-            {
                 await step.ExecuteAsync(context);
-            }
         }
     }
 
     // -----------------------------
-    // campaign validation step
+    // campaign validation
     // -----------------------------
 
     public class CampaignValidationStep : IValidationStep
     {
         public Task ExecuteAsync(DiscountContext context)
         {
-            // giả lập rule
             bool campaignActive = true;
 
             if (!campaignActive)
@@ -234,22 +263,7 @@ namespace DiscountValidationExample
     }
 
     // -----------------------------
-    // common discount validation
-    // -----------------------------
-
-    public class CommonDiscountValidationStep : IValidationStep
-    {
-        public Task ExecuteAsync(DiscountContext context)
-        {
-            if (context.Request.ExpireDate <= DateTime.UtcNow)
-                throw new Exception("discount expired");
-
-            return Task.CompletedTask;
-        }
-    }
-
-    // -----------------------------
-    // discount validator interface
+    // validator interface
     // -----------------------------
 
     public interface IDiscountValidator
@@ -260,15 +274,67 @@ namespace DiscountValidationExample
     }
 
     // -----------------------------
-    // percentage rule
+    // generic rule interface
     // -----------------------------
 
-    public interface IDiscountRule
+    public interface IDiscountRule<TValidator>
+        where TValidator : IDiscountValidator
     {
         Task ValidateAsync(DiscountContext context);
     }
 
-    public class PercentageRangeRule : IDiscountRule
+    // -----------------------------
+    // percentage validator
+    // -----------------------------
+
+    public class PercentageDiscountValidator : IDiscountValidator
+    {
+        public string DiscountType => "percentage";
+
+        private readonly IEnumerable<IDiscountRule<PercentageDiscountValidator>> _rules;
+
+        public PercentageDiscountValidator(
+            IEnumerable<IDiscountRule<PercentageDiscountValidator>> rules)
+        {
+            _rules = rules;
+        }
+
+        public async Task ValidateAsync(DiscountContext context)
+        {
+            foreach (var rule in _rules)
+                await rule.ValidateAsync(context);
+        }
+    }
+
+    // -----------------------------
+    // fixed validator
+    // -----------------------------
+
+    public class FixedDiscountValidator : IDiscountValidator
+    {
+        public string DiscountType => "fixed";
+
+        private readonly IEnumerable<IDiscountRule<FixedDiscountValidator>> _rules;
+
+        public FixedDiscountValidator(
+            IEnumerable<IDiscountRule<FixedDiscountValidator>> rules)
+        {
+            _rules = rules;
+        }
+
+        public async Task ValidateAsync(DiscountContext context)
+        {
+            foreach (var rule in _rules)
+                await rule.ValidateAsync(context);
+        }
+    }
+
+    // -----------------------------
+    // rules
+    // -----------------------------
+
+    public class PercentageRangeRule
+        : IDiscountRule<PercentageDiscountValidator>
     {
         public Task ValidateAsync(DiscountContext context)
         {
@@ -281,27 +347,29 @@ namespace DiscountValidationExample
         }
     }
 
-    // -----------------------------
-    // percentage validator
-    // -----------------------------
-
-    public class PercentageDiscountValidator : IDiscountValidator
+    public class FixedAmountRule
+        : IDiscountRule<FixedDiscountValidator>
     {
-        public string DiscountType => "percentage";
-
-        private readonly IEnumerable<IDiscountRule> _rules;
-
-        public PercentageDiscountValidator(IEnumerable<IDiscountRule> rules)
+        public Task ValidateAsync(DiscountContext context)
         {
-            _rules = rules;
+            if (context.Request.Value <= 0)
+                throw new Exception("fixed amount must be positive");
+
+            return Task.CompletedTask;
         }
+    }
 
-        public async Task ValidateAsync(DiscountContext context)
+    // shared rule
+    public class ExpireDateRule :
+        IDiscountRule<PercentageDiscountValidator>,
+        IDiscountRule<FixedDiscountValidator>
+    {
+        public Task ValidateAsync(DiscountContext context)
         {
-            foreach (var rule in _rules)
-            {
-                await rule.ValidateAsync(context);
-            }
+            if (context.Request.ExpireDate <= DateTime.UtcNow)
+                throw new Exception("discount expired");
+
+            return Task.CompletedTask;
         }
     }
 
@@ -320,8 +388,8 @@ namespace DiscountValidationExample
 
         public IDiscountValidator Get(string type)
         {
-            var validator = _validators
-                .FirstOrDefault(v => v.DiscountType.Equals(type, StringComparison.OrdinalIgnoreCase));
+            var validator = _validators.FirstOrDefault(v =>
+                v.DiscountType.Equals(type, StringComparison.OrdinalIgnoreCase));
 
             if (validator == null)
                 throw new Exception($"unsupported discount type {type}");
@@ -331,7 +399,7 @@ namespace DiscountValidationExample
     }
 
     // -----------------------------
-    // discount type validation step
+    // validation step
     // -----------------------------
 
     public class DiscountTypeValidationStep : IValidationStep
@@ -343,7 +411,7 @@ namespace DiscountValidationExample
             _factory = factory;
         }
 
-        public async Task Execute(DiscountContext context)
+        public async Task ExecuteAsync(DiscountContext context)
         {
             var validator = _factory.Get(context.Request.DiscountType);
 
@@ -352,7 +420,7 @@ namespace DiscountValidationExample
     }
 
     // -----------------------------
-    // service validation entry
+    // validation service
     // -----------------------------
 
     public class DiscountValidationService
@@ -373,7 +441,7 @@ namespace DiscountValidationExample
     }
 
     // -----------------------------
-    // controller example
+    // controller
     // -----------------------------
 
     public class DiscountController
@@ -398,6 +466,38 @@ namespace DiscountValidationExample
             Console.WriteLine("discount created");
         }
     }
+
+    // -----------------------------
+    // DI
+    // -----------------------------
+
+    public static class DependencyInjection
+    {
+        public static IServiceCollection AddDiscountValidation(
+            this IServiceCollection services)
+        {
+            services.AddScoped<CreateDiscountRequestValidator>();
+
+            services.AddScoped<IValidationStep, CampaignValidationStep>();
+            services.AddScoped<IValidationStep, DiscountTypeValidationStep>();
+
+            services.AddScoped<ValidationPipeline>();
+
+            services.AddScoped<IDiscountValidator, PercentageDiscountValidator>();
+            services.AddScoped<IDiscountValidator, FixedDiscountValidator>();
+
+            services.AddScoped<IDiscountRule<PercentageDiscountValidator>, PercentageRangeRule>();
+            services.AddScoped<IDiscountRule<FixedDiscountValidator>, FixedAmountRule>();
+
+            services.AddScoped<IDiscountRule<PercentageDiscountValidator>, ExpireDateRule>();
+            services.AddScoped<IDiscountRule<FixedDiscountValidator>, ExpireDateRule>();
+
+            services.AddScoped<DiscountValidatorFactory>();
+            services.AddScoped<DiscountValidationService>();
+
+            return services;
+        }
+    }
 }
 ```
 
@@ -408,9 +508,16 @@ namespace DiscountValidationExample
 chỉ cần
 
 ```
-1 tạo validator class
-2 implement IDiscountValidator
+1 tạo validator
+2 tạo rule generic
 3 register DI
+```
+
+ví dụ
+
+```
+TieredDiscountValidator
+IDiscountRule<TieredDiscountValidator>
 ```
 
 không sửa
@@ -435,13 +542,62 @@ switch(discountType)
 hoặc
 
 ```
-controller chứa business rule
+AppliesTo()
 ```
 
 hoặc
 
 ```
-validator kiểm tra nhiều discount type
+validator chứa nhiều discount type
+```
+
+---
+
+# 9. cấu trúc thư mục đề xuất
+
+```
+src
+├─ api
+│   ├─ controllers
+│   │     DiscountController.cs
+│   ├─ requests
+│   │     CreateDiscountRequest.cs
+│   └─ validators
+│         CreateDiscountRequestValidator.cs
+├─ application
+│   ├─ services
+│   │     DiscountValidationService.cs
+│   └─ validation
+│        ├─ pipeline
+│        │     ValidationPipeline.cs
+│        └─ steps
+│              CampaignValidationStep.cs
+│              DiscountTypeValidationStep.cs
+├─ domain
+│   ├─ validators
+│   │     IDiscountValidator.cs
+│   ├─ rules
+│   │     IDiscountRule.cs
+│   │     shared
+│   │         ExpireDateRule.cs
+│   │     percentage
+│   │         PercentageRangeRule.cs
+│   │     fixed
+│   │         FixedAmountRule.cs
+│   └─ discounts
+│        ├─ percentage
+│        │     PercentageDiscountValidator.cs
+│        ├─ fixed
+│        │     FixedDiscountValidator.cs
+│        ├─ tiered
+│        │     TieredDiscountValidator.cs
+│        ├─ buyxgety
+│        │     BuyXGetYDiscountValidator.cs
+│        └─ shipping
+│              ShippingDiscountValidator.cs
+└─ infrastructure
+      DiscountValidatorFactory.cs
+      DependencyInjection.cs
 ```
 
 ---
@@ -455,59 +611,11 @@ controller
 ↓
 request validator
 ↓
-service validation pipeline
+validation pipeline
 ↓
-discount validator
+discount validator (strategy)
 ↓
-rule chain
-```
-cấu trúc thư mục đề xuất
-
-```
-src
-├─ api
-│   ├─ controllers
-│   │    DiscountController.cs
-│   │
-│   ├─ requests
-│   │    CreateDiscountRequest.cs
-│   │
-│   └─ validators
-│        CreateDiscountRequestValidator.cs
-│
-├─ application
-│   ├─ services
-│   │    DiscountValidationService.cs
-│   │
-│   └─ validation
-│        ├─ pipeline
-│        │    ValidationPipeline.cs
-│        │
-│        └─ steps
-│             CampaignValidationStep.cs
-│             CommonDiscountValidationStep.cs
-│             DiscountTypeValidationStep.cs
-│
-├─ domain
-│   ├─ validators
-│   │    IDiscountValidator.cs
-│   │
-│   ├─ rules
-│   │    IDiscountRule.cs
-│   │
-│   └─ discounts
-│        ├─ percentage
-│        │     PercentageDiscountValidator.cs
-│        │     PercentageRangeRule.cs
-│        │
-│        ├─ fixed
-│        │     FixedAmountDiscountValidator.cs
-│        │
-│        └─ buyxgety
-│              BuyXGetYDiscountValidator.cs
-│
-└─ infrastructure
-    DiscountValidatorFactory.cs
+generic rule chain
 ```
 
 đặc tính đạt được
@@ -515,5 +623,6 @@ src
 - controller mỏng
 - validation dài nhưng **không phình file**
 - rule tách theo domain
+- rule có thể **dùng cho nhiều discount type**
 - thêm discount type **không sửa code cũ**
-- hệ thống promotion **scale tốt khi rule tăng mạnh**.
+- hệ thống promotion **scale tốt khi rule tăng mạnh**

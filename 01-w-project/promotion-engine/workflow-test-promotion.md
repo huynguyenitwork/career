@@ -277,6 +277,7 @@ create table dbo.EcomPromotion (
     EntitledStores nvarchar(max) null,
     ShippingTypeSelection nvarchar(max) null,
     EntitledShippingTypes nvarchar(max) null,
+	CustomersSelection nvarchar(max) null,
     ApplicableConditionType nvarchar(max) null,
     ApplicableConditionValue decimal(18,0) null,
     ProductsSelection nvarchar(max) null,

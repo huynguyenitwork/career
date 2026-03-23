@@ -1,6 +1,6 @@
 # checklist sửa kiến trúc validation skytranfer + skycrm
 
-#tag: #audit #identify-and-classify #refactor #test
+#tag: #validation #audit #identify-and-classify #refactor #test
 
 ## audit
 - scan lại toàn bộ controller + service xem danh sách cần sửa
