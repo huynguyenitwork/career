@@ -1,7 +1,11 @@
 # prompt wbs + todolist cho dev (quan sát & quản lý task)
 
+#tag: #ngoac #todolist #prompt #task #wbs
+
 ## prompt wbs
+
 "hãy viết wbs cho task sau với góc nhìn senior dev:
+
 - chỉ giữ đúng các hạng mục tôi nêu, không mở rộng
 - mỗi task gồm:
   - <task chính> (<hành động / chi tiết thực thi>) [điều kiện | phạm vi | giả định] <effort giờ thuận-nghịch>
@@ -9,13 +13,16 @@
 - định dạng markdown, bullet '-', lowercase, ngắn gọn, không giải thích thêm"
 
 ## quy ước chung
+
 quy tắc loại nhanh:
+
 - cái gì phải làm → () : hành động sẽ thực thi
 - cái gì có thể có / giới hạn → [] : điều kiện hoặc phạm vi áp dụng
 - cái gì chưa biết, cần điền → <> : placeholder bắt buộc thay
 - cái gì đã là thực tế → không ngoặc : tên thật, trạng thái hiện hữu
 
 ## áp dụng với app todolist
+
 - mỗi bullet wbs = 1 task trong todolist (copy nguyên dòng, không sửa)
 - tên task = <task chính> + effort giờ
 - phần () đưa vào description để theo dõi hành động thực thi

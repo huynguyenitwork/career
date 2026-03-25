@@ -1,5 +1,7 @@
 # spec mapping thuộc tính khuyến mại
 
+#tag: #discount #discount-rule #mapping #db-level
+
 > mục tiêu:
 >
 > - giảm dư thừa schema
