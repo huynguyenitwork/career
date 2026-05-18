@@ -29,7 +29,6 @@ alt refagent (available)
     rk7 --> refagent : sync result
 
     refagent --> skycrm : job result
-    refagent --> skytransfer : [5a] callback api
     deactivate refagent
 else refagent (unavailable)
     skycrm -> rk7 : [3b] sync promotion (direct)
@@ -37,7 +36,6 @@ else refagent (unavailable)
     rk7 --> skycrm : sync result
     deactivate rk7
 
-    skycrm --> skytransfer : callback api (direct)
 end
 
 deactivate skycrm

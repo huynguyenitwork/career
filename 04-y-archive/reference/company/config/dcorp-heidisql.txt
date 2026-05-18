@@ -1,0 +1,578 @@
+SQL Attr Comment Foreground<|||>3<|||>8421504
+SQL Attr Comment Background<|||>3<|||>536870911
+SQL Attr Comment Style<|||>3<|||>2
+SQL Attr ConditionalComment Foreground<|||>3<|||>8421504
+SQL Attr ConditionalComment Background<|||>3<|||>536870911
+SQL Attr ConditionalComment Style<|||>3<|||>2
+SQL Attr ConsoleOutput Foreground<|||>3<|||>536870911
+SQL Attr ConsoleOutput Background<|||>3<|||>536870911
+SQL Attr ConsoleOutput Style<|||>3<|||>5
+SQL Attr DataType Foreground<|||>3<|||>128
+SQL Attr DataType Background<|||>3<|||>536870911
+SQL Attr DataType Style<|||>3<|||>1
+SQL Attr DefaultPackages Foreground<|||>3<|||>536870911
+SQL Attr DefaultPackages Background<|||>3<|||>536870911
+SQL Attr DefaultPackages Style<|||>3<|||>1
+SQL Attr DelimitedIdentifier Foreground<|||>3<|||>32896
+SQL Attr DelimitedIdentifier Background<|||>3<|||>536870911
+SQL Attr DelimitedIdentifier Style<|||>3<|||>0
+SQL Attr Exception Foreground<|||>3<|||>536870911
+SQL Attr Exception Background<|||>3<|||>536870911
+SQL Attr Exception Style<|||>3<|||>2
+SQL Attr Function Foreground<|||>3<|||>8388608
+SQL Attr Function Background<|||>3<|||>536870911
+SQL Attr Function Style<|||>3<|||>1
+SQL Attr Identifier Foreground<|||>3<|||>32896
+SQL Attr Identifier Background<|||>3<|||>536870911
+SQL Attr Identifier Style<|||>3<|||>0
+SQL Attr Key Foreground<|||>3<|||>16711680
+SQL Attr Key Background<|||>3<|||>536870911
+SQL Attr Key Style<|||>3<|||>1
+SQL Attr Number Foreground<|||>3<|||>8388736
+SQL Attr Number Background<|||>3<|||>536870911
+SQL Attr Number Style<|||>3<|||>0
+SQL Attr PLSQL-ReservedWord Foreground<|||>3<|||>536870911
+SQL Attr PLSQL-ReservedWord Background<|||>3<|||>536870911
+SQL Attr PLSQL-ReservedWord Style<|||>3<|||>1
+SQL Attr ProcName Foreground<|||>3<|||>536870911
+SQL Attr ProcName Background<|||>3<|||>536870911
+SQL Attr ProcName Style<|||>3<|||>0
+SQL Attr Space Foreground<|||>3<|||>536870911
+SQL Attr Space Background<|||>3<|||>536870911
+SQL Attr Space Style<|||>3<|||>0
+SQL Attr SQLPlus-Command Foreground<|||>3<|||>536870911
+SQL Attr SQLPlus-Command Background<|||>3<|||>536870911
+SQL Attr SQLPlus-Command Style<|||>3<|||>1
+SQL Attr String Foreground<|||>3<|||>32768
+SQL Attr String Background<|||>3<|||>536870911
+SQL Attr String Style<|||>3<|||>0
+SQL Attr Symbol Foreground<|||>3<|||>16711680
+SQL Attr Symbol Background<|||>3<|||>536870911
+SQL Attr Symbol Style<|||>3<|||>0
+SQL Attr TableName Foreground<|||>3<|||>16711935
+SQL Attr TableName Background<|||>3<|||>536870911
+SQL Attr TableName Style<|||>3<|||>0
+SQL Attr Variable Foreground<|||>3<|||>8388736
+SQL Attr Variable Background<|||>3<|||>536870911
+SQL Attr Variable Style<|||>3<|||>0
+FieldEditor_Set<|||>3<|||>1
+ColWidths_frmTableEditor.listColumns<|||>1<|||>77,154,166,90,60,65,50,126,130,154,100,100,50,50,50
+ColsVisible_frmTableEditor.listColumns<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
+ColPositions_frmTableEditor.listColumns<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
+ColSort_frmTableEditor.listColumns<|||>1<|||>0,0
+ColWidths_frmTableEditor.treeIndexes<|||>1<|||>134,100,80,120,80
+ColsVisible_frmTableEditor.treeIndexes<|||>1<|||>0,1,2,3,4
+ColPositions_frmTableEditor.treeIndexes<|||>1<|||>0,1,2,3,4
+ColSort_frmTableEditor.treeIndexes<|||>1<|||>-1,0
+ColWidths_frmTableEditor.listForeignKeys<|||>1<|||>196,80,100,80,80,67
+ColsVisible_frmTableEditor.listForeignKeys<|||>1<|||>0,1,2,3,4,5
+ColPositions_frmTableEditor.listForeignKeys<|||>1<|||>0,1,2,3,4,5
+ColSort_frmTableEditor.listForeignKeys<|||>1<|||>-1,0
+ColWidths_frmTableEditor.listCheckConstraints<|||>1<|||>200,403
+ColsVisible_frmTableEditor.listCheckConstraints<|||>1<|||>0,1
+ColPositions_frmTableEditor.listCheckConstraints<|||>1<|||>0,1
+ColSort_frmTableEditor.listCheckConstraints<|||>1<|||>-1,0
+sqloutheight<|||>3<|||>131
+ColWidths_MainForm.ListDatabases<|||>1<|||>150,80,50,50,50,50,50,50,50,50,120
+ColsVisible_MainForm.ListDatabases<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10
+ColPositions_MainForm.ListDatabases<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10
+ColSort_MainForm.ListDatabases<|||>1<|||>0,0
+ColWidths_MainForm.ListVariables<|||>1<|||>160,200,317
+ColsVisible_MainForm.ListVariables<|||>1<|||>0,1,2
+ColPositions_MainForm.ListVariables<|||>1<|||>0,1,2
+ColSort_MainForm.ListVariables<|||>1<|||>0,0
+ColWidths_MainForm.ListStatus<|||>1<|||>160,317,100,100
+ColsVisible_MainForm.ListStatus<|||>1<|||>0,1,2,3
+ColPositions_MainForm.ListStatus<|||>1<|||>0,1,2,3
+ColSort_MainForm.ListStatus<|||>1<|||>0,0
+ColWidths_MainForm.ListProcesses<|||>1<|||>70,80,80,80,80,50,50,186
+ColsVisible_MainForm.ListProcesses<|||>1<|||>0,1,2,3,4,5,6,7
+ColPositions_MainForm.ListProcesses<|||>1<|||>0,1,2,3,4,5,6,7
+ColSort_MainForm.ListProcesses<|||>1<|||>0,1
+ColWidths_MainForm.ListCommandStats<|||>1<|||>120,100,100,100,257
+ColsVisible_MainForm.ListCommandStats<|||>1<|||>0,1,2,3,4
+ColPositions_MainForm.ListCommandStats<|||>1<|||>0,1,2,3,4
+ColSort_MainForm.ListCommandStats<|||>1<|||>1,1
+ColWidths_MainForm.ListTables<|||>1<|||>120,70,70,120,120,70,100,50,70,70,70,70,70,90,120,70,70,70,50
+ColsVisible_MainForm.ListTables<|||>1<|||>0,1,2,3,4,5,6,18
+ColPositions_MainForm.ListTables<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18
+ColSort_MainForm.ListTables<|||>1<|||>0,0
+LastSessions<|||>1<|||>dev\dev-skycrm|dev\dev-skytransfer|stg\stg-skytransfer
+LastActiveSession<|||>1<|||>stg\stg-skytransfer
+ColWidths_connform.ListSessions<|||>1<|||>227,214,50,50,171,50,10
+ColsVisible_connform.ListSessions<|||>1<|||>0,1,4,6
+ColPositions_connform.ListSessions<|||>1<|||>0,1,2,3,4,5,6
+ColSort_connform.ListSessions<|||>1<|||>0,0
+ColWidths_UserManagerForm.listUsers<|||>1<|||>96,80
+ColsVisible_UserManagerForm.listUsers<|||>1<|||>0,1
+ColPositions_UserManagerForm.listUsers<|||>1<|||>0,1
+ColSort_UserManagerForm.listUsers<|||>1<|||>0,0
+Language<|||>1<|||>vi
+IconPack<|||>1<|||>Silk
+CodeFolding<|||>3<|||>0
+MainWinMaximized<|||>3<|||>0
+MainWinOnMonitor<|||>3<|||>0
+TableFilter<|||>1<|||>Cate<{{{><}}}>Discount<{{{><}}}>Rule<{{{><}}}>DiscountRule<{{{><}}}>DiscountRuleBuy<{{{><}}}>Incl<{{{><}}}>ApplicableConditionTypes<{{{><}}}>ApplicableConditionType<{{{><}}}>DiscountIn<{{{><}}}>DiscountEx<{{{><}}}>ApplicableProducts<{{{><}}}>DiscountSpecialProductTypeConfig<{{{><}}}>DiscountInclusionCategories<{{{><}}}>Menu<{{{><}}}>discounttype<{{{><}}}>Dish<{{{><}}}>GuestTypes<{{{><}}}>Guest<{{{><}}}>StoreMapping<{{{><}}}>DiscountRuleBuys<{{{><}}}>
+SessionManager_ListWidth<|||>3<|||>448
+SessionManager_WindowWidth<|||>3<|||>950
+querymemoheight<|||>3<|||>670
+dbtreewidth<|||>3<|||>441
+UpdatecheckLastrun<|||>1<|||>2026-05-18 15:42:15
+ColWidths_frmRoutineEditor.listParameters<|||>1<|||>50,360,90,70
+ColsVisible_frmRoutineEditor.listParameters<|||>1<|||>0,1,2,3
+ColPositions_frmRoutineEditor.listParameters<|||>1<|||>0,1,2,3
+ColSort_frmRoutineEditor.listParameters<|||>1<|||>-1,0
+DataFontSize<|||>3<|||>9
+SessionManager_WindowLeft<|||>3<|||>470
+SessionManager_WindowTop<|||>3<|||>172
+queryhelperswidth<|||>3<|||>487
+DataPreviewHeight<|||>3<|||>244
+DatabaseFilter<|||>1<|||>TaskSyncHistory<{{{><}}}>
+FindDialogSearchHistory<|||>1<|||>http://118.69.108.41:2329<{{{><}}}>systemsettings.rkserveraddress<{{{><}}}>RkServerAddress<{{{><}}}>
+ShowRowId<|||>3<|||>0
+MemoEditorAlwaysFormatCode<|||>3<|||>1
+MemoEditorHeight<|||>3<|||>354
+MemoEditorWidth<|||>3<|||>596
+MainWinWidth<|||>3<|||>1819
+MainWinHeight<|||>3<|||>938
+AutoExpand<|||>3<|||>0
+GroupTreeObjects<|||>3<|||>1
+GenerateDataNumRows<|||>3<|||>4
+MainWinLeft<|||>3<|||>3
+MainWinTop<|||>3<|||>110
+SQLFile0<|||>1<|||>E:\2026\drive\02-m-domain\dev-tools\database\heidisql\Backups\query-tab-2026-04-01_09-40-26-496.sql
+Servers\dev\SessionCreated<|||>1<|||>2026-02-27 16:14:15
+Servers\dev\Folder<|||>3<|||>1
+Servers\dev\dev-masterdata\SessionCreated<|||>1<|||>2026-01-27 10:48:40
+Servers\dev\dev-masterdata\Host<|||>1<|||>192.168.2.151
+Servers\dev\dev-masterdata\WindowsAuth<|||>3<|||>0
+Servers\dev\dev-masterdata\CleartextPluginEnabled<|||>3<|||>0
+Servers\dev\dev-masterdata\User<|||>1<|||>dcorp
+Servers\dev\dev-masterdata\Password<|||>1<|||>476672757343353335383
+Servers\dev\dev-masterdata\LoginPrompt<|||>3<|||>0
+Servers\dev\dev-masterdata\Port<|||>1<|||>3306
+Servers\dev\dev-masterdata\NetType<|||>3<|||>0
+Servers\dev\dev-masterdata\Compressed<|||>3<|||>0
+Servers\dev\dev-masterdata\LocalTimeZone<|||>3<|||>0
+Servers\dev\dev-masterdata\QueryTimeout<|||>3<|||>30
+Servers\dev\dev-masterdata\KeepAlive<|||>3<|||>20
+Servers\dev\dev-masterdata\FullTableStatus<|||>3<|||>1
+Servers\dev\dev-masterdata\Databases<|||>1<|||>SkyMasterDataDB
+Servers\dev\dev-masterdata\Library<|||>1<|||>libmariadb.dll
+Servers\dev\dev-masterdata\Comment<|||>1<|||>
+Servers\dev\dev-masterdata\StartupScriptFilename<|||>1<|||>
+Servers\dev\dev-masterdata\TreeBackground<|||>3<|||>536870911
+Servers\dev\dev-masterdata\SSHtunnelActive<|||>3<|||>0
+Servers\dev\dev-masterdata\SshExecutable<|||>1<|||>
+Servers\dev\dev-masterdata\SSHtunnelHost<|||>1<|||>
+Servers\dev\dev-masterdata\SSHtunnelHostPort<|||>3<|||>22
+Servers\dev\dev-masterdata\SSHtunnelUser<|||>1<|||>
+Servers\dev\dev-masterdata\SSHtunnelPassword<|||>1<|||>3
+Servers\dev\dev-masterdata\SSHtunnelTimeout<|||>3<|||>4
+Servers\dev\dev-masterdata\SSHtunnelPrivateKey<|||>1<|||>
+Servers\dev\dev-masterdata\SSHtunnelPort<|||>3<|||>3307
+Servers\dev\dev-masterdata\SSL_Active<|||>3<|||>0
+Servers\dev\dev-masterdata\SSL_Key<|||>1<|||>
+Servers\dev\dev-masterdata\SSL_Cert<|||>1<|||>
+Servers\dev\dev-masterdata\SSL_CA<|||>1<|||>
+Servers\dev\dev-masterdata\SSL_Cipher<|||>1<|||>
+Servers\dev\dev-masterdata\SSL_Verification<|||>3<|||>2
+Servers\dev\dev-masterdata\IgnoreDatabasePattern<|||>1<|||>
+Servers\dev\dev-masterdata\LogFileDdl<|||>3<|||>0
+Servers\dev\dev-masterdata\LogFileDml<|||>3<|||>0
+Servers\dev\dev-masterdata\LogFilePath<|||>1<|||>C:\Users\phuhu\AppData\Roaming\HeidiSQL\Logs\%session\%db\%y%m%d.sql
+Servers\dev\dev-masterdata\ServerVersionFull<|||>1<|||>8.0.42-0ubuntu0.20.04.1 - (Ubuntu)
+Servers\dev\dev-masterdata\ConnectCount<|||>3<|||>9
+Servers\dev\dev-masterdata\ServerVersion<|||>3<|||>80042
+Servers\dev\dev-masterdata\LastConnect<|||>1<|||>2026-04-21 11:23:51
+Servers\dev\dev-masterdata\lastUsedDB<|||>1<|||>SkyMasterDataDB
+Servers\dev\dev-masterdata\FavoriteObjects<|||>1<|||>SkyMasterDataDB||Settings<{{{><}}}>SkyMasterDataDB||Organizations<{{{><}}}>SkyMasterDataDB||AccCurrencies<{{{><}}}>SkyMasterDataDB||TaskSyncHistory<{{{><}}}>SkyMasterDataDB||TaskSyncHistoryDetail<{{{><}}}>SkyMasterDataDB||MenuGroups<{{{><}}}>SkyMasterDataDB||MenuItems<{{{><}}}>
+Servers\dev\dev-masterdata\RefusedCount<|||>3<|||>1
+Servers\dev\dev-masterdata\SkyMasterDataDB|MenuGroups\Filter<|||>1<|||>Id=11314
+Servers\dev\dev-masterdata\SkyMasterDataDB|MenuGroups\RecentFilters\1<|||>1<|||>Id=11314
+Servers\dev\dev-masterdata\SkyMasterDataDB|MenuItems\Sort<|||>1<|||>0_ItemGroupId|1_ModiSchemeId|
+Servers\dev\dev-masterdata\SkyMasterDataDB|MenuItems\RecentFilters\1<|||>1<|||>Id=11314
+Servers\dev\dev-masterdata\SkyMasterDataDB|Organizations\Filter<|||>1<|||>NAME="MH | QSR"
+Servers\dev\dev-masterdata\SkyMasterDataDB|Organizations\RecentFilters\1<|||>1<|||>NAME="MH | QSR"
+Servers\dev\dev-masterdata\SkyMasterDataDB|Settings\Sort<|||>1<|||>1_OrganizationId|
+Servers\dev\dev-masterdata\SkyMasterDataDB|Settings\RecentFilters\1<|||>1<|||>WHERE OrganizationId = 8582
+Servers\dev\dev-masterdata\SkyMasterDataDB|Stores\Sort<|||>1<|||>1_OrganizationId|
+Servers\dev\dev-masterdata\SkyMasterDataDB|TaskSyncHistoryDetail\Sort<|||>1<|||>0_TaskName|
+Servers\dev\dev-skycrm\SessionCreated<|||>1<|||>2025-11-17 19:56:08
+Servers\dev\dev-skycrm\Host<|||>1<|||>192.168.2.151
+Servers\dev\dev-skycrm\WindowsAuth<|||>3<|||>0
+Servers\dev\dev-skycrm\CleartextPluginEnabled<|||>3<|||>0
+Servers\dev\dev-skycrm\User<|||>1<|||>postgres
+Servers\dev\dev-skycrm\Password<|||>1<|||>4D6C787B79493B393B3E9
+Servers\dev\dev-skycrm\LoginPrompt<|||>3<|||>0
+Servers\dev\dev-skycrm\Port<|||>1<|||>5432
+Servers\dev\dev-skycrm\NetType<|||>3<|||>8
+Servers\dev\dev-skycrm\Compressed<|||>3<|||>0
+Servers\dev\dev-skycrm\LocalTimeZone<|||>3<|||>0
+Servers\dev\dev-skycrm\QueryTimeout<|||>3<|||>30
+Servers\dev\dev-skycrm\KeepAlive<|||>3<|||>20
+Servers\dev\dev-skycrm\FullTableStatus<|||>3<|||>1
+Servers\dev\dev-skycrm\Databases<|||>1<|||>SkyCRMDB
+Servers\dev\dev-skycrm\Library<|||>1<|||>libpq-15.dll
+Servers\dev\dev-skycrm\Comment<|||>1<|||>
+Servers\dev\dev-skycrm\StartupScriptFilename<|||>1<|||>
+Servers\dev\dev-skycrm\TreeBackground<|||>3<|||>536870911
+Servers\dev\dev-skycrm\SSHtunnelActive<|||>3<|||>0
+Servers\dev\dev-skycrm\SshExecutable<|||>1<|||>plink.exe
+Servers\dev\dev-skycrm\SSHtunnelHost<|||>1<|||>
+Servers\dev\dev-skycrm\SSHtunnelHostPort<|||>3<|||>22
+Servers\dev\dev-skycrm\SSHtunnelUser<|||>1<|||>
+Servers\dev\dev-skycrm\SSHtunnelPassword<|||>1<|||>7
+Servers\dev\dev-skycrm\SSHtunnelTimeout<|||>3<|||>4
+Servers\dev\dev-skycrm\SSHtunnelPrivateKey<|||>1<|||>
+Servers\dev\dev-skycrm\SSHtunnelPort<|||>3<|||>3307
+Servers\dev\dev-skycrm\SSL_Active<|||>3<|||>0
+Servers\dev\dev-skycrm\SSL_Key<|||>1<|||>
+Servers\dev\dev-skycrm\SSL_Cert<|||>1<|||>
+Servers\dev\dev-skycrm\SSL_CA<|||>1<|||>
+Servers\dev\dev-skycrm\SSL_Cipher<|||>1<|||>
+Servers\dev\dev-skycrm\SSL_Verification<|||>3<|||>2
+Servers\dev\dev-skycrm\IgnoreDatabasePattern<|||>1<|||>
+Servers\dev\dev-skycrm\LogFileDdl<|||>3<|||>0
+Servers\dev\dev-skycrm\LogFileDml<|||>3<|||>0
+Servers\dev\dev-skycrm\LogFilePath<|||>1<|||>C:\Users\phuhu\AppData\Roaming\HeidiSQL\Logs\%session\%db\%y%m%d.sql
+Servers\dev\dev-skycrm\ServerVersionFull<|||>1<|||>PostgreSQL 15.12 (Ubuntu 15.12-1.pgdg20.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0, 64-bit
+Servers\dev\dev-skycrm\ConnectCount<|||>3<|||>77
+Servers\dev\dev-skycrm\ServerVersion<|||>3<|||>151200
+Servers\dev\dev-skycrm\LastConnect<|||>1<|||>2026-04-23 14:40:58
+Servers\dev\dev-skycrm\lastUsedDB<|||>1<|||>
+Servers\dev\dev-skycrm\FavoriteObjects<|||>1<|||>public|public|DiscountGroups<{{{><}}}>public|public|Discounts<{{{><}}}>public|public|DiscountTypes<{{{><}}}>public|public|Settings<{{{><}}}>public|public|DiscountRules<{{{><}}}>public|public|DiscountRuleMappings<{{{><}}}>public|public|StoreMappings<{{{><}}}>public|public|RegionMappings<{{{><}}}>public|public|ConceptMappings<{{{><}}}>public|public|ApplicableProducts<{{{><}}}>public|public|DiscountInclusionCategories<{{{><}}}>public|public|ApplicableConditionType<{{{><}}}>public|public|ApplicableConditionTypes<{{{><}}}>public|public|DiscountExclusionCategories<{{{><}}}>public|public|DiscountExclusionDishes<{{{><}}}>
+Servers\dev\dev-skycrm\RefusedCount<|||>3<|||>4
+Servers\dev\dev-skycrm\public|ApplicableConditionType\Sort<|||>1<|||>0_Name|
+Servers\dev\dev-skycrm\public|DiscountGroups\Sort<|||>1<|||>1_Id|
+Servers\dev\dev-skycrm\public|DiscountGroups\HiddenColumns<|||>1<|||>Description|GuidString|OrganizationId|ParentId|DisplayOrder
+Servers\dev\dev-skycrm\public|DiscountRuleMappings\Sort<|||>1<|||>1_Id|
+Servers\dev\dev-skycrm\public|DiscountRules\Sort<|||>1<|||>1_Id|
+Servers\dev\dev-skycrm\public|Discounts\Sort<|||>1<|||>1_Id|0_Status|0_GenSAPCODE|
+Servers\dev\dev-skycrm\public|Discounts\HiddenColumns<|||>1<|||>Description|FullDescription|CreatedDate|LastUpdated|StartDate|EndDate|PictureId|OrganizationId|UseStartDate|UseEndDate|ApplyMethod|CombineAny|LimitedToStores|DiscountAsPayment
+Servers\dev\dev-skycrm\public|Discounts\MemoEditorHighlighter_ApplicableProduct<|||>1<|||>
+Servers\dev\dev-skycrm\public|Settings\Sort<|||>1<|||>1_OrganizationId|
+Servers\dev\dev-skycrm\public|Settings\RecentFilters\1<|||>1<|||>"OrganizationId" = 8547
+Servers\dev\dev-skycrm\public|Settings\RecentFilters\2<|||>1<|||>WHERE "OrganizationId" = 8582
+Servers\dev\dev-skycrm\public|StoreMappings\Sort<|||>1<|||>1_Id|
+Servers\dev\dev-skycrm\QueryHistory\19<|||>1<|||>2026-04-01 10:45:27|public|16|CREATE TABLE "ApplicableProducts" (<{{{><}}}>	"Id" SERIAL NOT NULL,<{{{><}}}>	"Name" CITEXT NOT NULL,<{{{><}}}>	"Status" INTEGER NOT NULL,<{{{><}}}>	PRIMARY KEY ("Id")<{{{><}}}>);<{{{><}}}>
+Servers\dev\dev-skycrm\QueryHistory\1<|||>1<|||>2026-04-01 15:19:04|public|46|-- 1. tạo bảng DiscountInclusionCategories<{{{><}}}>CREATE TABLE "DiscountInclusionCategories" ( "Id" serial4 NOT NULL, "DiscountId" int4 NOT NULL, "CategoryId" int4 NOT NULL, CONSTRAINT "PK_DiscountInclusionCategories" PRIMARY KEY ("Id"), CONSTRAINT "FK_DiscountInclusionCategories_DiscountId_Discounts_Id" FOREIGN KEY ("DiscountId") REFERENCES "Discounts"("Id") ON DELETE CASCADE);<{{{><}}}>CREATE INDEX "IX_DiscountInclusionCategories_DiscountId" ON public."DiscountInclusionCategories" USING btree ("DiscountId");<{{{><}}}><{{{><}}}>-- 2. tạo bảng DiscountInclusionDishes<{{{><}}}>CREATE TABLE "DiscountInclusionDishes" ( "Id" serial4 NOT NULL, "DiscountId" int4 NOT NULL, "MenuItemId" int4 NOT NULL, CONSTRAINT "PK_DiscountInclusionDishes" PRIMARY KEY ("Id"), CONSTRAINT "FK_DiscountInclusionDishes_DiscountId_Discounts_Id" FOREIGN KEY ("DiscountId") REFERENCES "Discounts"("Id") ON DELETE CASCADE);<{{{><}}}>CREATE INDEX "IX_DiscountInclusionDishes_DiscountId" ON public."DiscountInclusionDishes" USING btree ("DiscountId");
+Servers\dev\dev-skycrm\QueryHistory\2<|||>1<|||>2026-04-01 17:13:00|public|31|ALTER TABLE public."Discounts" ADD IsCombinedProductDiscount bool NULL;<{{{><}}}>ALTER TABLE public."Discounts" ADD IsCombinedOrderDiscount bool NULL;<{{{><}}}>ALTER TABLE public."Discounts" ADD IsConfigAppliedTogetherWithSpecialProducts bool NULL;
+Servers\dev\dev-skycrm\QueryHistory\3<|||>1<|||>2026-04-01 17:14:31|public|0|ALTER TABLE public."Discounts" ADD "IsCombinedProductDiscount" bool NULL;<{{{><}}}>ALTER TABLE public."Discounts" ADD "IsCombinedOrderDiscount" bool NULL;<{{{><}}}>ALTER TABLE public."Discounts" ADD "IsConfigAppliedTogetherWithSpecialProducts" bool NULL;
+Servers\dev\dev-skycrm\QueryHistory\4<|||>1<|||>2026-04-08 15:08:39|public|0|DROP TABLE IF EXISTS "DiscountTypes";<{{{><}}}><{{{><}}}>CREATE TABLE "DiscountTypes" (<{{{><}}}>	"Id" SERIAL NOT NULL,<{{{><}}}>	"Name" CITEXT NOT NULL,<{{{><}}}>	"Key" CITEXT NOT NULL,<{{{><}}}>	"Status" INTEGER NOT NULL,<{{{><}}}>	PRIMARY KEY ("Id")<{{{><}}}>);<{{{><}}}><{{{><}}}>-- Chèn dữ liệu mẫu từ hình ảnh<{{{><}}}>INSERT INTO "DiscountTypes" ("Name", "Key", "Status") VALUES<{{{><}}}>('Giảm giá order', 'ORDER_DISCOUNT', 3),<{{{><}}}>('Giảm giá món ăn', 'PRODUCT_DISCOUNT', 3),<{{{><}}}>('Mua 1 tặng 1', 'BUY_1_GET_1_DISCOUNT', 3),<{{{><}}}>('Mua X tặng Y', 'BUY_X_GET_Y_DISCOUNT', 3),<{{{><}}}>('Mua 2 tặng 1', 'BUY_2_GET_1_DISCOUNT', 3),<{{{><}}}>('Giảm giá mở', 'OPEN_DISCOUNT', 3);<{{{><}}}><{{{><}}}>
+Servers\dev\dev-skytransfer\SessionCreated<|||>1<|||>2026-02-25 10:50:14
+Servers\dev\dev-skytransfer\Host<|||>1<|||>118.69.108.41
+Servers\dev\dev-skytransfer\WindowsAuth<|||>3<|||>0
+Servers\dev\dev-skytransfer\CleartextPluginEnabled<|||>3<|||>0
+Servers\dev\dev-skytransfer\User<|||>1<|||>rk7
+Servers\dev\dev-skytransfer\Password<|||>1<|||>77703C5
+Servers\dev\dev-skytransfer\LoginPrompt<|||>3<|||>0
+Servers\dev\dev-skytransfer\Port<|||>1<|||>2322
+Servers\dev\dev-skytransfer\NetType<|||>3<|||>4
+Servers\dev\dev-skytransfer\Compressed<|||>3<|||>0
+Servers\dev\dev-skytransfer\LocalTimeZone<|||>3<|||>0
+Servers\dev\dev-skytransfer\QueryTimeout<|||>3<|||>30
+Servers\dev\dev-skytransfer\KeepAlive<|||>3<|||>20
+Servers\dev\dev-skytransfer\FullTableStatus<|||>3<|||>1
+Servers\dev\dev-skytransfer\Databases<|||>1<|||>RK7_INT_DEV
+Servers\dev\dev-skytransfer\Library<|||>1<|||>MSOLEDBSQL
+Servers\dev\dev-skytransfer\Comment<|||>1<|||>
+Servers\dev\dev-skytransfer\StartupScriptFilename<|||>1<|||>
+Servers\dev\dev-skytransfer\TreeBackground<|||>3<|||>536870911
+Servers\dev\dev-skytransfer\SSHtunnelActive<|||>3<|||>0
+Servers\dev\dev-skytransfer\SshExecutable<|||>1<|||>
+Servers\dev\dev-skytransfer\SSHtunnelHost<|||>1<|||>
+Servers\dev\dev-skytransfer\SSHtunnelHostPort<|||>3<|||>22
+Servers\dev\dev-skytransfer\SSHtunnelUser<|||>1<|||>
+Servers\dev\dev-skytransfer\SSHtunnelPassword<|||>1<|||>7
+Servers\dev\dev-skytransfer\SSHtunnelTimeout<|||>3<|||>4
+Servers\dev\dev-skytransfer\SSHtunnelPrivateKey<|||>1<|||>
+Servers\dev\dev-skytransfer\SSHtunnelPort<|||>3<|||>3307
+Servers\dev\dev-skytransfer\SSL_Active<|||>3<|||>0
+Servers\dev\dev-skytransfer\SSL_Key<|||>1<|||>
+Servers\dev\dev-skytransfer\SSL_Cert<|||>1<|||>
+Servers\dev\dev-skytransfer\SSL_CA<|||>1<|||>
+Servers\dev\dev-skytransfer\SSL_Cipher<|||>1<|||>
+Servers\dev\dev-skytransfer\SSL_Verification<|||>3<|||>2
+Servers\dev\dev-skytransfer\IgnoreDatabasePattern<|||>1<|||>
+Servers\dev\dev-skytransfer\LogFileDdl<|||>3<|||>0
+Servers\dev\dev-skytransfer\LogFileDml<|||>3<|||>0
+Servers\dev\dev-skytransfer\LogFilePath<|||>1<|||>C:\Users\phuhu\AppData\Roaming\HeidiSQL\Logs\%session\%db\%y%m%d.sql
+Servers\dev\dev-skytransfer\ServerVersionFull<|||>1<|||>Microsoft SQL Server 2019 (RTM) - 15.0.2000.5
+Servers\dev\dev-skytransfer\ConnectCount<|||>3<|||>16
+Servers\dev\dev-skytransfer\ServerVersion<|||>3<|||>1500
+Servers\dev\dev-skytransfer\LastConnect<|||>1<|||>2026-04-23 15:25:15
+Servers\dev\dev-skytransfer\lastUsedDB<|||>1<|||>RK7_INT_DEV
+Servers\dev\dev-skytransfer\FavoriteObjects<|||>1<|||>RK7_INT_DEV|dbo|EcomPromotion<{{{><}}}>RK7_INT_DEV|dbo|EcomSyncTaskStatus<{{{><}}}>RK7_INT_DEV|dbo|EcomSyncTaskTimeline<{{{><}}}>RK7_INT_DEV|dbo|Parameters<{{{><}}}>RK7_INT_DEV|dbo|SP_EcomPromotion_OpenDiscount_SkyCRM<{{{><}}}>RK7_INT_DEV|dbo|Schedules<{{{><}}}>
+Servers\dev\dev-skytransfer\QueryHistory\1<|||>1<|||>2026-03-11 17:22:53|RK7_INT_DEV|16|EXEC "dbo"."SP_EcomPromotion_OpenDiscount_SkyCRM" 
+Servers\dev\dev-skytransfer\QueryHistory\2<|||>1<|||>2026-03-17 16:12:07|RK7_INT_DEV|15|ALTER TABLE "dbo"."EcomPromotion"<{{{><}}}>	ADD "CustomersSelection" NVARCHAR(max) DEFAULT NULL;
+Servers\dev\dev-skytransfer\RK7_INT_DEV|EcomPromotion\HiddenColumns<|||>1<|||>Description|StartTime|EndTime|LimitByWeekdays|ExcludeSpecialDates|PromotionType|StoresSelection|EntitledStores|ShippingTypeSelection|EntitledShippingTypes|ApplicableConditionType|ApplicableConditionValue|ProductsSelection|EntitledCollections|EntitledCombos|EntitledProducts|EntitledVariants|IsRequiredSpecialProducts|ApplicableConditionMinimumNumberOfSpecialProducts|ProductsConditionSelection|EntitledConditionProducts|EntitledConditionVariants|EntitledConditionCombos|ProductsPromotionSelection|EntitledPromotionCollections|EntitledPromotionProducts|EntitledPromotionVariants|ApplicableValueType|ApplicableValueValueAmount|ApplicableValueValuePercent|ApplicableValueValueLimitMaxAmount|MaxUsageCount|IsConfigAppliedTogetherWithSpecialProducts|ConfigAppliedTogetherWithSpecialProductsType|ConfigAppliedTogetherWithSpecialProductsValueIsCombo|ConfigAppliedTogetherWithSpecialProductsValueIsVariant|EntitledSpecialVariantIds|IsCombinedProductDiscount|IsCombinedShipmentDiscount|IsCombinedOrderDiscount|TenantId
+Servers\dev\dev-skytransfer\RK7_INT_DEV|EcomPromotion\Sort<|||>1<|||>1_Id|
+Servers\dev\dev-skytransfer\RK7_INT_DEV|EcomSyncTaskStatus\HiddenColumns<|||>1<|||>RetryCount|LastErrorCode|LastErrorMessage|CompletedAt
+Servers\dev\dev-skytransfer\RK7_INT_DEV|EcomSyncTaskStatus\Sort<|||>1<|||>1_SyncTaskId|
+Servers\dev\dev-skytransfer\RK7_INT_DEV|EcomSyncTaskTimeline\Sort<|||>1<|||>1_Id|
+Servers\dev\dev-skytransfer\RK7_INT_DEV|EcomSyncTaskTimeline\MemoEditorHighlighter_EventMessage<|||>1<|||>
+Servers\dev\dev-skytransfer\RK7_INT_DEV|Parameters\HiddenColumns<|||>1<|||>parentId|description
+Servers\local\SessionCreated<|||>1<|||>2026-02-27 16:14:24
+Servers\local\Folder<|||>3<|||>1
+Servers\local\local-skycrm\SessionCreated<|||>1<|||>2026-03-06 13:51:34
+Servers\local\local-skycrm\Host<|||>1<|||>192.168.2.151
+Servers\local\local-skycrm\WindowsAuth<|||>3<|||>0
+Servers\local\local-skycrm\CleartextPluginEnabled<|||>3<|||>0
+Servers\local\local-skycrm\User<|||>1<|||>postgres
+Servers\local\local-skycrm\Password<|||>1<|||>4C6B777A78483A383A3D8
+Servers\local\local-skycrm\LoginPrompt<|||>3<|||>0
+Servers\local\local-skycrm\Port<|||>1<|||>5432
+Servers\local\local-skycrm\NetType<|||>3<|||>8
+Servers\local\local-skycrm\Compressed<|||>3<|||>0
+Servers\local\local-skycrm\LocalTimeZone<|||>3<|||>0
+Servers\local\local-skycrm\QueryTimeout<|||>3<|||>30
+Servers\local\local-skycrm\KeepAlive<|||>3<|||>20
+Servers\local\local-skycrm\FullTableStatus<|||>3<|||>1
+Servers\local\local-skycrm\Databases<|||>1<|||>SkyCRMDB
+Servers\local\local-skycrm\Library<|||>1<|||>libpq-15.dll
+Servers\local\local-skycrm\Comment<|||>1<|||>
+Servers\local\local-skycrm\StartupScriptFilename<|||>1<|||>
+Servers\local\local-skycrm\TreeBackground<|||>3<|||>536870911
+Servers\local\local-skycrm\SSHtunnelActive<|||>3<|||>0
+Servers\local\local-skycrm\SshExecutable<|||>1<|||>plink.exe
+Servers\local\local-skycrm\SSHtunnelHost<|||>1<|||>
+Servers\local\local-skycrm\SSHtunnelHostPort<|||>3<|||>22
+Servers\local\local-skycrm\SSHtunnelUser<|||>1<|||>
+Servers\local\local-skycrm\SSHtunnelPassword<|||>1<|||>3
+Servers\local\local-skycrm\SSHtunnelTimeout<|||>3<|||>4
+Servers\local\local-skycrm\SSHtunnelPrivateKey<|||>1<|||>
+Servers\local\local-skycrm\SSHtunnelPort<|||>3<|||>3307
+Servers\local\local-skycrm\SSL_Active<|||>3<|||>0
+Servers\local\local-skycrm\SSL_Key<|||>1<|||>
+Servers\local\local-skycrm\SSL_Cert<|||>1<|||>
+Servers\local\local-skycrm\SSL_CA<|||>1<|||>
+Servers\local\local-skycrm\SSL_Cipher<|||>1<|||>
+Servers\local\local-skycrm\SSL_Verification<|||>3<|||>2
+Servers\local\local-skycrm\IgnoreDatabasePattern<|||>1<|||>
+Servers\local\local-skycrm\LogFileDdl<|||>3<|||>0
+Servers\local\local-skycrm\LogFileDml<|||>3<|||>0
+Servers\local\local-skycrm\LogFilePath<|||>1<|||>C:\Users\phuhu\AppData\Roaming\HeidiSQL\Logs\%session\%db\%y%m%d.sql
+Servers\local\local-skycrm\ServerVersionFull<|||>1<|||>PostgreSQL 15.12 (Ubuntu 15.12-1.pgdg20.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0, 64-bit
+Servers\local\local-skycrm\ConnectCount<|||>3<|||>1
+Servers\local\local-skycrm\ServerVersion<|||>3<|||>151200
+Servers\local\local-skycrm\LastConnect<|||>1<|||>2026-03-06 13:51:39
+Servers\local\local-skycrm\lastUsedDB<|||>1<|||>public
+Servers\local\local-skycrm\FavoriteObjects<|||>1<|||>public|public|DiscountGroups<{{{><}}}>public|public|Discounts<{{{><}}}>public|public|DiscountTypes<{{{><}}}>public|public|DiscountRuleBuys<{{{><}}}>public|public|DiscountRuleGets<{{{><}}}>public|public|DiscountRuleMappings<{{{><}}}>public|public|DiscountRules<{{{><}}}>
+Servers\local\local-skycrm\public|DiscountGroups\HiddenColumns<|||>1<|||>Description|GuidString|OrganizationId|ParentId|DisplayOrder
+Servers\local\local-skycrm\public|Discounts\HiddenColumns<|||>1<|||>FullDescription|CreatedDate|LastUpdated|DiscountTypeId|PictureId|OrganizationId|CombineAny|LimitedToStores|DiscountAsPayment
+Servers\local\local-skycrm\public|Discounts\Sort<|||>1<|||>1_Id|
+Servers\local\local-skytransfer\SessionCreated<|||>1<|||>2026-01-10 10:44:04
+Servers\local\local-skytransfer\Host<|||>1<|||>localhost
+Servers\local\local-skytransfer\WindowsAuth<|||>3<|||>0
+Servers\local\local-skytransfer\CleartextPluginEnabled<|||>3<|||>0
+Servers\local\local-skytransfer\User<|||>1<|||>sa
+Servers\local\local-skytransfer\Password<|||>1<|||>3A3B3C3D3E3F9
+Servers\local\local-skytransfer\LoginPrompt<|||>3<|||>0
+Servers\local\local-skytransfer\Port<|||>1<|||>1433
+Servers\local\local-skytransfer\NetType<|||>3<|||>4
+Servers\local\local-skytransfer\Compressed<|||>3<|||>0
+Servers\local\local-skytransfer\LocalTimeZone<|||>3<|||>0
+Servers\local\local-skytransfer\QueryTimeout<|||>3<|||>30
+Servers\local\local-skytransfer\KeepAlive<|||>3<|||>20
+Servers\local\local-skytransfer\FullTableStatus<|||>3<|||>1
+Servers\local\local-skytransfer\Databases<|||>1<|||>RK7_INT_LOCAL
+Servers\local\local-skytransfer\Library<|||>1<|||>MSOLEDBSQL
+Servers\local\local-skytransfer\Comment<|||>1<|||>
+Servers\local\local-skytransfer\StartupScriptFilename<|||>1<|||>
+Servers\local\local-skytransfer\TreeBackground<|||>3<|||>536870911
+Servers\local\local-skytransfer\SSHtunnelActive<|||>3<|||>0
+Servers\local\local-skytransfer\SshExecutable<|||>1<|||>plink.exe
+Servers\local\local-skytransfer\SSHtunnelHost<|||>1<|||>
+Servers\local\local-skytransfer\SSHtunnelHostPort<|||>3<|||>22
+Servers\local\local-skytransfer\SSHtunnelUser<|||>1<|||>
+Servers\local\local-skytransfer\SSHtunnelPassword<|||>1<|||>6
+Servers\local\local-skytransfer\SSHtunnelTimeout<|||>3<|||>4
+Servers\local\local-skytransfer\SSHtunnelPrivateKey<|||>1<|||>
+Servers\local\local-skytransfer\SSHtunnelPort<|||>3<|||>3307
+Servers\local\local-skytransfer\SSL_Active<|||>3<|||>0
+Servers\local\local-skytransfer\SSL_Key<|||>1<|||>
+Servers\local\local-skytransfer\SSL_Cert<|||>1<|||>
+Servers\local\local-skytransfer\SSL_CA<|||>1<|||>
+Servers\local\local-skytransfer\SSL_Cipher<|||>1<|||>
+Servers\local\local-skytransfer\SSL_Verification<|||>3<|||>2
+Servers\local\local-skytransfer\IgnoreDatabasePattern<|||>1<|||>
+Servers\local\local-skytransfer\LogFileDdl<|||>3<|||>0
+Servers\local\local-skytransfer\LogFileDml<|||>3<|||>0
+Servers\local\local-skytransfer\LogFilePath<|||>1<|||>C:\Users\phuhu\AppData\Roaming\HeidiSQL\Logs\%session\%db\%y%m%d.sql
+Servers\local\local-skytransfer\RefusedCount<|||>3<|||>8
+Servers\local\local-skytransfer\ServerVersionFull<|||>1<|||>Microsoft SQL Server 2025 (RTM) - 17.0.1000.7
+Servers\local\local-skytransfer\ConnectCount<|||>3<|||>48
+Servers\local\local-skytransfer\ServerVersion<|||>3<|||>1700
+Servers\local\local-skytransfer\LastConnect<|||>1<|||>2026-03-17 16:15:55
+Servers\local\local-skytransfer\lastUsedDB<|||>1<|||>
+Servers\local\local-skytransfer\FavoriteObjects<|||>1<|||>RK7_INT_DEV|dbo|EcomPromotion<{{{><}}}>RK7_INT_DEV|dbo|EcomPromotionExcludedDate<{{{><}}}>RK7_INT_DEV|dbo|EcomPromotionApplicableTime<{{{><}}}>RK7_INT_DEV|dbo|Parameters<{{{><}}}>RK7_INT_DEV|dbo|EcomSyncTaskTimeline<{{{><}}}>RK7_INT_DEV|dbo|EcomSyncTaskStatus<{{{><}}}>RK7_INT_DEV|dbo|_flow_trace<{{{><}}}>RK7_INT_DEV|dbo|ApiProcessingQueue<{{{><}}}>RK7_INT_STG|dbo|EcomPromotion<{{{><}}}>RK7_INT_STG|dbo|EcomPromotionApplicableTime<{{{><}}}>RK7_INT_STG|dbo|EcomPromotionExcludedDate<{{{><}}}>RK7_INT_STG|dbo|EcomSyncTaskStatus<{{{><}}}>RK7_INT_STG|dbo|EcomSyncTaskTimeline<{{{><}}}>RK7_INT_STG|dbo|Parameters<{{{><}}}>RK7_INT_LOCAL|dbo|EcomPromotion<{{{><}}}>RK7_INT_LOCAL|dbo|EcomSyncTaskStatus<{{{><}}}>RK7_INT_LOCAL|dbo|EcomSyncTaskTimeline<{{{><}}}>RK7_INT_LOCAL|dbo|Parameters<{{{><}}}>RK7_INT_LOCAL|dbo|Schedules<{{{><}}}>
+Servers\local\local-skytransfer\QueryHistory\7<|||>1<|||>2026-03-17 16:10:24|RK7_INT_LOCAL|63|ALTER TABLE "dbo"."EcomPromotion"<{{{><}}}>	ADD "CustomersSelection" NVARCHAR(max) DEFAULT NULL;
+Servers\local\local-skytransfer\RK7_INT_DEV|EcomPromotion\Sort<|||>1<|||>1_Id|0_ProcessStatus|
+Servers\local\local-skytransfer\RK7_INT_DEV|EcomSyncTaskStatus\Sort<|||>1<|||>1_SyncTaskId|
+Servers\local\local-skytransfer\RK7_INT_DEV|EcomSyncTaskTimeline\Sort<|||>1<|||>1_Id|0_SyncTaskId|
+Servers\local\local-skytransfer\RK7_INT_LOCAL|EcomPromotion\Sort<|||>1<|||>1_Id|
+Servers\local\local-skytransfer\RK7_INT_LOCAL|EcomPromotion\HiddenColumns<|||>1<|||>LimitByWeekdays|ExcludeSpecialDates|EntitledShippingTypes|ApplicableConditionType|ApplicableConditionValue|ProductsSelection|EntitledCollections|EntitledCombos|EntitledProducts|EntitledVariants|IsRequiredSpecialProducts|ApplicableConditionMinimumNumberOfSpecialProducts|ProductsConditionSelection|EntitledConditionProducts|EntitledConditionVariants|EntitledConditionCombos|ProductsPromotionSelection|EntitledPromotionCollections|EntitledPromotionProducts|EntitledPromotionVariants|ApplicableValueType|ApplicableValueValueAmount|ApplicableValueValuePercent|ApplicableValueValueLimitMaxAmount|MaxUsageCount|IsConfigAppliedTogetherWithSpecialProducts|ConfigAppliedTogetherWithSpecialProductsType|ConfigAppliedTogetherWithSpecialProductsValueIsCombo|ConfigAppliedTogetherWithSpecialProductsValueIsVariant|EntitledSpecialVariantIds|IsCombinedProductDiscount|IsCombinedShipmentDiscount|IsCombinedOrderDiscount|TenantId
+Servers\local\local-skytransfer\RK7_INT_LOCAL|EcomSyncTaskStatus\Sort<|||>1<|||>1_SyncTaskId|
+Servers\local\local-skytransfer\RK7_INT_LOCAL|EcomSyncTaskTimeline\Sort<|||>1<|||>1_SyncTaskId|1_Id|
+Servers\local\local-skytransfer\RK7_INT_LOCAL|EcomSyncTaskTimeline\MemoEditorHighlighter_EventMessage<|||>1<|||>JSON
+Servers\rk7\SessionCreated<|||>1<|||>2026-02-27 16:14:54
+Servers\rk7\Folder<|||>3<|||>1
+Servers\rk7\sharing-qsr-rk7(new)\SessionCreated<|||>1<|||>2026-03-09 23:46:42
+Servers\rk7\sharing-qsr-rk7(new)\Host<|||>1<|||>118.69.108.41
+Servers\rk7\sharing-qsr-rk7(new)\WindowsAuth<|||>3<|||>0
+Servers\rk7\sharing-qsr-rk7(new)\CleartextPluginEnabled<|||>3<|||>0
+Servers\rk7\sharing-qsr-rk7(new)\User<|||>1<|||>rk7
+Servers\rk7\sharing-qsr-rk7(new)\Password<|||>1<|||>78713D6
+Servers\rk7\sharing-qsr-rk7(new)\LoginPrompt<|||>3<|||>0
+Servers\rk7\sharing-qsr-rk7(new)\Port<|||>1<|||>2322
+Servers\rk7\sharing-qsr-rk7(new)\NetType<|||>3<|||>4
+Servers\rk7\sharing-qsr-rk7(new)\Compressed<|||>3<|||>0
+Servers\rk7\sharing-qsr-rk7(new)\LocalTimeZone<|||>3<|||>0
+Servers\rk7\sharing-qsr-rk7(new)\QueryTimeout<|||>3<|||>30
+Servers\rk7\sharing-qsr-rk7(new)\KeepAlive<|||>3<|||>20
+Servers\rk7\sharing-qsr-rk7(new)\FullTableStatus<|||>3<|||>1
+Servers\rk7\sharing-qsr-rk7(new)\Databases<|||>1<|||>QSR_RK7
+Servers\rk7\sharing-qsr-rk7(new)\Library<|||>1<|||>MSOLEDBSQL
+Servers\rk7\sharing-qsr-rk7(new)\Comment<|||>1<|||>
+Servers\rk7\sharing-qsr-rk7(new)\StartupScriptFilename<|||>1<|||>
+Servers\rk7\sharing-qsr-rk7(new)\TreeBackground<|||>3<|||>536870911
+Servers\rk7\sharing-qsr-rk7(new)\SSHtunnelActive<|||>3<|||>0
+Servers\rk7\sharing-qsr-rk7(new)\SshExecutable<|||>1<|||>plink.exe
+Servers\rk7\sharing-qsr-rk7(new)\SSHtunnelHost<|||>1<|||>
+Servers\rk7\sharing-qsr-rk7(new)\SSHtunnelHostPort<|||>3<|||>22
+Servers\rk7\sharing-qsr-rk7(new)\SSHtunnelUser<|||>1<|||>
+Servers\rk7\sharing-qsr-rk7(new)\SSHtunnelPassword<|||>1<|||>2
+Servers\rk7\sharing-qsr-rk7(new)\SSHtunnelTimeout<|||>3<|||>4
+Servers\rk7\sharing-qsr-rk7(new)\SSHtunnelPrivateKey<|||>1<|||>
+Servers\rk7\sharing-qsr-rk7(new)\SSHtunnelPort<|||>3<|||>3307
+Servers\rk7\sharing-qsr-rk7(new)\SSL_Active<|||>3<|||>0
+Servers\rk7\sharing-qsr-rk7(new)\SSL_Key<|||>1<|||>
+Servers\rk7\sharing-qsr-rk7(new)\SSL_Cert<|||>1<|||>
+Servers\rk7\sharing-qsr-rk7(new)\SSL_CA<|||>1<|||>
+Servers\rk7\sharing-qsr-rk7(new)\SSL_Cipher<|||>1<|||>
+Servers\rk7\sharing-qsr-rk7(new)\SSL_Verification<|||>3<|||>2
+Servers\rk7\sharing-qsr-rk7(new)\IgnoreDatabasePattern<|||>1<|||>
+Servers\rk7\sharing-qsr-rk7(new)\LogFileDdl<|||>3<|||>0
+Servers\rk7\sharing-qsr-rk7(new)\LogFileDml<|||>3<|||>0
+Servers\rk7\sharing-qsr-rk7(new)\LogFilePath<|||>1<|||>C:\Users\phuhu\AppData\Roaming\HeidiSQL\Logs\%session\%db\%y%m%d.sql
+Servers\rk7\sharing-qsr-rk7(new)\ServerVersionFull<|||>1<|||>Microsoft SQL Server 2019 (RTM) - 15.0.2000.5
+Servers\rk7\sharing-qsr-rk7(new)\ConnectCount<|||>3<|||>4
+Servers\rk7\sharing-qsr-rk7(new)\ServerVersion<|||>3<|||>1500
+Servers\rk7\sharing-qsr-rk7(new)\LastConnect<|||>1<|||>2026-03-25 10:57:09
+Servers\rk7\sharing-qsr-rk7(new)\lastUsedDB<|||>1<|||>QSR_RK7
+Servers\rk7\sharing-rk7-qsr\SessionCreated<|||>1<|||>2026-01-10 18:01:33
+Servers\rk7\sharing-rk7-qsr\Host<|||>1<|||>118.69.108.41
+Servers\rk7\sharing-rk7-qsr\WindowsAuth<|||>3<|||>0
+Servers\rk7\sharing-rk7-qsr\CleartextPluginEnabled<|||>3<|||>0
+Servers\rk7\sharing-rk7-qsr\User<|||>1<|||>rk7
+Servers\rk7\sharing-rk7-qsr\Password<|||>1<|||>7B74409
+Servers\rk7\sharing-rk7-qsr\LoginPrompt<|||>3<|||>0
+Servers\rk7\sharing-rk7-qsr\Port<|||>1<|||>2322
+Servers\rk7\sharing-rk7-qsr\NetType<|||>3<|||>4
+Servers\rk7\sharing-rk7-qsr\Compressed<|||>3<|||>0
+Servers\rk7\sharing-rk7-qsr\LocalTimeZone<|||>3<|||>0
+Servers\rk7\sharing-rk7-qsr\QueryTimeout<|||>3<|||>30
+Servers\rk7\sharing-rk7-qsr\KeepAlive<|||>3<|||>20
+Servers\rk7\sharing-rk7-qsr\FullTableStatus<|||>3<|||>1
+Servers\rk7\sharing-rk7-qsr\Databases<|||>1<|||>RK7_QSR
+Servers\rk7\sharing-rk7-qsr\Library<|||>1<|||>MSOLEDBSQL
+Servers\rk7\sharing-rk7-qsr\Comment<|||>1<|||>
+Servers\rk7\sharing-rk7-qsr\StartupScriptFilename<|||>1<|||>
+Servers\rk7\sharing-rk7-qsr\TreeBackground<|||>3<|||>536870911
+Servers\rk7\sharing-rk7-qsr\SSHtunnelActive<|||>3<|||>0
+Servers\rk7\sharing-rk7-qsr\SshExecutable<|||>1<|||>
+Servers\rk7\sharing-rk7-qsr\SSHtunnelHost<|||>1<|||>
+Servers\rk7\sharing-rk7-qsr\SSHtunnelHostPort<|||>3<|||>22
+Servers\rk7\sharing-rk7-qsr\SSHtunnelUser<|||>1<|||>
+Servers\rk7\sharing-rk7-qsr\SSHtunnelPassword<|||>1<|||>7
+Servers\rk7\sharing-rk7-qsr\SSHtunnelTimeout<|||>3<|||>4
+Servers\rk7\sharing-rk7-qsr\SSHtunnelPrivateKey<|||>1<|||>
+Servers\rk7\sharing-rk7-qsr\SSHtunnelPort<|||>3<|||>3307
+Servers\rk7\sharing-rk7-qsr\SSL_Active<|||>3<|||>0
+Servers\rk7\sharing-rk7-qsr\SSL_Key<|||>1<|||>
+Servers\rk7\sharing-rk7-qsr\SSL_Cert<|||>1<|||>
+Servers\rk7\sharing-rk7-qsr\SSL_CA<|||>1<|||>
+Servers\rk7\sharing-rk7-qsr\SSL_Cipher<|||>1<|||>
+Servers\rk7\sharing-rk7-qsr\SSL_Verification<|||>3<|||>2
+Servers\rk7\sharing-rk7-qsr\IgnoreDatabasePattern<|||>1<|||>
+Servers\rk7\sharing-rk7-qsr\LogFileDdl<|||>3<|||>0
+Servers\rk7\sharing-rk7-qsr\LogFileDml<|||>3<|||>0
+Servers\rk7\sharing-rk7-qsr\LogFilePath<|||>1<|||>C:\Users\phuhu\AppData\Roaming\HeidiSQL\Logs\%session\%db\%y%m%d.sql
+Servers\rk7\sharing-rk7-qsr\ServerVersionFull<|||>1<|||>Microsoft SQL Server 2019 (RTM) - 15.0.2000.5
+Servers\rk7\sharing-rk7-qsr\ConnectCount<|||>3<|||>19
+Servers\rk7\sharing-rk7-qsr\ServerVersion<|||>3<|||>1500
+Servers\rk7\sharing-rk7-qsr\LastConnect<|||>1<|||>2026-02-27 16:15:17
+Servers\rk7\sharing-rk7-qsr\lastUsedDB<|||>1<|||>RK7_QSR
+Servers\rk7\sharing-rk7-qsr\FavoriteObjects<|||>1<|||>RK7_QSR|dbo|DISCOUNTTYPES<{{{><}}}>RK7_QSR|dbo|DISCOUNTS<{{{><}}}>RK7_QSR|dbo|DISCOUNTDETAILS<{{{><}}}>RK7_QSR|dbo|DISCOUNTCOMPOSITIONS<{{{><}}}>RK7_QSR|dbo|DISHMODIFIERS<{{{><}}}>RK7_QSR|dbo|DISHGROUPS<{{{><}}}>RK7_QSR|dbo|DISHDISCOUNTS<{{{><}}}>RK7_QSR|dbo|DISCPARTS<{{{><}}}>RK7_QSR|dbo|DISHCONSUMATORS<{{{><}}}>RK7_QSR|dbo|TEMPDISHDISCOUNTS<{{{><}}}>
+Servers\rk7\sharing-rk7-qsr\RefusedCount<|||>3<|||>5
+Servers\rk7\sharing-rk7-qsr\QueryHistory\1<|||>1<|||>2026-01-20 18:48:09|RK7_QSR|125|SELECT * FROM DISCOUNTS WHERE name LIKE '[test]%'
+Servers\rk7\sharing-rk7-qsr\QueryHistory\2<|||>1<|||>2026-01-20 18:48:40|RK7_QSR|31|SELECT * FROM DISCOUNTS WHERE name = '[test]%'
+Servers\rk7\sharing-rk7-qsr\QueryHistory\3<|||>1<|||>2026-01-20 18:49:21|RK7_QSR|31|select *<{{{><}}}>from discounts<{{{><}}}>where name like '\[test\]%' escape '\'<{{{><}}}>
+Servers\rk7\sharing-rk7-qsr\QueryHistory\4<|||>1<|||>2026-01-20 18:50:24|RK7_QSR|31|select *<{{{><}}}>from discounts<{{{><}}}>where name='Promotion SkyCloud 190126';<{{{><}}}>
+Servers\rk7\sharing-rk7-qsr\QueryHistory\5<|||>1<|||>2026-01-20 18:50:40|RK7_QSR|47|select *<{{{><}}}>from discounts<{{{><}}}>where name like 'Promotion SkyCloud%' ESCAPE '\'<{{{><}}}>
+Servers\rk7\sharing-rk7-qsr\QueryHistory\6<|||>1<|||>2026-01-20 18:50:45|RK7_QSR|31|select *<{{{><}}}>from discounts<{{{><}}}>where name like 'Promotion SkyCloud%' <{{{><}}}>
+Servers\rk7\sharing-rk7-qsr\QueryHistory\7<|||>1<|||>2026-01-22 11:01:41|RK7_QSR|15|select *<{{{><}}}>from discounts<{{{><}}}>WHERE SIFR = 1109496<{{{><}}}>
+Servers\rk7\sharing-rk7-qsr\QueryHistory\8<|||>1<|||>2026-01-28 09:35:30|RK7_QSR|31|SELECT * FROM DiscountTypes WHERE name = '[dev] open discount'
+Servers\rk7\sharing-rk7-qsr\QueryHistory\9<|||>1<|||>2026-02-05 16:04:17|RK7_QSR|0|SELECT * FROM DiscountTypes WHERE SIFR = '1110029'
+Servers\rk7\sharing-rk7-qsr\RK7_QSR|DISCOUNTDETAILS\Sort<|||>1<|||>1_DISCOUNT|
+Servers\rk7\sharing-rk7-qsr\RK7_QSR|DISCOUNTDETAILS\RecentFilters\1<|||>1<|||>DISCOUNT=1110053
+Servers\rk7\sharing-rk7-qsr\RK7_QSR|DISCOUNTDETAILS\RecentFilters\2<|||>1<|||>DISCOUNT="1110053"
+Servers\rk7\sharing-rk7-qsr\RK7_QSR|DISCOUNTS\Sort<|||>1<|||>1_SIFR|1_RECSTAMP|
+Servers\rk7\sharing-rk7-qsr\RK7_QSR|DISCOUNTS\HiddenColumns<|||>1<|||>ALTNAME|PARENT|FLAGS|MAXAMOUNT|MAXPERCENT|COUNTTYPE|CLASSIFICATION|CHARGEMENUITEM|MINTERFACE|RIGHTLVL|ROUNDRULE|MAGNCARDTYPE|VISUALTYPE_IMAGE|VISUALTYPE_BCOLOR|VISUALTYPE_TEXTCOLOR|VISUALTYPE_FLAGS|SALESTERMS_FLAG|SALESTERMS_STARTSALE|SALESTERMS_STOPSALE|EXTCODE|EXTRESTID|TRANSACTIONCODE|TRANSACTIONVALUE|DISCOUNTDISTRMODE|SURPLUSDISTRMODE|DISCOUNTOBJECTTYPE|MINORDERREST|FISCALOUTSIDE|RECSTAMP
+Servers\rk7\sharing-rk7-qsr\RK7_QSR|DISCOUNTTYPES\Sort<|||>1<|||>1_SIFR|
+Servers\rk7\sharing-rk7-qsr\RK7_QSR|DISCOUNTTYPES\HiddenColumns<|||>1<|||>ALTNAME|PARENT|VISUALTYPE_IMAGE|VISUALTYPE_BCOLOR|VISUALTYPE_TEXTCOLOR|VISUALTYPE_FLAGS|EDITRIGHT|RECSTAMP
+Servers\stg\SessionCreated<|||>1<|||>2026-02-27 16:14:31
+Servers\stg\Folder<|||>3<|||>1
+Servers\stg\stg-skytransfer\SessionCreated<|||>1<|||>2026-01-30 10:13:59
+Servers\stg\stg-skytransfer\Host<|||>1<|||>118.69.108.41
+Servers\stg\stg-skytransfer\WindowsAuth<|||>3<|||>0
+Servers\stg\stg-skytransfer\CleartextPluginEnabled<|||>3<|||>0
+Servers\stg\stg-skytransfer\User<|||>1<|||>rk7
+Servers\stg\stg-skytransfer\Password<|||>1<|||>7B74409
+Servers\stg\stg-skytransfer\LoginPrompt<|||>3<|||>0
+Servers\stg\stg-skytransfer\Port<|||>1<|||>2322
+Servers\stg\stg-skytransfer\NetType<|||>3<|||>4
+Servers\stg\stg-skytransfer\Compressed<|||>3<|||>0
+Servers\stg\stg-skytransfer\LocalTimeZone<|||>3<|||>0
+Servers\stg\stg-skytransfer\QueryTimeout<|||>3<|||>30
+Servers\stg\stg-skytransfer\KeepAlive<|||>3<|||>20
+Servers\stg\stg-skytransfer\FullTableStatus<|||>3<|||>1
+Servers\stg\stg-skytransfer\Databases<|||>1<|||>RK7_INT_STG
+Servers\stg\stg-skytransfer\Library<|||>1<|||>MSOLEDBSQL
+Servers\stg\stg-skytransfer\Comment<|||>1<|||>
+Servers\stg\stg-skytransfer\StartupScriptFilename<|||>1<|||>
+Servers\stg\stg-skytransfer\TreeBackground<|||>3<|||>536870911
+Servers\stg\stg-skytransfer\SSHtunnelActive<|||>3<|||>0
+Servers\stg\stg-skytransfer\SshExecutable<|||>1<|||>plink.exe
+Servers\stg\stg-skytransfer\SSHtunnelHost<|||>1<|||>
+Servers\stg\stg-skytransfer\SSHtunnelHostPort<|||>3<|||>22
+Servers\stg\stg-skytransfer\SSHtunnelUser<|||>1<|||>
+Servers\stg\stg-skytransfer\SSHtunnelPassword<|||>1<|||>2
+Servers\stg\stg-skytransfer\SSHtunnelTimeout<|||>3<|||>4
+Servers\stg\stg-skytransfer\SSHtunnelPrivateKey<|||>1<|||>
+Servers\stg\stg-skytransfer\SSHtunnelPort<|||>3<|||>3307
+Servers\stg\stg-skytransfer\SSL_Active<|||>3<|||>0
+Servers\stg\stg-skytransfer\SSL_Key<|||>1<|||>
+Servers\stg\stg-skytransfer\SSL_Cert<|||>1<|||>
+Servers\stg\stg-skytransfer\SSL_CA<|||>1<|||>
+Servers\stg\stg-skytransfer\SSL_Cipher<|||>1<|||>
+Servers\stg\stg-skytransfer\SSL_Verification<|||>3<|||>2
+Servers\stg\stg-skytransfer\IgnoreDatabasePattern<|||>1<|||>
+Servers\stg\stg-skytransfer\LogFileDdl<|||>3<|||>0
+Servers\stg\stg-skytransfer\LogFileDml<|||>3<|||>0
+Servers\stg\stg-skytransfer\LogFilePath<|||>1<|||>C:\Users\phuhu\AppData\Roaming\HeidiSQL\Logs\%session\%db\%y%m%d.sql
+Servers\stg\stg-skytransfer\ServerVersionFull<|||>1<|||>Microsoft SQL Server 2019 (RTM) - 15.0.2000.5
+Servers\stg\stg-skytransfer\ConnectCount<|||>3<|||>22
+Servers\stg\stg-skytransfer\ServerVersion<|||>3<|||>1500
+Servers\stg\stg-skytransfer\LastConnect<|||>1<|||>2026-04-23 15:26:10
+Servers\stg\stg-skytransfer\lastUsedDB<|||>1<|||>RK7_INT_STG
+Servers\stg\stg-skytransfer\FavoriteObjects<|||>1<|||>RK7_INT|dbo|EcomPromotion<{{{><}}}>RK7_INT|dbo|EcomPromotionApplicableTime<{{{><}}}>RK7_INT|dbo|EcomPromotionExcludedDate<{{{><}}}>RK7_INT|dbo|EcomSyncTaskStatus<{{{><}}}>RK7_INT|dbo|EcomSyncTaskTimeline<{{{><}}}>RK7_INT|dbo|Parameters<{{{><}}}>RK7_INT_STG|dbo|EcomPromotion<{{{><}}}>RK7_INT_STG|dbo|EcomSyncTaskStatus<{{{><}}}>RK7_INT_STG|dbo|EcomSyncTaskTimeline<{{{><}}}>RK7_INT_STG|dbo|Parameters<{{{><}}}>RK7_INT_STG|dbo|ActionParams<{{{><}}}>RK7_INT_STG|dbo|Schedules<{{{><}}}>
+Servers\stg\stg-skytransfer\RefusedCount<|||>3<|||>1
+Servers\stg\stg-skytransfer\QueryHistory\1<|||>1<|||>2026-03-17 16:12:52|RK7_INT_STG|0|ALTER TABLE "dbo"."EcomPromotion"<{{{><}}}>	ADD "CustomersSelection" NVARCHAR(max) DEFAULT NULL;
+Servers\stg\stg-skytransfer\RK7_INT_STG|ActionParams\HiddenColumns<|||>1<|||>description|scheduleId|created|userCreated|modified|userModified
+Servers\stg\stg-skytransfer\RK7_INT_STG|EcomPromotion\Sort<|||>1<|||>1_Id|
+Servers\stg\stg-skytransfer\RK7_INT_STG|EcomPromotion\HiddenColumns<|||>1<|||>Description|LimitByWeekdays|ExcludeSpecialDates|PromotionType|StoresSelection|EntitledStores|ShippingTypeSelection|EntitledShippingTypes|ApplicableConditionType|ApplicableConditionValue|ProductsSelection|EntitledCollections|EntitledCombos|EntitledProducts|EntitledVariants|IsRequiredSpecialProducts|ApplicableConditionMinimumNumberOfSpecialProducts|ProductsConditionSelection|EntitledConditionProducts|EntitledConditionVariants|EntitledConditionCombos|ProductsPromotionSelection|EntitledPromotionCollections|EntitledPromotionProducts|EntitledPromotionVariants|ApplicableValueType|ApplicableValueValueAmount|ApplicableValueValuePercent|ApplicableValueValueLimitMaxAmount|MaxUsageCount|IsConfigAppliedTogetherWithSpecialProducts|ConfigAppliedTogetherWithSpecialProductsType|ConfigAppliedTogetherWithSpecialProductsValueIsCombo|ConfigAppliedTogetherWithSpecialProductsValueIsVariant|EntitledSpecialVariantIds|IsCombinedProductDiscount|IsCombinedShipmentDiscount|IsCombinedOrderDiscount|TenantId|Created|Updated
+Servers\stg\stg-skytransfer\RK7_INT_STG|EcomSyncTaskStatus\HiddenColumns<|||>1<|||>RetryCount|LastErrorCode|LastErrorMessage|CompletedAt
+Servers\stg\stg-skytransfer\RK7_INT_STG|EcomSyncTaskTimeline\Sort<|||>1<|||>1_Id|1_CreatedAt|
+Servers\stg\stg-skytransfer\RK7_INT_STG|Parameters\HiddenColumns<|||>1<|||>description

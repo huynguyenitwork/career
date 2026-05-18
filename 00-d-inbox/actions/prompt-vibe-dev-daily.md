@@ -124,6 +124,25 @@ chuyên gia khuyên hybrid: dùng ai cho routine (crud/ui), solo cho core logic/
 
 ## mẫu shortlist dùng với espanso
 
+## rule đặt tên
+
+- prefix `p`: nhóm kỹ thuật (problem/program/product/platform)
+- suffix:
+  - `r`: research
+  - `g`: generate
+  - `v`: verify
+  - `o`: optimize
+  - `ba`: business_analysis
+  - `sa`: solution_architecture
+
+## mở rộng
+
+- `:pd`: debug
+- `:pt`: test
+- `:pdoc`: document
+
+## nội dung
+
 - `:pr` → research
 
 ```text

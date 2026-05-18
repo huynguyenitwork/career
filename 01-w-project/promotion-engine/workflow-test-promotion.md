@@ -1,5 +1,8 @@
 # timeline
 
+- [08-04-2026] sửa trường mở rộng vào db skycrm-api (chỉ dev đọc lại)
+- [06-04-2026] sửa trường mở rộng vào db skycrm-api (chỉ dev đọc lại)
+- [01-04-2026] bổ sung thêm trường mở rộng vào db skycrm-api
 - [25-02-2026] chạy service remote với psexec
 - [25-02-2026] kiểm tra case hoạt động
 - [25-02-2026] set up env cho develop
@@ -11,6 +14,105 @@
 - [28-01-2026] sửa org-id
 - [28-01-2026] lưu ý chung
 ---
+
+# sửa trường mở rộng vào db skycrm-api (chỉ dev đọc lại)
+## skycrm-api
+```sql
+-- cập nhật trường thông tin dùng với enum
+ALTER TABLE "Discounts"
+ADD CONSTRAINT discounts_applicable_product_ck
+CHECK ("ApplicableProduct" IS NULL OR "ApplicableProduct" IN (0,1,2,3,4));
+
+COMMENT ON COLUMN "Discounts"."ApplicableProduct"
+IS '0=all, 1=category, 2=product, 3=combo, 4=variant';
+
+-- bổ sung lại trường 
+ALTER TABLE "Discounts" ADD COLUMN "DiscountSpecialProductTypeConfig" int4 NULL
+CHECK ("DiscountSpecialProductTypeConfig" IN (1,2));
+COMMENT ON COLUMN "Discounts"."DiscountSpecialProductTypeConfig"
+IS "1='Sản phẩm loại trừ', 2='Không áp dụng cùng với sản phẩm'";
+```
+---
+
+# bổ sung thêm trường mở rộng vào db skycrm-api
+
+## skycrm-api
+```sql
+-- lưu trường thông tin sản phẩm áp dụng
+-- 0. bổ sung thêm key vào bảng DiscountTypes
+DROP TABLE IF EXISTS "DiscountTypes";
+
+CREATE TABLE "DiscountTypes" (
+	"Id" SERIAL NOT NULL,
+	"Name" CITEXT NOT NULL,
+	"Key" CITEXT NOT NULL,
+	"Status" INTEGER NOT NULL,
+	PRIMARY KEY ("Id")
+);
+
+-- Chèn dữ liệu mẫu
+INSERT INTO "DiscountTypes" ("Id", "Name", "Key", "Status") VALUES
+(1, 'Giảm giá order', 'ORDER_DISCOUNT', 3),
+(2, 'Giảm giá món ăn', 'PRODUCT_DISCOUNT', 3),
+(3, 'Đồng giá', 'FIXED_PRICE', 3),
+(4, 'Mua 1 tặng 1', 'BUY_1_GET_1_DISCOUNT', 3),
+(5, 'Mua X tặng Y', 'BUY_X_GET_Y_DISCOUNT', 3),
+(6, 'MUA 2 tặng 1', 'BUY_2_GET_1_DISCOUNT', 0),
+(7, 'Giảm giá mở', 'OPEN_DISCOUNT', 3);
+
+
+-- 1. tạo trường ApplicableProduct
+ALTER TABLE "Discounts"
+ADD COLUMN "ApplicableProduct" int4 NULL
+CHECK ("ApplicableProduct" IN (0,1,2,3,4));
+
+COMMENT ON COLUMN "Discounts"."ApplicableProduct"
+IS '0=''Toàn bộ sản phẩm'', 1=''Nhóm sản phẩm'', 2=''Sản phẩm'', 3=''Combo'', 4=''Biến thể cụ thể''';
+
+-- lưu dữ liệu vào nhóm sản phẩm/sản phẩm <sản phẩm|biến thể|combo>
+
+-- 1. tạo bảng DiscountInclusionCategories
+CREATE TABLE "DiscountInclusionCategories" ( "Id" serial4 NOT NULL, "DiscountId" int4 NOT NULL, "CategoryId" int4 NOT NULL, CONSTRAINT "PK_DiscountInclusionCategories" PRIMARY KEY ("Id"), CONSTRAINT "FK_DiscountInclusionCategories_DiscountId_Discounts_Id" FOREIGN KEY ("DiscountId") REFERENCES "Discounts"("Id") ON DELETE CASCADE);
+CREATE INDEX "IX_DiscountInclusionCategories_DiscountId" ON "DiscountInclusionCategories" USING btree ("DiscountId");
+
+-- 2. tạo bảng DiscountInclusionDishes
+CREATE TABLE "DiscountInclusionDishes" ( "Id" serial4 NOT NULL, "DiscountId" int4 NOT NULL, "MenuItemId" int4 NOT NULL, CONSTRAINT "PK_DiscountInclusionDishes" PRIMARY KEY ("Id"), CONSTRAINT "FK_DiscountInclusionDishes_DiscountId_Discounts_Id" FOREIGN KEY ("DiscountId") REFERENCES "Discounts"("Id") ON DELETE CASCADE);
+CREATE INDEX "IX_DiscountInclusionDishes_DiscountId" ON "DiscountInclusionDishes" USING btree ("DiscountId");
+
+-- lưu loại điều kiện áp dụng (không có/số lượng sản phẩm tối thiểu/giá trị đơn hàng tối thiểu/giá trị sản phẩm tối thiểu) và giá trị
+
+-- 1. tạo trường ApplicableConditionTypeId
+ALTER TABLE "Discounts" ADD "ApplicableConditionTypeId" int4 NULL;
+
+-- 2. tạo bảng ApplicableConditionType và seeding
+CREATE TABLE "ApplicableConditionTypes" ( "Id" SERIAL NOT NULL, "Key" CITEXT NOT NULL, "Name" CITEXT NOT NULL, "Status" INTEGER NOT NULL, PRIMARY KEY ("Id") );
+INSERT INTO "ApplicableConditionTypes" ("Id", "Key", "Name", "Status") VALUES(1, 'NO_APPLICABLE', 'Không có', 3);
+INSERT INTO "ApplicableConditionTypes" ("Id", "Key", "Name", "Status") VALUES(2, 'QUANTITY_ORDER', 'Số lượng sản phẩm tối thiểu', 3);
+INSERT INTO "ApplicableConditionTypes" ("Id", "Key", "Name", "Status") VALUES(3, 'AMOUNT_ORDER', 'Giá trị đơn hàng tối thiểu', 3);
+INSERT INTO "ApplicableConditionTypes" ("Id", "Key", "Name", "Status") VALUES(4, 'AMOUNT_ORDER_ITEM', 'Giá trị sản phẩm tối thiểu', 3);
+-- 3. tạo trường 
+ALTER TABLE "Discounts" ADD "ApplicableConditionValue" int4 NULL;
+
+-- lưu áp dụng đồng thời (giảm giá sản phẩm|giảm giá đơn hàng)
+
+-- 1. tạo trường IsCombinedProductDiscount, IsCombinedOrderDiscount
+ALTER TABLE "Discounts" ADD "IsCombinedProductDiscount" bool NULL;
+ALTER TABLE "Discounts" ADD "IsCombinedOrderDiscount" bool NULL;
+
+
+-- lưu cấu hình kiểm tra có áp dụng các sản phẩm đặc biệt không là chính | cấu hình áp dụng với loại sản phẩm đặc biệt nào và cấu hình được áp dụng với loại sản phẩm đặc biệt giá trị nào (combo/biến thể) là phụ thuộc theo sau
+
+-- 1. tạo trường IsConfigAppliedTogetherWithSpecialProducts, DiscountSpecialProductTypeConfig, ConfigAppliedTogetherWithSpecialProductsValueIsCombo, ConfigAppliedTogetherWithSpecialProductsValueIsVariant
+ALTER TABLE "Discounts" ADD "IsConfigAppliedTogetherWithSpecialProducts" bool NULL;
+ALTER TABLE "Discounts"
+ADD COLUMN "DiscountSpecialProductTypeConfig" int4 NULL
+CHECK ("DiscountSpecialProductTypeConfig" IN (1,2));
+COMMENT ON COLUMN "Discounts"."DiscountSpecialProductTypeConfig"
+IS '1=''Sản phẩm loại trừ'', 2=''Không áp dụng cùng với sản phẩm''';
+ALTER TABLE "Discounts" ADD "ConfigAppliedTogetherWithSpecialProductsValueIsCombo" bool NULL;
+ALTER TABLE "Discounts" ADD "ConfigAppliedTogetherWithSpecialProductsValueIsVariant" bool NULL;
+
+```
 
 
 # chạy service remote với psexec
@@ -403,6 +505,7 @@ rk7: https://118.69.108.41:2323
 skytransfer: http://localhost:2340
 refagent: http://localhost:2329
 skycrm: http://localhost:6001
+masterdata (grpc): http://localhost:50031
 rk7: https://118.69.108.41:2323
 
 
