@@ -8,11 +8,11 @@ linkedin: linkedin.com/in/nguyen-phu-huy-580180250/
 
 ## profile
 
-hơn 6 năm kinh nghiệm phát triển hệ thống doanh nghiệp, chuyên chuyển hóa **quy trình và nghiệp vụ phức tạp** thành hệ thống phần mềm ổn định, chính xác và có khả năng vận hành lâu dài.
+senior software engineer với hơn 6 năm kinh nghiệm phát triển hệ thống doanh nghiệp, chuyên chuyển hóa **quy trình và nghiệp vụ phức tạp** thành hệ thống phần mềm ổn định, chính xác và có khả năng vận hành lâu dài.
 
 có kinh nghiệm làm việc với **f&b, retail, manufacturing, erp, pos, finance**, đóng vai trò cầu nối giữa nghiệp vụ và kỹ thuật. thế mạnh tập trung vào **business modeling, system integration, backend engineering, architecture và reliability**.
 
-kinh nghiệm thực chiến với các hệ thống tích hợp **pos ↔ sap ↔ e-commerce**, erp và các hệ thống nghiệp vụ nội bộ; thiết kế các cơ chế **validation, retry, idempotency, monitoring, auto-healing** để kiểm soát lỗi và đảm bảo dữ liệu đồng bộ.
+kinh nghiệm thực chiến với các hệ thống tích hợp **sap ↔ e-commerce ↔ pos**, erp và các hệ thống nghiệp vụ nội bộ; thiết kế các cơ chế **validation, retry, idempotency, monitoring, auto-healing** để kiểm soát lỗi và đảm bảo dữ liệu đồng bộ.
 
 ## core capabilities
 

@@ -5,7 +5,7 @@ tp. hồ chí minh, việt nam
 (+84) 353.072.938 · [huy.nguyen.it.work@gmail.com](mailto:huy.nguyen.it.work@gmail.com)
 linkedin: linkedin.com/in/nguyen-phu-huy-580180250
 ## summary
-hơn 6 năm kinh nghiệm phát triển phần mềm doanh nghiệp trên nền tảng **.net/c#**, tập trung vào xây dựng **backend, api và hệ thống có yêu cầu cao về tính ổn định, khả năng bảo trì và mở rộng**.
+senior software engineer với hơn 6 năm kinh nghiệm phát triển phần mềm doanh nghiệp trên nền tảng **.net/c#**, tập trung vào xây dựng **backend, api và hệ thống có yêu cầu cao về tính ổn định, khả năng bảo trì và mở rộng**.
 có kinh nghiệm thiết kế và phát triển **rest api, database, business logic, integration và distributed workflows**, đồng thời xử lý các vấn đề về **reliability** như retry, idempotency, monitoring, tracing và auto-healing.
 thế mạnh trong việc chuyển hóa yêu cầu nghiệp vụ thành các thành phần backend có cấu trúc rõ ràng, dễ kiểm thử và vận hành lâu dài. kinh nghiệm với **.net core, asp.net, sql server, postgresql, mysql, docker, microservices và api integration**.
 ## core skills

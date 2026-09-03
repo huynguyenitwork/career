@@ -4,7 +4,7 @@ tp. hồ chí minh, việt nam
 (+84) 353.072.938 · [huy.nguyen.it.work@gmail.com](mailto:huy.nguyen.it.work@gmail.com)
 linkedin: linkedin.com/in/nguyen-phu-huy-580180250/
 ## summary
-hơn 6 năm kinh nghiệm phát triển phần mềm doanh nghiệp trên nền tảng .net/c#, trong đó có kinh nghiệm phát triển hệ thống tích hợp **pos, sap, e-commerce và erp**.
+senior software engineer với hơn 6 năm kinh nghiệm phát triển phần mềm doanh nghiệp trên nền tảng .net/c#, trong đó có kinh nghiệm phát triển hệ thống tích hợp **pos, sap, e-commerce và erp**.
 chuyên xử lý **business integration và business logic phức tạp**, chuyển hóa quy trình nghiệp vụ thành các dịch vụ backend có tính ổn định, nhất quán và dễ vận hành.
 kinh nghiệm thiết kế và phát triển **api, data synchronization, business workflow và integration layer**; tập trung vào reliability thông qua **retry, idempotency, queue, validation, monitoring và auto-healing**.
 đã làm việc trong các domain **f&b, retail, manufacturing, erp và finance**, phối hợp trực tiếp với ba/pm và bộ phận vận hành để phân tích yêu cầu, thiết kế giải pháp và xử lý vấn đề production.
