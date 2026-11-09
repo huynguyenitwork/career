@@ -2,22 +2,22 @@
 
 ## quy trình
 
-1. tóm tắt thông tin <jd>
+1. tóm tắt thông tin và dự đoán mức lương <jd>
 2. kiểm tra sơ lược công ty làm lĩnh vực gì, lịch sử hình thành, review trải nghiệm của nhân sự, khách hàng <công ty>
 3. xác định điểm nghẽn thực của công ty <công ty> dựa trên jd (giới hạn 4)
 4. xác định mức độ tương hợp dựa trên ranh giới và giới hạn <ranh giới + giới hạn>
 5. kiểm tra mức tương hợp >= 60% tạo mail cover letter {dựa trên jd, cv, matching và cấu trúc mail} (nếu thỏa mãn)
-6. chuyển tiếp quy trình
+6. chuyển tiếp quy trình (đồng thời gởi mail cover letter + ứng tuyển trên kênh tuyển dụng)
 
 ## mẫu
 
 # ranh giới và giới hạn
-
+## bậc 0 (ưu tiên cao nhất)
 - **ranh giới (định tính):**
-  - cho phép **backend(.net core, python,...), level mid-senior, product company, business complexity, integration, architecture, reliability, enterprise domain, khoảng cách di chuyển từ huỳnh bá chánh tới công ty <= 20km**;
+  - cho phép **backend(.net core, python,...) hoặc backend-centric fullstack, level mid-senior, product company, business complexity, integration, architecture, reliability, enterprise domain, khoảng cách di chuyển từ huỳnh bá chánh tới công ty <= 20km**;
   - không cho phép **outsourcing company, fullstack đa vai trò, kiêm frontend/devops/pm, lệch khỏi chuyên môn backend**.
 - **giới hạn (định lượng):**
-  - tối thiểu **>=35m, ≥70% skill match, 50 nhân sự, 3 năm hoạt động, doanh thu tăng >10%, biên lợi nhuận >15%, dòng tiền dương**;
+  - tối thiểu **>=33m, ≥70% skill match, 50 nhân sự, 3 năm hoạt động, doanh thu tăng >10%, biên lợi nhuận >15%, dòng tiền dương**;
   - tối đa **<=20km, <40m, 300 nhân sự, 12 năm hoạt động, ≤2 lần jd đăng lại/quý, ≤10% giảm lương, nợ ngắn hạn/tài sản ngắn hạn ≤1,5**.
 
 # bộ lọc tiêu chí chọn

@@ -1,6 +1,7 @@
 updated:
 
 - 2026-08-31: sửa role quá thẳng trực diện văn phong tech (như đấm thẳng mặt), thiếu mềm mại kết nối không gian
+- 2026-09-03: điều chỉnh lại cấu trúc; giới hạn thông tin cover letter; bỏ đề cập lương
 
 question:
 

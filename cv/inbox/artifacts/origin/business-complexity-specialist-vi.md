@@ -14,6 +14,7 @@ có kinh nghiệm làm việc với **f&b, retail, manufacturing, erp, pos, fina
 
 kinh nghiệm thực chiến với các hệ thống tích hợp **sap ↔ e-commerce ↔ pos**, erp và các hệ thống nghiệp vụ nội bộ; thiết kế các cơ chế **validation, retry, idempotency, monitoring, auto-healing** để kiểm soát lỗi và đảm bảo dữ liệu đồng bộ.
 
+nền tảng kỹ thuật chính: **.net/c#** và **python/odoo**. sẵn sàng chuyển giao tư duy kiến trúc và quy trình hệ thống sang môi trường **java (spring boot)** và **golang**.
 ## core capabilities
 
 | năng lực                    | phạm vi                                                                                 |
@@ -22,7 +23,8 @@ kinh nghiệm thực chiến với các hệ thống tích hợp **sap ↔ e-com
 | **system integration**      | pos, sap, e-commerce, rest api, webhook, data synchronization                           |
 | **architecture**            | clean architecture, api design, schema design, microservices                            |
 | **reliability**             | validation, retry, fallback, idempotency, monitoring, tracing, auto-healing             |
-| **backend engineering**     | .net/c#, asp.net core, python/odoo                                                      |
+| **backend core**            | .net/c#, asp.net core, python/odoo                                                      |
+| **tech expansion**          | java (spring boot ecosystem), golang (concurrency, gin framework)                       |
 | **database design**         | sql server, postgresql, mysql, schema design, query optimization                        |
 | **documentation**           | technical specification, brd, uml, api contract                                         |
 | **ai-assisted engineering** | ai coding assistant, code review, debugging, testing, technical research, documentation |
